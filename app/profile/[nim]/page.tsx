@@ -1,7 +1,7 @@
 "use client";
 import { Center, Box, Text, HStack } from "@chakra-ui/react";
 
-export default function Home() {
+export default function Profile({ params }: { params: { nim: number } }) {
   return (
     <Center w={"100%"} h={"100vh"}>
       <Box w={"25em"} h={"auto"} boxShadow={"lg"}>
@@ -13,7 +13,7 @@ export default function Home() {
           </HStack>
           <Box mt={"1em"}>
             <Text align={"left"} color={"white"} fontSize={"xl"} fontWeight={"normal"}>
-              Hi, selamat liburan para frontend MAXIMA 2023
+              Ini Profile dynamic page {params.nim}
             </Text>
           </Box>
         </Box>

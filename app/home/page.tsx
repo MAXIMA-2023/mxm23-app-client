@@ -13,7 +13,7 @@ export default function Home() {
           </HStack>
           <Box mt={"1em"}>
             <Text align={"left"} color={"white"} fontSize={"xl"} fontWeight={"normal"}>
-              Hi, selamat liburan para frontend MAXIMA 2023
+              Ini HoME page
             </Text>
           </Box>
         </Box>
