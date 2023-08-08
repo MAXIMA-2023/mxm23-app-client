@@ -2,40 +2,27 @@
 /* eslint-disable react/no-children-prop */
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 //importing chakra ui components
-import {
-  Box,
-  Flex,
-  Center,
-  Text,
-  Button,
-  Stack,
-  Img,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-} from "@chakra-ui/react";
+import { Box, Flex, Center, Text, Button, Stack, Img, FormControl, FormLabel, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
 // import { isExpired } from "react-jwt";
 // import { useLocalStorage, useReadLocalStorage } from "usehooks-ts";
 // import axios from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
 // import Swal from "sweetalert2";
 
-interface LoginData{
-  nim: string
-  password: string
+interface LoginData {
+  nim: string;
+  password: string;
 }
 
 const login = () => {
   const MaximaLogo = () => {
     return (
-      <Center mt={["-3vh", "5vh"]} position={["relative", "absolute"]} left={0} right={0} top={0}>
-        <Img display={["none", "block"]} src={"/Assets/MaximaLogo.svg"} w={["9rem"]} />
-        <Img display={["block", "none"]} src={"/Assets/MaximaLogo.svg"} w={["3rem"]} />
+      <Center mt={["5vh", "5vh"]} position={["relative", "absolute"]} left={0} right={0} top={0}>
+        <Img display={["none", "block"]} src={"/Assets/MaximaLogo_Desktop.svg"} w={["9rem"]} />
+        <Img display={["block", "none"]} src={"/Assets/MaximaLogo_Mobile.svg"} w={["3rem"]} />
       </Center>
     );
   };
@@ -49,49 +36,49 @@ const login = () => {
     // const router = useRouter()
     // const isMyTokenExpired = isExpired(jwt as string)
     // const [, setLocalStorage] = useLocalStorage("token", "");
-    const [isButtonLoading, setIsButtonLoading] = useState(false)
-    const [error, setError] = useState(undefined)
+    const [isButtonLoading, setIsButtonLoading] = useState(false);
+    const [error, setError] = useState(undefined);
 
     const onSubmit: SubmitHandler<any> = async (data: LoginData) => {
-    try{
-      setIsButtonLoading(true)
-      const formData = new FormData()
-      formData.append("nim", data.nim)
-      formData.append("password", data.password)
-      // const response = await axios.post(`${process.env.API_URL}/api/mhs/login`, formData)
-      // Swal.fire(
-      //   'Selamat!',
-      //   'Anda berhasil masuk!',
-      //   'success'
-      // )
-      // setLocalStorage(response?.data?.token);
-      setIsButtonLoading(false);
-      // router.push('/')
-    } catch(err: any) {
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: `${err.response.data.message}`,
-      // })
-      console.log(err.response.data.message);
-      setError(err.response.data.message);
-      setIsButtonLoading(false);
-    }
-  }
+      try {
+        setIsButtonLoading(true);
+        const formData = new FormData();
+        formData.append("nim", data.nim);
+        formData.append("password", data.password);
+        // const response = await axios.post(`${process.env.API_URL}/api/mhs/login`, formData)
+        // Swal.fire(
+        //   'Selamat!',
+        //   'Anda berhasil masuk!',
+        //   'success'
+        // )
+        // setLocalStorage(response?.data?.token);
+        setIsButtonLoading(false);
+        // router.push('/')
+      } catch (err: any) {
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: `${err.response.data.message}`,
+        // })
+        console.log(err.response.data.message);
+        setError(err.response.data.message);
+        setIsButtonLoading(false);
+      }
+    };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginData>();
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm<LoginData>();
 
     return (
-      <Flex display={["block", "block", "flex", "flex", "flex"]} w={"full"} maxW={["65em", "65em", "65em", "55em", "65em"]} maxH={"auto"} mx={"3em"}>
+      <Flex display={["block", "block", "flex", "flex", "flex"]} w={"full"} maxW={["65em", "65em", "65em", "55em", "70em"]} maxH={"auto"}>
         <Flex display={["block", "block", "flex", "flex", "flex"]} w={"full"} h={"auto"} justifyContent={"space-between"}>
-          <Center display={["none", "none", "flex", "flex", "flex"]} me={"2em"}>
-            <Img src={"https://storage.googleapis.com/mxm22-bucket-test/gambar-masuk.png"} w={["38em", "38em", "30em", "30em", "38em"]} />
+          <Center w={"full"} display={["none", "none", "flex", "flex", "flex"]} mr={"5em"} bgColor={"#C4C4C4"}>
+            {/* <Img bgColor={"#C4C4C4"} src={"https://storage.googleapis.com/mxm22-bucket-test/gambar-masuk.png"} w={["38em", "38em", "30em", "30em", "38em"]} /> */}
           </Center>
           <Box
-            w={["full", "full", "22em", "22em", "22em"]}
+            w={["full", "full", "22em", "22em", "40em"]}
             h={["full", "auto"]}
             padding={["0 0em", "0 0em", "1.5em 2.5em 1em 2.5em", "1.5em 2.5em 1em 2.5em", "1.5em 2.5em 1em 2.5em"]}
             borderRadius={["none", "none", "lg", "lg", "lg"]}
@@ -117,7 +104,7 @@ const login = () => {
               </Link>
             </Center>
             <Center display={["flex", "flex", "none"]} my={"1.5em"}>
-              <Img display={["block", "block", "none"]} src={"https://storage.googleapis.com/mxm22-bucket-test/gambar-masuk-mobile.png"} w={"auto"} />
+              {/* <Img display={["block", "block", "none"]} src={"https://storage.googleapis.com/mxm22-bucket-test/gambar-masuk-mobile.png"} w={"auto"} /> */}
             </Center>
             <Box>
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -169,20 +156,18 @@ const login = () => {
                           _hover={{ border: "solid #CBD5E0" }}
                         />
                       </InputGroup>
-                      {errors.password !== undefined && (
-                          <Text textColor={"red"}>{errors.password.message}</Text>
-                      )}
+                      {errors.password !== undefined && <Text textColor={"red"}>{errors.password.message}</Text>}
                       <Box display={["block", "block", "block"]}>
-                            <Link href={'/forgetPass'}>
-                              <Text fontSize={["sm"]} my={"0.5em"} color={"#1B4173"} fontWeight={"medium"}>
-                                Lupa kata sandimu? <span style={{ color: "#F7B70C", fontWeight: "bold", textDecoration: "underline", cursor: "pointer" }}>Klik di sini</span>
-                              </Text>
-                            </Link>
+                        <Link href={"/forgot-password"}>
+                          <Text fontSize={["sm"]} my={"0.5em"} color={"#1B4173"} fontWeight={"medium"}>
+                            Lupa kata sandimu? <span style={{ color: "#F7B70C", fontWeight: "bold", textDecoration: "underline", cursor: "pointer" }}>Klik di sini</span>
+                          </Text>
+                        </Link>
                       </Box>
                     </Box>
                   </Stack>
                 </FormControl>
-                <Flex w={"100%"} justifyContent={"center"} mt={"2em"} mb={"1em"}>
+                <Flex w={"100%"} justifyContent={"center"} mt={"2em"}>
                   {isButtonLoading === true ? (
                     <Button isLoading w={["full", "full", "auto"]} px={["2.1em"]} borderRadius={"full"} type={"submit"} color={"#fff"} colorScheme={"orange"} bgColor={"#F7B70C"}>
                       MASUK
@@ -204,7 +189,7 @@ const login = () => {
   const Footer = () => {
     // const router = useRouter();
     return (
-      <Center position={["absolute"]} left={0} right={0} bottom={[0]} mb={["5vh", "5vh"]} mt={["8vh", "0"]}>
+      <Center mt={"-3em"}>
         <Text color={"#1B4173"} fontSize={"sm"} fontWeight={"bold"}>
           MAXIMA 2023
         </Text>
@@ -213,17 +198,17 @@ const login = () => {
   };
 
   return (
-      <Flex minH={"100vh"} bgColor={"white"}>
-        <Box w={"full"} zIndex={"0"}>
-          <Box mt={"9vh"}>
-            <MaximaLogo />
-          </Box>
-          <Center position={["absolute"]} left={0} right={0} top={0} bottom={0}>
-            <LoginForm />
-          </Center>
-          <Footer />
+    <Flex minH={"100vh"} bgColor={"white"}>
+      <Box w={"full"} zIndex={"0"}>
+        <Box>
+          <MaximaLogo />
         </Box>
-      </Flex>
+        <Center w={"full"} h={"100vh"}>
+          <LoginForm />
+        </Center>
+        <Footer />
+      </Box>
+    </Flex>
   );
 };
 
