@@ -1,5 +1,4 @@
 "use client";
-import { useSearchParams } from "next/navigation";
 
 //importing chakra ui components
 import {
@@ -32,6 +31,10 @@ import { BiShow, BiHide } from "react-icons/bi";
 
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { HandleAxiosError, ResponseModel, useApi } from "@/services/api";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
+import Swal from "sweetalert2";
 
 type RequestPasswordChange = {
   nim: number;
@@ -52,13 +55,22 @@ const steps = [
 const MaximaLogo = () => {
   return (
     <Center
-      mt={["-3vh", "5vh"]}
+      mt={["5vh", "5vh"]}
       position={["relative", "absolute"]}
       left={0}
       right={0}
       top={0}
     >
-      <Img display={"block"} src={"/Assets/MaximaLogo.svg"} w={["9rem"]} />
+      <Img
+        display={["none", "block"]}
+        src={"/Assets/MaximaLogo_Desktop.svg"}
+        w={["9rem"]}
+      />
+      <Img
+        display={["block", "none"]}
+        src={"/Assets/MaximaLogo_Mobile.svg"}
+        w={["3rem"]}
+      />
     </Center>
   );
 };
@@ -87,6 +99,8 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const searchParams = useSearchParams();
+  const api = useApi();
+
   const reqChangeForm = useForm<RequestPasswordChange>();
   const excForm = useForm<ExcPasswordChange>();
 
@@ -189,8 +203,19 @@ const Login = () => {
                     <Box>
                       <form
                         onSubmit={reqChangeForm.handleSubmit((data) =>
-                          // !TODO: Request API Password Change
-                          console.log(data)
+                          api
+                            .post<ResponseModel<undefined>>(
+                              "/mahasiswa/forgot-password",
+                              data
+                            )
+                            .then((res) => {
+                              Swal.fire(
+                                "Berhasil",
+                                "Silahkan cek email kamu untuk melanjutkan tahap perubahan kata sandi",
+                                "success"
+                              );
+                            })
+                            .catch(HandleAxiosError)
                         )}
                       >
                         <FormControl
@@ -198,10 +223,10 @@ const Login = () => {
                           my={"1em"}
                         >
                           <FormLabel
-                            display={["none", "none", "block"]}
+                            color={"#1B4173"}
                             fontSize={"sm"}
-                            textColor={"#1B4173"}
                             fontWeight={"semibold"}
+                            opacity={"0.9"}
                           >
                             NIM
                           </FormLabel>
@@ -251,10 +276,10 @@ const Login = () => {
                           my={"1em"}
                         >
                           <FormLabel
-                            display={["none", "none", "block"]}
+                            color={"#1B4173"}
                             fontSize={"sm"}
-                            textColor={"#1B4173"}
                             fontWeight={"semibold"}
+                            opacity={"0.9"}
                           >
                             Email Student
                           </FormLabel>
@@ -319,9 +344,15 @@ const Login = () => {
                     <Box>
                       <form
                         onSubmit={excForm.handleSubmit((data) => {
-                          // !TODO: Change password API Password Change
-                          console.log(data);
-                          setStepProgress(2);
+                          api
+                            .post<ResponseModel<undefined>>(
+                              "/mahasiswa/forgot-password/validate-token",
+                              { password: data.password, token: token }
+                            )
+                            .then((res) => {
+                              setStepProgress(2);
+                            })
+                            .catch(HandleAxiosError);
                         })}
                       >
                         <FormControl
@@ -329,10 +360,10 @@ const Login = () => {
                           my={"1em"}
                         >
                           <FormLabel
-                            display={["none", "none", "block"]}
+                            color={"#1B4173"}
                             fontSize={"sm"}
-                            textColor={"#1B4173"}
                             fontWeight={"semibold"}
+                            opacity={"0.9"}
                           >
                             Kata sandi baru
                           </FormLabel>
@@ -383,10 +414,10 @@ const Login = () => {
                           my={"1em"}
                         >
                           <FormLabel
-                            display={["none", "none", "block"]}
+                            color={"#1B4173"}
                             fontSize={"sm"}
-                            textColor={"#1B4173"}
                             fontWeight={"semibold"}
+                            opacity={"0.9"}
                           >
                             Konfirmasi kata sandi baru
                           </FormLabel>
