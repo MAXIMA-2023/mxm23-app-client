@@ -47,7 +47,7 @@ type ExcPasswordChange = {
 };
 
 const steps = [
-  { title: "Step 1", description: "Masukkan NIM dan Email" },
+  { title: "Step 1", description: "Permintaan ubah kata sandi" },
   { title: "Step 2", description: "Buat kata sandi baru" },
   { title: "Selesai", description: "Kata sandi berhasil diubah" },
 ];
@@ -76,7 +76,6 @@ const MaximaLogo = () => {
 };
 
 const Footer = () => {
-  // const router = useRouter();
   return (
     <Center
       position={["absolute"]}
@@ -93,25 +92,33 @@ const Footer = () => {
   );
 };
 
-const Login = () => {
+const ForgotPassword = () => {
   const [stepProgress, setStepProgress] = useState(0);
   const [token, setToken] = useState<string | undefined>();
   const [showPassword, setShowPassword] = useState(false);
 
   const searchParams = useSearchParams();
   const api = useApi();
+  const router = useRouter();
+  const session = useSession();
 
   const reqChangeForm = useForm<RequestPasswordChange>();
   const excForm = useForm<ExcPasswordChange>();
 
   useEffect(() => {
+    // check for auth
+    if (session.status === "authenticated") {
+      router.push("/");
+      return;
+    }
+
     const paramToken = searchParams.get("token");
     if (paramToken && paramToken.length === 48) {
-      setToken(token);
+      setToken(paramToken);
       setStepProgress(1);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [session]);
 
   return (
     <>
@@ -171,7 +178,7 @@ const Login = () => {
                   <Box my={"2rem"}>
                     <Stepper
                       size={"sm"}
-                      index={stepProgress > 1 ? stepProgress + 1 : stepProgress}
+                      index={stepProgress > 1 ? 3 : stepProgress}
                       colorScheme="facebook"
                       color={"#1B4173"}
                     >
@@ -509,4 +516,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;
