@@ -60,7 +60,7 @@ const FAQ: NextPage = () => {
                               Kapan HoME Maxima 2023 akan dilaksanakan?
                             </Text>
                             <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
-                              22-26 Agustus 2023
+                              4-8 September 2023
                             </Text>
                           </Stack>
                           <Box mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
@@ -119,7 +119,7 @@ const FAQ: NextPage = () => {
                               Kapan HoME Maxima 2023 akan dilaksanakan?
                             </Text>
                             <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
-                              22-26 Agustus 2023
+                              4-8 September2023
                             </Text>
                           </Stack>
                           <Box mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
