@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import React from "react";
 
 //importing local components
-import Navbar from "../../../components/Navbar";
-import BackButton from "../../../components/BackButton";
+import Layout from "@/components/Layout";
+import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
 import { Box, Flex, Center, Heading, Text, Button, Stack, Img, Wrap, WrapItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from "@chakra-ui/react";
@@ -13,17 +13,17 @@ import { Box, Flex, Center, Heading, Text, Button, Stack, Img, Wrap, WrapItem, M
 const STATE: NextPage = () => {
 
   return (
-    <Box  bgColor={"#C4C4C4"} minH={"100vh"}>
-      <Navbar />
+    <Layout>
       <Flex
         minH={"100vh"}
+        bgImage={["../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg"]}
         bgPosition={["center", "bottom", "bottom", "bottom"]}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}
       >
         <Box w={"full"} zIndex={"0"}>
           <Box display={["block", "block", "block", "none", "none"]} position={"absolute"} bottom={0}>
-          
+            {/* Image BG Mobile */}
           </Box>
           <Center>
             <Box
@@ -38,7 +38,7 @@ const STATE: NextPage = () => {
               <Center w={"100%"} h={["100%"]}>
                 <Box>
                   <Center mt={"0em"}>
-                    <Img src={"/Assets/AboutUs_STATE.svg"} w={["10em", "15em", "40vw", "15em", "25em"]}></Img>
+                    <Img src={"/Assets/aboutus/AboutUs_STATE.svg"} w={["10em", "15em", "40vw", "15em", "25em"]}></Img>
                   </Center>
                   <Center display={["none", "block"]}>
                     <Stack direction={"column"} spacing={[8, 6, 7, 5, 8]}>
@@ -83,7 +83,7 @@ const STATE: NextPage = () => {
         </Box>
       </Flex>
       <BackButton />
-    </Box>
+    </Layout>
   );
 };
 

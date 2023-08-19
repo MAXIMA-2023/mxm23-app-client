@@ -4,19 +4,26 @@ import { useRouter } from "next/router";
 import React from "react";
 
 //importing local components
-import Navbar from "../../../components/Navbar";
-import BackButton from "../../../components/BackButton";
+import Layout from "@/components/Layout";
+import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
 import { Box, Flex, Center, Text, Button, Img } from "@chakra-ui/react";
 
 const HoME: NextPage = () => {
   return (
-    <Box bgColor={"#C4C4C4"} h={"100%"}>
-      <Navbar />
-      <Flex minH={"100vh"} mb={["3em"]} bgPosition={["center", "bottom", "bottom", "bottom"]} bgSize={"cover"} bgRepeat={"no-repeat"}>
+    <Layout>
+      <Flex
+        minH={"100vh"}
+        bgImage={["../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg"]}
+        bgPosition={["center", "bottom", "bottom", "bottom"]}
+        bgSize={"cover"}
+        bgRepeat={"no-repeat"}
+      >
         <Box w={"full"} zIndex={"0"}>
-          <Box display={["block", "block", "block", "none", "none"]} position={"absolute"} bottom={0}></Box>
+          <Box display={["block", "block", "block", "none", "none"]} position={"absolute"} bottom={0}>
+            {/* Image BG Mobile */}
+          </Box>
           <Center>
             <Box
               p={["1em 2em", "3em 5em", "3em 3em", "3em 4em", "4em 5em"]}
@@ -31,7 +38,7 @@ const HoME: NextPage = () => {
               <Center w={"100%"} h={["100%"]}>
                 <Box>
                   <Center mt={"0em"}>
-                    <Img src={"/Assets/AboutUs_Home.svg"} w={["12.5em", "10em", "20em", "20em", "auto"]}></Img>
+                    <Img src={"/Assets/aboutus/AboutUs_Home.svg"} w={["12.5em", "10em", "20em", "20em", "auto"]}></Img>
                   </Center>
                   <Center display={["none", "block"]}>
                     <Text fontSize={["md", "md", "xl", "xl", "2xl"]} color={"#1B4173"} textAlign={"center"}>
@@ -52,7 +59,7 @@ const HoME: NextPage = () => {
         </Box>
       </Flex>
       <BackButton />
-    </Box>
+    </Layout>
   );
 };
 
