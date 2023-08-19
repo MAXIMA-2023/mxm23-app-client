@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";
 
 //importing local components
-import Navbar from "../../components/Navbar";
-import BackButton from "../../components/BackButton";
+import Layout from "@/components/Layout";
+import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
 import { Box, Flex, Center, Heading, Text, Button, Stack, Img, Tabs, TabList, TabPanels, Tab, TabPanel, Container, List, ListItem, ListIcon, OrderedList, UnorderedList, useMediaQuery } from "@chakra-ui/react";
@@ -17,12 +17,11 @@ import dynamic from "next/dynamic";
 const FAQ: NextPage = () => {
   const [isSmallerThan320] = useMediaQuery("(max-width: 320px)");
   return (
-    <Box bgColor={"#C4C4C4"} minH={"100vh"}>
-      <Navbar />
-      <Flex minH={"100vh"} mb={"0"} bgPosition={["center"]} bgSize={"cover"} bgRepeat={"no-repeat"}>
+    <Layout>
+      <Flex minH={"100vh"} bgImage={["/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg"]} bgPosition={["center"]} bgSize={"cover"} bgRepeat={"no-repeat"}>
         <Box w={"full"} zIndex={"0"}>
           <Box display={isSmallerThan320 ? "none" : ["block", "none", "none", "none", "none"]} mb={["30.35rem", "45.35rem", "", "30.35rem", "30.35rem"]} position={"absolute"} bottom={0}>
-            
+            {/* Image Mobile */}
           </Box>
           <Center>
             <Box
@@ -38,7 +37,7 @@ const FAQ: NextPage = () => {
               <Center w={"100%"} h={["100%"]}>
                 <Box w={"100%"}>
                   <Center mt={["1em", "1em", "0em", "1em", "1em"]}>
-                    <Img src={"/Assets/FAQ.svg"} w={["5em", "5em", "15vw", "5em", "10em"]}></Img>
+                    <Img src={"/Assets/faq/FAQ.svg"} w={["5em", "5em", "15vw", "5em", "10em"]}></Img>
                   </Center>
                   <Center display={["none", "none", "block"]}>
                     <Tabs variant="soft-rounded" isFitted>
@@ -165,7 +164,7 @@ const FAQ: NextPage = () => {
         </Box>
       </Flex>
       <BackButton />
-    </Box>
+    </Layout>
   );
 };
 
