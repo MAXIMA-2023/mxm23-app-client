@@ -467,10 +467,18 @@ export default function Navbar() {
         alignItems={"center"}
         justifyContent={"space-between"}
       >
-        <Flex w={"full"} display={["none", "none", "none", "flex"]}>
+        <Flex
+          w={"full"}
+          display={["none", "none", "none", "flex"]}
+          zIndex={"999"}
+        >
           <NavbarDesktop />
         </Flex>
-        <Box w={"full"} display={["flex", "flex", "flex", "none"]}>
+        <Box
+          w={"full"}
+          display={["flex", "flex", "flex", "none"]}
+          zIndex={"999"}
+        >
           <NavbarMobile />
         </Box>
       </Flex>
