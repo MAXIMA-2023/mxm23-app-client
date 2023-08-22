@@ -5,9 +5,6 @@ import Link from "next/link";
 
 import { useSession, signOut } from "next-auth/react";
 
-//importing local components
-import MaximaLogo from "../public/assets/MaximaLogo_Navbar.svg";
-
 //importing chakra ui components
 import {
   Box,
@@ -50,28 +47,28 @@ const NavbarIcon = () => {
         as={"a"}
         href="/"
       >
-        <Image src={MaximaLogo} alt="logo" width={"180"} />
+        <Image src={"/Assets/MaximaLogo_Navbar.svg"} alt="logo" width={"180"} />
       </Box>
       <Box
         display={["none", "none", "none", "block", "none"]}
         as={"a"}
         href="/"
       >
-        <Image src={MaximaLogo} alt="logo" width={"140"} />
+        <Image src={"/Assets/MaximaLogo_Navbar.svg"} alt="logo" width={"140"} />
       </Box>
       <Box
         display={["none", "none", "block", "none", "none"]}
         as={"a"}
         href="/"
       >
-        <Image src={MaximaLogo} alt="logo" width={"120"} />
+        <Image src={"/Assets/MaximaLogo_Navbar.svg"} alt="logo" width={"120"} />
       </Box>
       <Box
         display={["none", "block", "none", "none", "none"]}
         as={"a"}
         href="/"
       >
-        <Image src={MaximaLogo} alt="logo" width={"100"} />
+        <Image src={"/Assets/MaximaLogo_Navbar.svg"} alt="logo" width={"100"} />
       </Box>
     </Flex>
   );
@@ -148,17 +145,15 @@ export default function Navbar() {
             boxShadow={"md"}
           >
             <Flex alignItems={"center"}>
-              <Box>
-                <Link href={"/"}>
-                  <Image
-                    w={"10em"}
-                    h={"full"}
-                    src={"/assets/MaximaLogo_Navbar.svg"}
-                    alt={"Maxima Logo"}
-                    objectFit={"cover"}
-                  />
-                </Link>
-              </Box>
+              <Link href={"/"}>
+                <Image
+                  w={"10em"}
+                  h={"full"}
+                  src={"/Assets/MaximaLogo_Navbar.svg"}
+                  alt={"Maxima Logo"}
+                  objectFit={"cover"}
+                />
+              </Link>
               <Box ml={["2em", "2em", "2em", "3em", "4.5em"]}>
                 <Stack
                   direction={"row"}
@@ -242,16 +237,19 @@ export default function Navbar() {
                           focusCancel: true,
                           cancelButtonColor: "#F7B70C",
                           confirmButtonText: "Sign Out",
+                          color: "#062D5F",
                         }).then((result) => {
                           if (result.isConfirmed) {
                             signOut({
                               callbackUrl: `/`,
                             });
-                            Swal.fire(
-                              "Logged Out!",
-                              "Kamu berhasil keluar!",
-                              "success"
-                            );
+                            Swal.fire({
+                              title: "Signed Out!",
+                              text: "Kamu telah signed out!",
+                              icon: "success",
+                              color: "#062D5F",
+                              confirmButtonColor: "#F7B70C",
+                            });
                           }
                         })
                       }
@@ -311,7 +309,7 @@ export default function Navbar() {
   };
 
   const NavbarMobile = () => {
-    const menu = useDisclosure();
+    const { isOpen, onToggle } = useDisclosure();
 
     return (
       <>
@@ -324,7 +322,7 @@ export default function Navbar() {
           alignItems={"center"}
           bgColor={"#D9D9D9"}
         >
-          <Center onClick={menu.onToggle}>
+          <Center onClick={onToggle}>
             <IconButton
               variant={"unstyled"}
               aria-label={"Sidebar"}
@@ -337,7 +335,7 @@ export default function Navbar() {
             <Link href={"/"}>
               <Image
                 w={"8em"}
-                src={"./assets/MaximaLogo_Navbar.svg"}
+                src={"/Assets/MaximaLogo_Navbar.svg"}
                 alt={"MAXIMA Logo"}
               />
             </Link>
@@ -359,6 +357,20 @@ export default function Navbar() {
                   </Stack>
                 </MenuButton>
                 <MenuList border={"none"} bgColor={"#1B4173"}>
+                  <Text
+                    textColor={"white"}
+                    fontWeight={"bold"}
+                    ml={"1em"}
+                    maxW={"12em"}
+                    textOverflow={"ellipsis"}
+                    overflow={"hidden"}
+                    whiteSpace={"nowrap"}
+                  >
+                    {/* {session.data.user.name} */}
+                    Januar bin Junaidi bin Ilham bin Jokowi
+                  </Text>
+                  <MenuDivider color={"white"} />
+
                   <MenuItem
                     as={Link}
                     href={"/profile"}
@@ -369,7 +381,6 @@ export default function Navbar() {
                     <Icon as={MdPerson} />
                     <Text px={"1em"}>Profile</Text>
                   </MenuItem>
-                  <MenuDivider color={"white"} />
                   <MenuItem
                     bgColor={"#1B4173"}
                     color={"red.500"}
@@ -377,6 +388,7 @@ export default function Navbar() {
                     onClick={() =>
                       Swal.fire({
                         title: "Sign out?",
+                        color: "#062D5F",
                         text: "Apakah kamu yakin ingin keluar?",
                         icon: "warning",
                         showCancelButton: true,
@@ -389,11 +401,13 @@ export default function Navbar() {
                           signOut({
                             callbackUrl: `/`,
                           });
-                          Swal.fire(
-                            "Logged Out!",
-                            "Kamu berhasil keluar!",
-                            "success"
-                          );
+                          Swal.fire({
+                            title: "Logged Out!",
+                            color: "#062D5F",
+                            text: "Kamu berhasil keluar!",
+                            icon: "success",
+                            confirmButtonColor: "#F7B70C",
+                          });
                         }
                       })
                     }
@@ -426,7 +440,7 @@ export default function Navbar() {
           w={"auto"}
           h={"auto"}
           mt={"6em"}
-          ml={menu.isOpen ? "0em" : "-10em"}
+          ml={isOpen ? "0em" : "-10em"}
           bgColor={"#1B4173"}
           p={"1.5em"}
           borderEndRadius={"3xl"}
