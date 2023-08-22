@@ -205,11 +205,13 @@ const ForgotPassword = () => {
                         data
                       )
                       .then((res) => {
-                        Swal.fire(
-                          "Berhasil",
-                          "Silahkan cek email kamu untuk melanjutkan tahap perubahan kata sandi",
-                          "success"
-                        );
+                        Swal.fire({
+                          title: "Berhasil",
+                          color: "#062D5F",
+                          text: "Silahkan cek email kamu untuk melanjutkan tahap perubahan kata sandi",
+                          icon: "success",
+                          confirmButtonColor: "#F7B70C",
+                        });
                       })
                       .catch(HandleAxiosError)
                   )}

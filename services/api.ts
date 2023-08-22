@@ -48,7 +48,13 @@ export const baseUrl =
 export const HandleAxiosError = (error: any) => {
   console.error(error);
   if (!isAxiosError(error)) {
-    Swal.fire("Error", "Terjadi kesalahan pada request", "error");
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Terjadi kesalahan saat request",
+      color: "#062D5F",
+      confirmButtonColor: "#F7B70C",
+    });
     return;
   }
 
@@ -57,7 +63,13 @@ export const HandleAxiosError = (error: any) => {
     error?: ZodError;
   }>;
   if (!response) {
-    Swal.fire("Error", "Tidak dapat terhubung ke server", "error");
+    Swal.fire({
+      icon: "error",
+      title: "Error!",
+      text: "Tidak dapat terhubung ke server",
+      color: "#062D5F",
+      confirmButtonColor: "#F7B70C",
+    });
     return;
   }
 
@@ -69,15 +81,23 @@ export const HandleAxiosError = (error: any) => {
       })
       .join(", ");
 
-    Swal.fire("Error", errorString, "error");
+    Swal.fire({
+      icon: "error",
+      title: "Error!",
+      text: errorString,
+      color: "#062D5F",
+      confirmButtonColor: "#F7B70C",
+    });
     return;
   }
 
-  Swal.fire(
-    "Error",
-    response.data.message ?? "Terjadi kesalahan saat request",
-    "error"
-  );
+  Swal.fire({
+    title: "Error!",
+    text: response.data.message ?? "Terjadi kesalahan saat request",
+    icon: "error",
+    color: "#062D5F",
+    confirmButtonColor: "#F7B70C",
+  });
 };
 
 /*
@@ -100,12 +120,15 @@ export const useApi = () => {
   const session = useSession();
 
   useEffect(() => {
-    const interceptor = rawApi.interceptors.request.use((config) => {
-      if (!config.headers["Authorization"] && session.data) {
-        config.headers["Authorization"] = `Bearer ${session.data.jwt.token}`;
-      }
-      return config;
-    });
+    const interceptor = rawApi.interceptors.request.use(
+      (config) => {
+        if (!config.headers["Authorization"] && session.data) {
+          config.headers["Authorization"] = `Bearer ${session.data.jwt.token}`;
+        }
+        return config;
+      },
+      (error) => Promise.reject(error)
+    );
 
     return () => {
       rawApi.interceptors.request.eject(interceptor);

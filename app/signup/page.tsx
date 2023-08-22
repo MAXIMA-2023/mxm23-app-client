@@ -80,7 +80,13 @@ export default function Signup() {
 
   useEffect(() => {
     if (session.status === "authenticated") {
-      Swal.fire("Error!", "Kamu sudah masuk sebelumnya!", "error");
+      Swal.fire({
+        title: "Error!",
+        color: "#062D5F",
+        text: "Kamu sudah signin sebelumnya!",
+        icon: "error",
+        confirmButtonColor: "#F7B70C",
+      });
       router.push("/");
     }
 
@@ -171,11 +177,13 @@ export default function Signup() {
                     idLine: data.idLine,
                   })
                   .then((res) => {
-                    Swal.fire(
-                      "Berhasil!",
-                      "Kamu berhasil mendaftar, silahkan signin untuk melanjutkan perjalananmu!",
-                      "success"
-                    );
+                    Swal.fire({
+                      title: "Berhasil!",
+                      color: "#062D5F",
+                      text: "Berhasil mendaftarkan akun, silahkan signin untuk melanjutkan perjalananmu!",
+                      icon: "success",
+                      confirmButtonColor: "#F7B70C",
+                    });
                     router.push("/signin");
                   })
                   .catch(HandleAxiosError);

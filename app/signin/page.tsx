@@ -137,21 +137,31 @@ export default function Signin() {
                   })
                     .then((res) => {
                       if (res?.error) {
-                        Swal.fire("Error!", res.error, "error");
+                        Swal.fire({
+                          icon: "error",
+                          color: "#062D5F",
+                          title: "Error!",
+                          text: res.error,
+                          confirmButtonColor: "#F7B70C",
+                        });
                         return;
                       }
-                      Swal.fire(
-                        "Success!",
-                        "Selamat, kamu berhasil masuk!",
-                        "success"
-                      );
+                      Swal.fire({
+                        icon: "success",
+                        color: "#062D5F",
+                        title: "Berhasil!",
+                        text: "Selamat, kamu berhasil masuk!",
+                        confirmButtonColor: "#F7B70C",
+                      });
                     })
                     .catch((err) => {
-                      Swal.fire(
-                        "Error!",
-                        "Terjadi kesalahan saat masuk, silahkan coba lagi!",
-                        "error"
-                      );
+                      Swal.fire({
+                        icon: "error",
+                        color: "#062D5F",
+                        title: "Error!",
+                        text: "Terjadi kesalahan saat masuk, silahkan coba lagi!",
+                        confirmButtonColor: "#F7B70C",
+                      });
                       console.error(err);
                     });
                 })}
