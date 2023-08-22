@@ -73,7 +73,7 @@ export const HandleAxiosError = (error: any) => {
     return;
   }
 
-  if (response.data.error) {
+  if (response.data.error && response.data.error.issues) {
     const errorString = response.data.error.issues
       .map((issue) => {
         const { message } = issue;
