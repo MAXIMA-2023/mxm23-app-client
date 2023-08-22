@@ -101,7 +101,7 @@ const PilihState = () => {
       <WrapItem
         key={data.stateID}
         p={["0.8em 0", "0.8em"]}
-        bgColor={"white"}
+        bgColor={data.quota === data.registered ? "#FFC1C1" : "white"}
         borderRadius={["2xl", "lg"]}
         shadow={"md"}
         transition={"0.1s ease-in-out"}
@@ -139,36 +139,49 @@ const PilihState = () => {
             <Flex
               w={"full"}
               h={"1.5em"}
-              bgColor={"#FFCFBF"}
+              bgColor={data.quota === data.registered ? "white" : "#FFCFBF"}
               style={{ borderRadius: "20px" }}
               justifyContent={"center"}
               alignItems={"center"}
             >
-              <Center
-                w={"full"}
-                h={"1.5em"}
-                bgColor={"#FF6835"}
-                borderLeftRadius={"full"}
-              >
+              {data.quota === data.registered ? (
                 <Text
                   fontSize={"sm"}
                   fontWeight={"semibold"}
                   textAlign={"center"}
-                  color={"white"}
+                  color={"red.500"}
                 >
-                  Kuota
+                  PENUH
                 </Text>
-              </Center>
-              <Center mx={"0.85em"}>
-                <Text
-                  color={"#FF6835"}
-                  fontSize={"xs"}
-                  fontWeight={"semibold"}
-                  textAlign={"center"}
-                >
-                  {data.registered}/{data.quota}
-                </Text>
-              </Center>
+              ) : (
+                <>
+                  <Center
+                    w={"full"}
+                    h={"1.5em"}
+                    bgColor={"#FF6835"}
+                    borderLeftRadius={"full"}
+                  >
+                    <Text
+                      fontSize={"sm"}
+                      fontWeight={"semibold"}
+                      textAlign={"center"}
+                      color={"white"}
+                    >
+                      Kuota
+                    </Text>
+                  </Center>
+                  <Center mx={"0.85em"}>
+                    <Text
+                      color={"#FF6835"}
+                      fontSize={"xs"}
+                      fontWeight={"semibold"}
+                      textAlign={"center"}
+                    >
+                      {data.registered}/{data.quota}
+                    </Text>
+                  </Center>
+                </>
+              )}
             </Flex>
           </Center>
         </Box>
@@ -310,8 +323,6 @@ const PilihState = () => {
     );
   };
 
-  console.log(session);
-
   return (
     <Layout>
       <Flex
@@ -342,7 +353,7 @@ const PilihState = () => {
           <ModalCloseButton />
           <ModalBody>
             <Box>
-              <Center>
+              <Center flexDirection={"column"}>
                 <Img
                   src={selectedItem?.stateLogo}
                   boxSize={["135px", "165px"]}
@@ -350,44 +361,46 @@ const PilihState = () => {
                   borderRadius="2xl"
                 />
               </Center>
-              <Center>
-                <Text
-                  mt={4}
-                  color="#062D5F"
-                  fontSize="md"
-                  fontWeight="semibold"
-                  textAlign="center"
-                  letterSpacing={0.2}
-                >
-                  {selectedItem?.name}
-                </Text>
-              </Center>
-              <Center>
-                <Text
-                  color="#062D5F"
-                  fontSize="md"
-                  fontWeight="semibold"
-                  textAlign="center"
-                  letterSpacing={0.2}
-                >
-                  {new Date(selectedItem?.date!).toLocaleDateString("id-ID", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </Text>
-              </Center>
+              <Text
+                mt={4}
+                color="#062D5F"
+                fontSize="md"
+                fontWeight="semibold"
+                textAlign="center"
+                letterSpacing={0.2}
+              >
+                {selectedItem?.name}
+              </Text>
+              <Text
+                color="#062D5F"
+                fontSize="md"
+                fontWeight="semibold"
+                textAlign="center"
+                letterSpacing={0.2}
+              >
+                {new Date(selectedItem?.date!).toLocaleDateString("id-ID", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </Text>
+              <Text
+                color="#062D5F"
+                fontSize="md"
+                fontWeight="semibold"
+                textAlign="center"
+                letterSpacing={0.2}
+              >
+                {selectedItem?.location}
+              </Text>
+              <Text my={"1em"} textAlign={"justify"}>
+                {selectedItem?.stateDesc}
+              </Text>
               <Flex mt={4} justifyContent="center" alignItems="center">
                 <Button
-                  colorScheme="blue"
-                  mr={3}
-                  onClick={() => setSelectedItem(null)}
-                >
-                  Kembali
-                </Button>
-                <Button
                   color={"white"}
+                  mr={"1em"}
                   bgColor={
                     selectedItem?.registered === selectedItem?.quota
                       ? "#FF6835"
@@ -395,10 +408,39 @@ const PilihState = () => {
                   }
                   // size={["sm", "md"]}
                   isDisabled={selectedItem?.registered === selectedItem?.quota}
+                  onClick={() => {
+                    api
+                      .post<ResponseModel<undefined>>(`/state/registration`, {
+                        nim: session.data?.user.nim,
+                        stateID: selectedItem?.stateID,
+                      })
+                      .then(({ data }) => {
+                        setSelectedItem(null);
+                        Swal.fire({
+                          title: "Berhasil!",
+                          text: data.message,
+                          icon: "success",
+                          color: "#062D5F",
+                          confirmButtonColor: "#F7B70C",
+                        });
+                        router.push("/state");
+                      })
+                      .catch((err) => {
+                        setSelectedItem(null);
+                        HandleAxiosError(err);
+                      });
+                  }}
                 >
                   {selectedItem?.registered === selectedItem?.quota
                     ? "PENUH"
                     : "Ambil"}
+                </Button>
+                <Button
+                  bgColor={"#F7B70C"}
+                  color={"white"}
+                  onClick={() => setSelectedItem(null)}
+                >
+                  Kembali
                 </Button>
               </Flex>
             </Box>
