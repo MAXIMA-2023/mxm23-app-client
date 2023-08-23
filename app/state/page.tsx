@@ -29,10 +29,12 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsPlus, BsTrash, BsTrashFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import { HandleAxiosError, ResponseModel, useApi } from "@/services/api";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 type StateReg = {
   stateID: number;
@@ -41,66 +43,115 @@ type StateReg = {
   stateDesc: string;
   quota: number;
   registered: number;
-  date: string; // date
+  date: string;
   location: string;
+  isFirstAttended: boolean;
+  isLastAttended: boolean;
+};
 
-  status: "REGISTERED" | "FINISHED" | "FAILED";
+type Toggle = {
+  id: number;
+  name: string;
+  toggle: boolean;
 };
 
 const STATE = () => {
-  const [dataState, setDataState] = useState<StateReg[]>([
-    {
-      stateID: 1,
-      name: "Ultima Sonora",
-      stateLogo:
-        "https://mxmdev.jamu.online/69e2d485-80c0-420a-b8c2-51ccd87c4910.png",
-      stateDesc: "Lorem ipsum dolor sit amet, consectetur adipi",
-      location: "Lecture Hall",
-      quota: 50,
-      registered: 0,
-      date: "2023-09-18T10:15:00.000Z",
-      status: "FINISHED",
-    },
-    {
-      stateID: 71,
-      name: "J-Cafe Cosplay & Weaponry",
-      stateLogo:
-        "https://mxmdev.jamu.online/8dc2d254-3a5b-4868-98f0-6185f8845f94.jpg",
-      stateDesc: "Lorem ipsum dolor sit amet, consectetur adipi",
-      location: "Lecture Theater",
-      quota: 32,
-      registered: 0,
-      date: "2023-09-18T10:15:00.000Z",
-      status: "REGISTERED",
-    },
-  ]);
+  const [dataState, setDataState] = useState<StateReg[]>([]);
   const [selectedItem, setSelectedItem] = useState<StateReg | null>(null);
+  const [toggle, setToggle] = useState<Toggle[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const pilihStateRef = useRef<HTMLDivElement>(null);
+  const today = new Date();
+
   const api = useApi();
+  const router = useRouter();
+  const session = useSession({
+    required: true,
+    onUnauthenticated: () => {
+      Swal.fire({
+        title: "Anda belum signin!",
+        color: "#062D5F",
+        text: "Maaf, kamu harus signin terlebih dahulu untuk mengakses STATE",
+        icon: "error",
+        confirmButtonColor: "#F7B70C",
+      });
+      router.push("/signin");
+    },
+  });
+
+  const fetchToggle = async () => {
+    try {
+      const { data } = await api.get<Toggle[]>("/toggle");
+
+      if (!data.find((v) => v.name === "STATEpage")?.toggle) {
+        Swal.fire({
+          title: "STATE belum dibuka!",
+          color: "#062D5F",
+          text: "Maaf, saat ini STATE belum dibuka. Silahkan cek kembali nanti!",
+          icon: "error",
+          confirmButtonColor: "#F7B70C",
+        });
+        router.push("/");
+        return;
+      }
+
+      setToggle(data);
+    } catch (error) {
+      HandleAxiosError(error);
+    }
+  };
+
+  const fetchStateReg = async () => {
+    try {
+      const { data } = await api.get<ResponseModel<StateReg[]>>(
+        `/state/regData`
+      );
+      setDataState(data.data!);
+    } catch (error) {
+      HandleAxiosError(error);
+    }
+  };
+
+  useEffect(() => {
+    if (session.status === "authenticated") {
+      Promise.all([fetchToggle(), fetchStateReg()]).finally(() =>
+        setIsLoading(false)
+      );
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session]);
+
+  // toggles
+  const stateRegToggle = toggle.find(
+    (v) => v.name === "stateRegistration"
+  )?.toggle;
 
   const STATEButton = ({ data }: { data?: StateReg }) => {
+    const stateDate = Date.parse(data?.date!);
     return (
       <Box
-        as={!data ? Link : undefined}
-        href={!data ? "/state/pilihstate" : undefined}
+        // kalo undefined dan stateReg masih buka, buat bola jadi link ke pilih state
+        as={!data && stateRegToggle ? Link : undefined}
+        href={!data && stateRegToggle ? "/state/pilihstate" : ""}
         position={"relative"}
         display={"flex"}
         flexDir={"column"}
-        boxSize={["9em", "10em", "10em", "10em", "14em"]}
-        padding={"2em"}
+        boxSize={["8em", "8em", "10em", "12em", "1`4em`"]}
         bgColor={
-          data?.status === "FINISHED"
-            ? "#00FF19"
-            : data?.status === "FAILED"
-            ? "#FF0000"
-            : "white"
+          // kalo udah lewatin day state nya, kita kasih result
+          stateDate < today.getTime()
+            ? data?.isFirstAttended && data?.isLastAttended
+              ? "#00FF19" // lulus -- absen full
+              : "#FF0000" // fail -- absen ga full
+            : "white" // kosong -- belum state
         }
         rounded={"full"}
         alignItems={"center"}
         justifyContent={"center"}
         color={"#F7B70C"}
-        p={"1em"}
+        p={["0.75em", "0.75em", "0.75em", "1em", "1em"]}
         shadow={"0px 0px 8px rgb(255,255,255,0.5)"}
         _hover={{
           shadow: "0px 0px 16px rgb(255,255,255,0.75)",
@@ -110,21 +161,31 @@ const STATE = () => {
       >
         {data ? (
           <>
-            <Image
+            <Box
               p={"1em"}
-              position={"absolute"}
-              top={0}
-              left={0}
-              src={data.stateLogo}
+              // position={"absolute"}
+              // top={0}
+              // left={0}
+              boxSize={"full"}
               rounded={"full"}
-              alt="state-logo"
-              onClick={() => {
-                if (data) {
-                  setSelectedItem(data);
-                }
-              }}
-            />
-            {data.status === "REGISTERED" && (
+              bgColor={"white"}
+            >
+              <Image
+                p={["none", "0.5em", "0.5em", "0.5em", "1em"]}
+                w={"full"}
+                h={"full"}
+                fit={"contain"}
+                src={data.stateLogo}
+                // rounded={"full"}
+                alt="state-logo"
+                onClick={() => {
+                  if (data) {
+                    setSelectedItem(data);
+                  }
+                }}
+              />
+            </Box>
+            {stateDate > today.getTime() && (
               <IconButton
                 aria-label="delete-state"
                 position={"absolute"}
@@ -135,21 +196,22 @@ const STATE = () => {
                 bgColor={"white"}
                 color={"red.500"}
                 shadow={"0px 0px 4px rgb(0,0,0,0.25)"}
+                _hover={{
+                  bgColor: "white",
+                  shadow: "0px 0px 16px rgb(255,255,255,0.75)",
+                }}
                 onClick={() =>
                   Swal.fire({
-                    title: `Hapus registrasi STATE?`,
+                    title: `Batalkan registrasi STATE?`,
                     color: "#062D5F",
-                    text: `Apakah kamu yakin untuk menghapus registrasi state ${
-                      data.name
-                    }?, kamu harus mendaftar ulang jika ingin mengikuti state ini lagi dan kuota yang tersisa ${
-                      data.quota - data.registered
-                    }!`,
+                    text: `Apakah kamu yakin untuk membatalkan registrasi state ${data.name}?`,
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#D33",
                     focusCancel: true,
                     cancelButtonColor: "#F7B70C",
-                    confirmButtonText: "Hapus",
+                    confirmButtonText: "Batal",
+                    cancelButtonText: "Kembali",
                   }).then((result) => {
                     if (result.isConfirmed) {
                       // api call -- delete state
@@ -157,15 +219,17 @@ const STATE = () => {
                         .delete<ResponseModel<undefined>>(
                           `/state/cancel_registration/${data.stateID}`
                         )
-                        .then(({ data }) =>
+                        .then(({ data }) => {
                           Swal.fire({
                             title: "Berhasil!",
                             color: "#062D5F",
                             text: data.message,
                             icon: "success",
                             confirmButtonColor: "#F7B70C",
-                          })
-                        )
+                            cancelButtonText: "Kembali",
+                          });
+                          fetchStateReg();
+                        })
                         .catch(HandleAxiosError);
                     }
                   })
@@ -174,18 +238,24 @@ const STATE = () => {
             )}
           </>
         ) : (
-          <Stack
-            position={"absolute"}
-            direction={"column"}
-            align={"center"}
-            justify={"center"}
-            mt={"1em"}
-          >
-            <Icon as={BsPlus} boxSize={"3em"} />
-            <Text fontWeight={"bold"} mt={"-1em"}>
-              Add
-            </Text>
-          </Stack>
+          <>
+            {stateRegToggle ? ( // check toggle stateRegistration
+              <Stack
+                position={"absolute"}
+                direction={"column"}
+                align={"center"}
+                justify={"center"}
+                mt={"1em"}
+              >
+                <Icon as={BsPlus} boxSize={"3em"} />
+                <Text fontWeight={"bold"} mt={"-1em"}>
+                  Add
+                </Text>
+              </Stack>
+            ) : (
+              <></>
+            )}
+          </>
         )}
       </Box>
     );
@@ -288,8 +358,8 @@ const STATE = () => {
           p={"3.5em"}
           // justify={"center"}
           // align={"center"}
-          // bgImage={["", "", "", ""]}
-          bgColor={"gray.900"} // sambi nunggu assets dari design
+          // bgImage={["", "", "", "/Assets/MaximaBG_Desktop.svg"]}
+          bgColor={"gray.900"} // DEBUG - tunggu assets dari design
           bgPosition={"center"}
           bgSize={"cover"}
           bgRepeat={"no-repeat"}
@@ -305,16 +375,44 @@ const STATE = () => {
             justify={"center"}
             ref={pilihStateRef} // ini buat scrollIntoView
             justifyContent={"space-evenly"}
-            alignItems={"center"}
-            px={["none", "none", "4em", "8em", "10em"]}
-            direction={["column", "column", "row", "row"]}
+            px={["none", "none", "4em", "8em", "16em"]}
           >
-            {/* ensuring the data is always 3, jadi selalu render 3 bola */}
-            {Array.from({ length: 3 }, (_, index) => dataState[index]).map(
-              (data, index) => (
-                <STATEButton data={data} key={`state ${index}`} />
-              )
-            )}
+            <Flex
+              display={["none", "none", "none", "flex", "flex"]}
+              w={"full"}
+              align={"center"}
+              justify={"space-evenly"}
+            >
+              {Array.from({ length: 3 }, (_, index) => dataState[index]).map(
+                (data, index) => (
+                  <STATEButton data={data} key={`state ${index}`} />
+                )
+              )}
+            </Flex>
+
+            <Box display={["block", "block", "block", "none", "none"]}>
+              <Box mr={["10em", "20em", "none", "none", "none"]} my={"3em"}>
+                <STATEButton data={dataState[0]} />
+              </Box>
+
+              <Box ml={["10em", "20em", "none", "none", "none"]} my={"3em"}>
+                <STATEButton data={dataState[1]} />
+              </Box>
+
+              <Box mr={["10em", "20em", "none", "none", "none"]} my={"3em"}>
+                <STATEButton data={dataState[2]} />
+              </Box>
+            </Box>
+
+            {/* <STATEButton
+              data={{
+                date: "2023-08-18T10:15:00.000Z",
+                isFirstAttended: false,
+                isLastAttended: false,
+                stateLogo:
+                  "https://mxmdev.jamu.online/69e2d485-80c0-420a-b8c2-51ccd87c4910.png",
+              }}
+            /> */}
           </Flex>
         </Flex>
       </Layout>

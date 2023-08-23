@@ -41,6 +41,12 @@ type DayManagement = {
   date: string;
 };
 
+type Toggle = {
+  id: number;
+  name: string;
+  toggle: boolean;
+};
+
 type StateActivities = {
   stateID: number;
   name: string;
@@ -82,15 +88,31 @@ const PilihState = () => {
     // handle toggle disini beb, kalo false ya kasi message dan redirect ke /
 
     if (session.status === "authenticated") {
-      const fetchDay = api
-        .get<DayManagement[]>(`/dayManagement`)
-        .then(({ data }) => setDataDay(data))
-        .catch(HandleAxiosError);
-      const fetchState = api
-        .get<StateActivities[]>(`/state`)
-        .then(({ data }) => setDataState(data))
-        .catch(HandleAxiosError);
-      Promise.all([fetchDay, fetchState]).finally(() => setIsLoading(false));
+      api.get<Toggle[]>(`/toggle`).then(({ data }) => {
+        if (
+          !data.find((toggle) => toggle.name === "stateRegistration")?.toggle
+        ) {
+          Swal.fire({
+            title: "Registrasi STATE telah ditutup!",
+            color: "#062D5F",
+            text: "Maximers, registrasi STATE telah ditutup.",
+            icon: "error",
+            confirmButtonColor: "#F7B70C",
+          });
+          router.push("/state");
+          return;
+        }
+
+        const fetchDay = api
+          .get<DayManagement[]>(`/dayManagement`)
+          .then(({ data }) => setDataDay(data))
+          .catch(HandleAxiosError);
+        const fetchState = api
+          .get<StateActivities[]>(`/state`)
+          .then(({ data }) => setDataState(data))
+          .catch(HandleAxiosError);
+        Promise.all([fetchDay, fetchState]).finally(() => setIsLoading(false));
+      });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -422,6 +444,7 @@ const PilihState = () => {
                           icon: "success",
                           color: "#062D5F",
                           confirmButtonColor: "#F7B70C",
+                          cancelButtonText: "Close",
                         });
                         router.push("/state");
                       })
