@@ -1,6 +1,6 @@
 "use client";
 import axios, { isAxiosError, AxiosError } from "axios";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 
@@ -120,7 +120,7 @@ export const useApi = () => {
   const session = useSession();
 
   useEffect(() => {
-    const interceptor = rawApi.interceptors.request.use(
+    const interceptReq = rawApi.interceptors.request.use(
       (config) => {
         if (!config.headers["Authorization"] && session.data) {
           config.headers["Authorization"] = `Bearer ${session.data.jwt.token}`;
@@ -130,8 +130,37 @@ export const useApi = () => {
       (error) => Promise.reject(error)
     );
 
+    // add interceptor for response that check for expired token (401)
+    const interceptRes = rawApi.interceptors.response.use(
+      (response) => response,
+      (error: AxiosError<ResponseModel<undefined>>) => {
+        if (
+          error.response?.status === 401 &&
+          error.response.data.message ===
+            "Token anda tidak valid, harap login ulang!"
+          // iya tau ini jelek handling gini, tp mau gmn lagi :)
+        ) {
+          signOut({
+            callbackUrl: "/signin",
+          }).then(() =>
+            Swal.fire({
+              title: "Error!",
+              text:
+                error.response?.data.message ??
+                "Sesi anda telah berakhir, silahkan login kembali",
+              icon: "error",
+              color: "#062D5F",
+              confirmButtonColor: "#F7B70C",
+            })
+          );
+        }
+        return Promise.reject(error);
+      }
+    );
+
     return () => {
-      rawApi.interceptors.request.eject(interceptor);
+      rawApi.interceptors.request.eject(interceptReq);
+      rawApi.interceptors.response.eject(interceptRes);
     };
   }, [session]);
 
