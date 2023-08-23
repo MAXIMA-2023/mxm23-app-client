@@ -91,7 +91,7 @@ const FullBorder = () => {
   );
 };
 
-export default function Navbar() {
+export default function Navbar({ coloredName }: { coloredName?: boolean }) {
   const session = useSession();
 
   const NavbarData: NavbarData[] = [
@@ -200,7 +200,7 @@ export default function Navbar() {
                       <Text
                         fontSize={["md", "md", "md", "md", "lg"]}
                         fontWeight={"bold"}
-                        color={"white"}
+                        color={coloredName ? "#1B4173" : "white"}
                         textShadow={"0px 4px 4px rgb(0,0,0,0.25)"}
                       >
                         {session.data.user.name}
@@ -366,8 +366,7 @@ export default function Navbar() {
                     overflow={"hidden"}
                     whiteSpace={"nowrap"}
                   >
-                    {/* {session.data.user.name} */}
-                    Januar bin Junaidi bin Ilham bin Jokowi
+                    {session.data.user.name}
                   </Text>
                   <MenuDivider color={"white"} />
 
