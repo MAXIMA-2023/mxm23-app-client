@@ -58,17 +58,9 @@ const AboutUs: NextPage = () => {
     );
   };
 
-  
-
   return (
-    <Layout>
-      <Flex
-        minH={"100vh"}
-        bgImage={["/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg"]}
-        bgPosition={["center"]}
-        bgSize={"cover"}
-        bgRepeat={"no-repeat"}
-      >
+    <Layout title={"MAXIMA 2023 - About Us"} backButton>
+      <Flex minH={"100vh"} bgImage={["/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg"]} bgPosition={["center"]} bgSize={"cover"} bgRepeat={"no-repeat"}>
         <Box w={"full"} zIndex={"0"}>
           <Box display={isSmallerThan320 ? "none" : ["block", "none", "none", "none", "none"]} mb={["30.35rem", "45.35rem", "", "30.35rem", "30.35rem"]} position={"absolute"} bottom={0}>
             {/* image BG mobile */}
@@ -115,7 +107,6 @@ const AboutUs: NextPage = () => {
           </Center>
         </Box>
       </Flex>
-      <BackButton />
     </Layout>
   );
 };

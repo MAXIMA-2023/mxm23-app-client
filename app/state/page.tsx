@@ -7,27 +7,7 @@ import Layout from "@/components/Layout";
 import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
-import {
-  Box,
-  Flex,
-  Center,
-  Heading,
-  Text,
-  Button,
-  Stack,
-  Img,
-  HStack,
-  Icon,
-  Image,
-  IconButton,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+import { Box, Flex, Center, Heading, Text, Button, Stack, Img, HStack, Icon, Image, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BsPlus, BsTrash, BsTrashFill } from "react-icons/bs";
@@ -104,9 +84,7 @@ const STATE = () => {
 
   const fetchStateReg = async () => {
     try {
-      const { data } = await api.get<ResponseModel<StateReg[]>>(
-        `/state/regData`
-      );
+      const { data } = await api.get<ResponseModel<StateReg[]>>(`/state/regData`);
       setDataState(data.data!);
     } catch (error) {
       HandleAxiosError(error);
@@ -115,18 +93,14 @@ const STATE = () => {
 
   useEffect(() => {
     if (session.status === "authenticated") {
-      Promise.all([fetchToggle(), fetchStateReg()]).finally(() =>
-        setIsLoading(false)
-      );
+      Promise.all([fetchToggle(), fetchStateReg()]).finally(() => setIsLoading(false));
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
   // toggles
-  const stateRegToggle = toggle.find(
-    (v) => v.name === "stateRegistration"
-  )?.toggle;
+  const stateRegToggle = toggle.find((v) => v.name === "stateRegistration")?.toggle;
 
   const STATEButton = ({ data }: { data?: StateReg }) => {
     const stateDate = Date.parse(data?.date!);
@@ -216,9 +190,7 @@ const STATE = () => {
                     if (result.isConfirmed) {
                       // api call -- delete state
                       api
-                        .delete<ResponseModel<undefined>>(
-                          `/state/cancel_registration/${data.stateID}`
-                        )
+                        .delete<ResponseModel<undefined>>(`/state/cancel_registration/${data.stateID}`)
                         .then(({ data }) => {
                           Swal.fire({
                             title: "Berhasil!",
@@ -240,13 +212,7 @@ const STATE = () => {
         ) : (
           <>
             {stateRegToggle ? ( // check toggle stateRegistration
-              <Stack
-                position={"absolute"}
-                direction={"column"}
-                align={"center"}
-                justify={"center"}
-                mt={"1em"}
-              >
+              <Stack position={"absolute"} direction={"column"} align={"center"} justify={"center"} mt={"1em"}>
                 <Icon as={BsPlus} boxSize={"3em"} />
                 <Text fontWeight={"bold"} mt={"-1em"}>
                   Add
@@ -273,13 +239,7 @@ const STATE = () => {
           }}
           exit={{ scale: 0 }}
         >
-          <Text
-            color={"white"}
-            align={"end"}
-            fontSize={["4xl", "6xl", "7xl", "8xl"]}
-            fontWeight={"bold"}
-            textShadow={"0px 0px 8px #1B4173"}
-          >
+          <Text color={"white"} align={"end"} fontSize={["4xl", "6xl", "7xl", "8xl"]} fontWeight={"bold"} textShadow={"0px 0px 8px #1B4173"}>
             STATE
           </Text>
           <Text
@@ -306,8 +266,7 @@ const STATE = () => {
           fontWeight={"bold"}
           textShadow={"0px  0px 8px rgb(0,0,0,0.75)"}
         >
-          Selamat datang di STATE MAXIMA 2023! Di sini kamu dapat memilih UKM
-          yang ingin kamu ketahui!
+          Selamat datang di STATE MAXIMA 2023! Di sini kamu dapat memilih UKM yang ingin kamu ketahui!
         </Text>
         <Flex justify={["center", "center", "center", "end"]} w={"full"}>
           <Button
@@ -328,18 +287,10 @@ const STATE = () => {
             boxShadow={"0px 0px 4px rgb(0,0,0,0.25)"}
             variant={"none"}
           >
-            <Text
-              display={["block", "block", "block", "none", "none"]}
-              color={"white"}
-              fontWeight={["black", "bold"]}
-            >
+            <Text display={["block", "block", "block", "none", "none"]} color={"white"} fontWeight={["black", "bold"]}>
               Pilih Sekarang!
             </Text>
-            <Text
-              display={["none", "none", "none", "block", "block"]}
-              color={"white"}
-              fontWeight={["black", "bold"]}
-            >
+            <Text display={["none", "none", "none", "block", "block"]} color={"white"} fontWeight={["black", "bold"]}>
               Pilih UKM & Komunitas
             </Text>
           </Button>
@@ -350,7 +301,7 @@ const STATE = () => {
 
   return (
     <>
-      <Layout>
+      <Layout title={"MAXIMA 2023 - STATE"}>
         <Flex
           w={"full"}
           h={"auto"}
@@ -377,17 +328,10 @@ const STATE = () => {
             justifyContent={"space-evenly"}
             px={["none", "none", "4em", "8em", "16em"]}
           >
-            <Flex
-              display={["none", "none", "none", "flex", "flex"]}
-              w={"full"}
-              align={"center"}
-              justify={"space-evenly"}
-            >
-              {Array.from({ length: 3 }, (_, index) => dataState[index]).map(
-                (data, index) => (
-                  <STATEButton data={data} key={`state ${index}`} />
-                )
-              )}
+            <Flex display={["none", "none", "none", "flex", "flex"]} w={"full"} align={"center"} justify={"space-evenly"}>
+              {Array.from({ length: 3 }, (_, index) => dataState[index]).map((data, index) => (
+                <STATEButton data={data} key={`state ${index}`} />
+              ))}
             </Flex>
 
             <Box display={["block", "block", "block", "none", "none"]}>
@@ -416,43 +360,20 @@ const STATE = () => {
           </Flex>
         </Flex>
       </Layout>
-      <Modal
-        isOpen={selectedItem !== null}
-        onClose={() => setSelectedItem(null)}
-        size="lg"
-        isCentered
-      >
+      <Modal isOpen={selectedItem !== null} onClose={() => setSelectedItem(null)} size="lg" isCentered>
         <ModalOverlay />
         <ModalContent borderRadius="md" m={"1em"} p={4}>
           {/* <ModalCloseButton /> */}
           <ModalBody>
             <Box>
               <Center flexDirection={"column"}>
-                <Img
-                  src={selectedItem?.stateLogo}
-                  boxSize={["135px", "165px"]}
-                  objectFit="contain"
-                  borderRadius="2xl"
-                />
+                <Img src={selectedItem?.stateLogo} boxSize={["135px", "165px"]} objectFit="contain" borderRadius="2xl" />
               </Center>
               <Center flexDirection={"column"}>
-                <Text
-                  mt={4}
-                  color="#062D5F"
-                  fontSize="md"
-                  fontWeight="semibold"
-                  textAlign="center"
-                  letterSpacing={0.2}
-                >
+                <Text mt={4} color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
                   {selectedItem?.name}
                 </Text>
-                <Text
-                  color="#062D5F"
-                  fontSize="md"
-                  fontWeight="semibold"
-                  textAlign="center"
-                  letterSpacing={0.2}
-                >
+                <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
                   {new Date(selectedItem?.date!).toLocaleDateString("id-ID", {
                     weekday: "long",
                     year: "numeric",
@@ -460,13 +381,7 @@ const STATE = () => {
                     day: "numeric",
                   })}
                 </Text>
-                <Text
-                  color="#062D5F"
-                  fontSize="md"
-                  fontWeight="semibold"
-                  textAlign="center"
-                  letterSpacing={0.2}
-                >
+                <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
                   {selectedItem?.location}
                 </Text>
                 <Text my={"1em"}>{selectedItem?.stateDesc}</Text>
@@ -474,11 +389,7 @@ const STATE = () => {
             </Box>
           </ModalBody>
           <ModalFooter justifyContent={"center"}>
-            <Button
-              onClick={() => setSelectedItem(null)}
-              color={"white"}
-              bgColor={"#F7B70C"}
-            >
+            <Button onClick={() => setSelectedItem(null)} color={"white"} bgColor={"#F7B70C"}>
               Close
             </Button>
           </ModalFooter>

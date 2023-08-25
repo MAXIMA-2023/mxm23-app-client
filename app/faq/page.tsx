@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,11 +13,10 @@ import BackButton from "@/components/BackButton";
 import { Box, Flex, Center, Heading, Text, Button, Stack, Img, Tabs, TabList, TabPanels, Tab, TabPanel, Container, List, ListItem, ListIcon, OrderedList, UnorderedList, useMediaQuery } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
-
 const FAQ: NextPage = () => {
   const [isSmallerThan320] = useMediaQuery("(max-width: 320px)");
   return (
-    <Layout>
+    <Layout title={"MAXIMA 2023 - FAQ"} backButton>
       <Flex minH={"100vh"} bgImage={["/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg"]} bgPosition={["center"]} bgSize={"cover"} bgRepeat={"no-repeat"}>
         <Box w={"full"} zIndex={"0"}>
           <Box display={isSmallerThan320 ? "none" : ["block", "none", "none", "none", "none"]} mb={["30.35rem", "45.35rem", "", "30.35rem", "30.35rem"]} position={"absolute"} bottom={0}>
@@ -29,7 +28,7 @@ const FAQ: NextPage = () => {
               mt={["17.5vh", "17.5vh", "16vh", "17vh", "14vh"]}
               mb={isSmallerThan320 ? "2em" : ["0", "3em", "0"]}
               w={["85%", "85%", "85%", "55%", "55%"]}
-              h={ isSmallerThan320 ? "auto" : ["77vh", "auto", "76vh", "81vh", "83vh"]}
+              h={isSmallerThan320 ? "auto" : ["77vh", "auto", "76vh", "81vh", "83vh"]}
               bgColor={"white"}
               borderRadius={"xl"}
               boxShadow={"0px 3px 3px 3px rgb(0,0,0,0.25)"}
@@ -163,11 +162,10 @@ const FAQ: NextPage = () => {
           </Center>
         </Box>
       </Flex>
-      <BackButton />
     </Layout>
   );
 };
 
-export default dynamic(() => Promise.resolve(FAQ), { 
-  ssr: false 
-})
+export default dynamic(() => Promise.resolve(FAQ), {
+  ssr: false,
+});

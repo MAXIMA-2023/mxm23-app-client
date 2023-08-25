@@ -12,7 +12,7 @@ import { Box, Flex, Center, Text, Button, Img } from "@chakra-ui/react";
 
 const HoME: NextPage = () => {
   return (
-    <Layout>
+    <Layout title={"MAXIMA 2023 - About Us (HoME)"} backButton>
       <Flex
         minH={"100vh"}
         bgImage={["../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg"]}
@@ -58,7 +58,6 @@ const HoME: NextPage = () => {
           </Center>
         </Box>
       </Flex>
-      <BackButton />
     </Layout>
   );
 };

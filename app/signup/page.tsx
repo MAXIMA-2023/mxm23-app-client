@@ -5,25 +5,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 
 //importing chakra ui components
-import {
-  Box,
-  Flex,
-  Center,
-  Text,
-  Button,
-  Stack,
-  Img,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  FormErrorMessage,
-  InputRightElement,
-  Icon,
-  InputRightAddon,
-  Select,
-} from "@chakra-ui/react";
+import { Box, Flex, Center, Text, Button, Stack, Img, FormControl, FormLabel, Input, InputGroup, InputLeftAddon, FormErrorMessage, InputRightElement, Icon, InputRightAddon, Select } from "@chakra-ui/react";
 import { useForm, Controller } from "react-hook-form";
 import { BiHide, BiShow } from "react-icons/bi";
 import { HandleAxiosError, ResponseModel, useApi } from "@/services/api";
@@ -42,21 +24,7 @@ type RegisterForm = {
   idLine: string;
 };
 
-const dataProdi = [
-  "Akuntansi",
-  "Arsitektur",
-  "DKV",
-  "Film dan Animasi",
-  "Informatika",
-  "Jurnalistik",
-  "Manajemen",
-  "Perhotelan",
-  "Sistem Informasi",
-  "Strategic Communication",
-  "Teknik Elektro",
-  "Teknik Fisika",
-  "Teknik Komputer",
-];
+const dataProdi = ["Akuntansi", "Arsitektur", "DKV", "Film dan Animasi", "Informatika", "Jurnalistik", "Manajemen", "Perhotelan", "Sistem Informasi", "Strategic Communication", "Teknik Elektro", "Teknik Fisika", "Teknik Komputer"];
 
 const tahunAngkatan = [2019, 2020, 2021, 2022, 2023];
 
@@ -94,13 +62,10 @@ export default function Signup() {
   }, [session]);
 
   const handleShowPassword = () => setShowPassword(!showPassword);
-  const handleShowConfirmPassword = () =>
-    setShowConfirmPassword(!showConfirmPassword);
+  const handleShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
   function handleSelanjutnya() {
-    trigger(["name", "nim", "email", "password", "confirmPassword"]).then((v) =>
-      setIsSelanjutnya(v)
-    );
+    trigger(["name", "nim", "email", "password", "confirmPassword"]).then((v) => setIsSelanjutnya(v));
   }
 
   function handleKembali() {
@@ -109,51 +74,15 @@ export default function Signup() {
 
   return (
     <>
-      <Layout showNavbar={false} showLogoHeader showTitleFooter>
-        <Flex
-          w={"full"}
-          h={"auto"}
-          minH={"100vh"}
-          p={"1em"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          bgImage={["", "", "", "/Assets/signup/MaximaBG_Signup_Desktop.svg"]}
-          bgPosition={"center"}
-          bgSize={"cover"}
-          bgRepeat={"no-repeat"}
-        >
-          <Box
-            w={["full", "full", "35em"]}
-            h={"auto"}
-            px={["1em", "1em", "2.5em"]}
-            py={["0", "1.5em"]}
-            bgColor={"white"}
-            borderRadius={"lg"}
-            boxShadow={["none", "none", "-1.2px 5px 4px rgb(0,0,0,0.25)"]}
-          >
-            <Text
-              fontSize={"3xl"}
-              fontWeight={"bold"}
-              color={"#1B4173"}
-              align={"center"}
-            >
+      <Layout title={"MAXIMA 2023 - Sign Up"} showNavbar={false} showLogoHeader showTitleFooter>
+        <Flex w={"full"} h={"auto"} minH={"100vh"} p={"1em"} justifyContent={"center"} alignItems={"center"} bgImage={["", "", "", "/Assets/signup/MaximaBG_Signup_Desktop.svg"]} bgPosition={"center"} bgSize={"cover"} bgRepeat={"no-repeat"}>
+          <Box w={["full", "full", "35em"]} h={"auto"} px={["1em", "1em", "2.5em"]} py={["0", "1.5em"]} bgColor={"white"} borderRadius={"lg"} boxShadow={["none", "none", "-1.2px 5px 4px rgb(0,0,0,0.25)"]}>
+            <Text fontSize={"3xl"} fontWeight={"bold"} color={"#1B4173"} align={"center"}>
               Daftar Sekarang
             </Text>
-            <Text
-              fontSize={"md"}
-              fontWeight={"medium"}
-              color={"#1B4173"}
-              align={"center"}
-            >
+            <Text fontSize={"md"} fontWeight={"medium"} color={"#1B4173"} align={"center"}>
               Sudah punya akun?{" "}
-              <Text
-                as={Link}
-                href={"/signin"}
-                color={"#F7B70C"}
-                textDecoration={"underline"}
-                fontWeight={"bold"}
-                cursor={"pointer"}
-              >
+              <Text as={Link} href={"/signin"} color={"#F7B70C"} textDecoration={"underline"} fontWeight={"bold"} cursor={"pointer"}>
                 Masuk
               </Text>
             </Text>
@@ -193,17 +122,10 @@ export default function Signup() {
                 {!isSelanjutnya ? (
                   <>
                     <Stack w={"full"} spacing={"1em"}>
-                      <Flex
-                        justifyContent={"space-between"}
-                        alignItems={"center"}
-                      >
+                      <Flex justifyContent={"space-between"} alignItems={"center"}>
                         <Box w={"55%"} mr={"1em"}>
                           <FormControl isInvalid={!!errors.name}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
+                            <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                               Nama Lengkap
                             </FormLabel>
                             <Input
@@ -219,28 +141,16 @@ export default function Signup() {
                               borderColor={"#E2E8F0"}
                               borderRadius={"full"}
                             />
-                            <FormErrorMessage>
-                              {errors.name?.message}
-                            </FormErrorMessage>
+                            <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
                           </FormControl>
                         </Box>
                         <Box w={"45%"}>
                           <FormControl isInvalid={!!errors.nim}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
+                            <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                               NIM
                             </FormLabel>
                             <InputGroup>
-                              <InputLeftAddon
-                                rounded={"3xl"}
-                                bg={"#F7B70C"}
-                                textColor={"#FFFFFF"}
-                                fontWeight={"semibold"}
-                                fontSize={"sm"}
-                              >
+                              <InputLeftAddon rounded={"3xl"} bg={"#F7B70C"} textColor={"#FFFFFF"} fontWeight={"semibold"} fontSize={"sm"}>
                                 000000
                               </InputLeftAddon>
                               <Input
@@ -262,31 +172,23 @@ export default function Signup() {
                                 borderRadius={"full"}
                               />
                             </InputGroup>
-                            <FormErrorMessage>
-                              {errors.nim?.message}
-                            </FormErrorMessage>
+                            <FormErrorMessage>{errors.nim?.message}</FormErrorMessage>
                           </FormControl>
                         </Box>
                       </Flex>
                       <Box>
                         <FormControl isInvalid={!!errors.email}>
-                          <FormLabel
-                            fontSize={"sm"}
-                            fontWeight={"semibold"}
-                            color={"rgb(27,65,114,0.8)"}
-                          >
+                          <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                             Email Student
                           </FormLabel>
                           <InputGroup>
                             <Input
                               {...register("email", {
                                 required: "Email harus diisi",
-                                setValueAs: (value) =>
-                                  `${value.toLowerCase()}@student.umn.ac.id`,
+                                setValueAs: (value) => `${value.toLowerCase()}@student.umn.ac.id`,
                                 pattern: {
                                   value: /^(\w+(.\w+)*)(@student.umn.ac.id)$/gm,
-                                  message:
-                                    "Email student tidak valid, kamu tidak perlu menuliskan @student.umn.ac.id",
+                                  message: "Email student tidak valid, kamu tidak perlu menuliskan @student.umn.ac.id",
                                 },
                               })}
                               type={"text"}
@@ -294,32 +196,17 @@ export default function Signup() {
                               borderColor={"#E2E8F0"}
                               borderRadius={"full"}
                             />
-                            <InputRightAddon
-                              rounded={"3xl"}
-                              bg={"#F7B70C"}
-                              textColor={"#FFFFFF"}
-                              fontWeight={"semibold"}
-                              fontSize={"sm"}
-                            >
+                            <InputRightAddon rounded={"3xl"} bg={"#F7B70C"} textColor={"#FFFFFF"} fontWeight={"semibold"} fontSize={"sm"}>
                               @student.umn.ac.id
                             </InputRightAddon>
                           </InputGroup>
-                          <FormErrorMessage>
-                            {errors.email?.message}
-                          </FormErrorMessage>
+                          <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
                         </FormControl>
                       </Box>
-                      <Flex
-                        justifyContent={"space-between"}
-                        alignItems={"center"}
-                      >
+                      <Flex justifyContent={"space-between"} alignItems={"center"}>
                         <Box w={"full"} mr={"1em"}>
                           <FormControl isInvalid={!!errors.password}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
+                            <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                               Password
                             </FormLabel>
                             <InputGroup>
@@ -338,30 +225,17 @@ export default function Signup() {
                                 borderWidth={"2px"}
                               />
                               <InputRightElement py={"1.25em"} width="4.5rem">
-                                <Button
-                                  variant={"none"}
-                                  onClick={handleShowPassword}
-                                >
-                                  {showPassword ? (
-                                    <Icon as={BiShow} boxSize={5} />
-                                  ) : (
-                                    <Icon as={BiHide} boxSize={5} />
-                                  )}
+                                <Button variant={"none"} onClick={handleShowPassword}>
+                                  {showPassword ? <Icon as={BiShow} boxSize={5} /> : <Icon as={BiHide} boxSize={5} />}
                                 </Button>
                               </InputRightElement>
                             </InputGroup>
-                            <FormErrorMessage>
-                              {errors.password?.message}
-                            </FormErrorMessage>
+                            <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
                           </FormControl>
                         </Box>
                         <Box w={"full"}>
                           <FormControl isInvalid={!!errors.confirmPassword}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
+                            <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                               Konfirmasi Password
                             </FormLabel>
                             <InputGroup>
@@ -370,12 +244,9 @@ export default function Signup() {
                                   required: "Konfirmasi Password harus diisi",
                                   min: {
                                     value: 8,
-                                    message:
-                                      "Konfirmasi Password minimum 8 karakter",
+                                    message: "Konfirmasi Password minimum 8 karakter",
                                   },
-                                  validate: (value) =>
-                                    value === getValues("password") ||
-                                    "Konfirmasi Password tidak sama dengan Password",
+                                  validate: (value) => value === getValues("password") || "Konfirmasi Password tidak sama dengan Password",
                                 })}
                                 w={"full"}
                                 type={showConfirmPassword ? "text" : "password"}
@@ -384,21 +255,12 @@ export default function Signup() {
                                 borderWidth={"2px"}
                               />
                               <InputRightElement py={"1.25em"} width="4.5rem">
-                                <Button
-                                  variant={"none"}
-                                  onClick={handleShowConfirmPassword}
-                                >
-                                  {showConfirmPassword ? (
-                                    <Icon as={BiShow} boxSize={5} />
-                                  ) : (
-                                    <Icon as={BiHide} boxSize={5} />
-                                  )}
+                                <Button variant={"none"} onClick={handleShowConfirmPassword}>
+                                  {showConfirmPassword ? <Icon as={BiShow} boxSize={5} /> : <Icon as={BiHide} boxSize={5} />}
                                 </Button>
                               </InputRightElement>
                             </InputGroup>
-                            <FormErrorMessage>
-                              {errors.confirmPassword?.message}
-                            </FormErrorMessage>
+                            <FormErrorMessage>{errors.confirmPassword?.message}</FormErrorMessage>
                           </FormControl>
                         </Box>
                       </Flex>
@@ -410,11 +272,7 @@ export default function Signup() {
                       <Stack w={"full"} direction={"row"} spacing={"1em"}>
                         <Box w={"65%"}>
                           <FormControl isInvalid={!!errors.prodi}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
+                            <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                               Program Studi
                             </FormLabel>
                             <Controller
@@ -424,13 +282,7 @@ export default function Signup() {
                                 required: "Prodi harus dipilih",
                               }}
                               render={({ field }) => (
-                                <Select
-                                  {...field}
-                                  placeholder="Pilih Prodi"
-                                  border={"2px"}
-                                  borderColor={"#E2E8F0"}
-                                  borderRadius={"full"}
-                                >
+                                <Select {...field} placeholder="Pilih Prodi" border={"2px"} borderColor={"#E2E8F0"} borderRadius={"full"}>
                                   {dataProdi.map((prodi) => (
                                     <option value={prodi} key={prodi}>
                                       {prodi}
@@ -439,18 +291,12 @@ export default function Signup() {
                                 </Select>
                               )}
                             />
-                            <FormErrorMessage>
-                              {errors.prodi?.message}
-                            </FormErrorMessage>
+                            <FormErrorMessage>{errors.prodi?.message}</FormErrorMessage>
                           </FormControl>
                         </Box>
                         <Box w={"45%"}>
                           <FormControl isInvalid={!!errors.angkatan}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
+                            <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                               Angkatan
                             </FormLabel>
                             <Controller
@@ -461,16 +307,7 @@ export default function Signup() {
                                 // no value as number?
                               }}
                               render={({ field }) => (
-                                <Select
-                                  {...field}
-                                  onChange={(e) =>
-                                    field.onChange(parseInt(e.target.value))
-                                  }
-                                  placeholder="Pilih Angkatan"
-                                  border={"2px"}
-                                  borderColor={"#E2E8F0"}
-                                  borderRadius={"full"}
-                                >
+                                <Select {...field} onChange={(e) => field.onChange(parseInt(e.target.value))} placeholder="Pilih Angkatan" border={"2px"} borderColor={"#E2E8F0"} borderRadius={"full"}>
                                   {tahunAngkatan.map((tahun) => (
                                     <option value={tahun} key={tahun}>
                                       {tahun}
@@ -479,20 +316,14 @@ export default function Signup() {
                                 </Select>
                               )}
                             />
-                            <FormErrorMessage>
-                              {errors.angkatan?.message}
-                            </FormErrorMessage>
+                            <FormErrorMessage>{errors.angkatan?.message}</FormErrorMessage>
                           </FormControl>
                         </Box>
                       </Stack>
                       <Stack w={"full"} direction={"row"} spacing={"1em"}>
                         <Box w={"65%"}>
                           <FormControl isInvalid={!!errors.whatsapp}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
+                            <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                               Whatsapp
                             </FormLabel>
                             <Input
@@ -508,18 +339,12 @@ export default function Signup() {
                               borderColor={"#E2E8F0"}
                               borderRadius={"full"}
                             />
-                            <FormErrorMessage>
-                              {errors.whatsapp?.message}
-                            </FormErrorMessage>
+                            <FormErrorMessage>{errors.whatsapp?.message}</FormErrorMessage>
                           </FormControl>
                         </Box>
                         <Box w={"45%"}>
                           <FormControl isInvalid={!!errors.idLine}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
+                            <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                               ID LINE
                             </FormLabel>
                             <Input
@@ -531,9 +356,7 @@ export default function Signup() {
                               borderColor={"#E2E8F0"}
                               borderRadius={"full"}
                             />
-                            <FormErrorMessage>
-                              {errors.idLine?.message}
-                            </FormErrorMessage>
+                            <FormErrorMessage>{errors.idLine?.message}</FormErrorMessage>
                           </FormControl>
                         </Box>
                       </Stack>
@@ -544,33 +367,14 @@ export default function Signup() {
               <Center w={"full"} h={"auto"} mt={"auto"}>
                 {!isSelanjutnya ? (
                   <>
-                    <Button
-                      display={isSelanjutnya ? "none" : "flex"}
-                      w={"10em"}
-                      py={"1.5em"}
-                      rounded={"full"}
-                      bg={"#F7B70C"}
-                      color={"#FFFFFF"}
-                      fontWeight={"bold"}
-                      _hover={{ bg: "#F7B70C" }}
-                      onClick={handleSelanjutnya}
-                    >
+                    <Button display={isSelanjutnya ? "none" : "flex"} w={"10em"} py={"1.5em"} rounded={"full"} bg={"#F7B70C"} color={"#FFFFFF"} fontWeight={"bold"} _hover={{ bg: "#F7B70C" }} onClick={handleSelanjutnya}>
                       SELANJUTNYA
                     </Button>
                   </>
                 ) : (
                   <>
                     <Stack spacing={"1em"}>
-                      <Button
-                        type="submit"
-                        w={"10em"}
-                        py={"1.5em"}
-                        rounded={"full"}
-                        bg={"#F7B70C"}
-                        color={"#FFFFFF"}
-                        fontWeight={"bold"}
-                        _hover={{ bg: "#F7B70C" }}
-                      >
+                      <Button type="submit" w={"10em"} py={"1.5em"} rounded={"full"} bg={"#F7B70C"} color={"#FFFFFF"} fontWeight={"bold"} _hover={{ bg: "#F7B70C" }}>
                         DAFTAR
                       </Button>
                       <Button

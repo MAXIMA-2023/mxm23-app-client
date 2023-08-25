@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import type { NextPage } from "next";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -11,9 +11,8 @@ import BackButton from "@/components/BackButton";
 import { Box, Flex, Center, Heading, Text, Button, Stack, Img, Wrap, WrapItem, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from "@chakra-ui/react";
 
 const STATE: NextPage = () => {
-
   return (
-    <Layout>
+    <Layout title={"MAXIMA 2023 - About Us (STATE)"} backButton>
       <Flex
         minH={"100vh"}
         bgImage={["../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg"]}
@@ -82,7 +81,6 @@ const STATE: NextPage = () => {
           </Center>
         </Box>
       </Flex>
-      <BackButton />
     </Layout>
   );
 };

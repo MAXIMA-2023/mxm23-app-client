@@ -1,22 +1,7 @@
 "use client";
 import Layout from "@/components/Layout";
 import { HandleAxiosError, ResponseModel, useApi } from "@/services/api";
-import {
-  Center,
-  Box,
-  Text,
-  HStack,
-  Flex,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  InputRightAddon,
-  Select,
-  Stack,
-  Spacer,
-  Skeleton,
-  Image,
-} from "@chakra-ui/react";
+import { Center, Box, Text, HStack, Flex, Input, InputGroup, InputLeftAddon, InputRightAddon, Select, Stack, Spacer, Skeleton, Image } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -69,7 +54,7 @@ export default function Profile() {
   }, [session]);
 
   return (
-    <Layout>
+    <Layout title={"MAXIMA 2023 - Profile"}>
       <Flex
         w={"full"}
         h={"auto"}
@@ -77,13 +62,7 @@ export default function Profile() {
         p={["none", "none", "none", "1em", "1em"]}
         justifyContent={"center"}
         alignItems={"center"}
-        bgImage={[
-          "none",
-          "none",
-          "none",
-          "/assets/profile/MaximaBG_Profile_Desktop.svg",
-          "/assets/profile/MaximaBG_Profile_Desktop.svg",
-        ]}
+        bgImage={["none", "none", "none", "/assets/profile/MaximaBG_Profile_Desktop.svg", "/assets/profile/MaximaBG_Profile_Desktop.svg"]}
         bgPosition={"center"}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}
@@ -100,30 +79,9 @@ export default function Profile() {
         >
           {/* QR Panel */}
           <Skeleton isLoaded={!isLoading} my={["1em", "0", "0", "0", "0"]}>
-            <Flex
-              h={"full"}
-              boxShadow={["none", "none", "none", "lg", "lg"]}
-              bgColor={"white"}
-              rounded={["none", "none", "none", "md", "md"]}
-              align={["center", "center", "center", "start", "start"]}
-              justify={"center"}
-            >
-              <Flex
-                bgColor={"#C4C4C4"}
-                m={"2em"}
-                boxSize={"14em"}
-                rounded={"md"}
-                align={"center"}
-                justify={"center"}
-              >
-                {profile?.token && (
-                  <Image
-                    as={QRCode}
-                    alt="qr-absensi"
-                    value={profile?.token!}
-                    fgColor="#1B4173"
-                  />
-                )}
+            <Flex h={"full"} boxShadow={["none", "none", "none", "lg", "lg"]} bgColor={"white"} rounded={["none", "none", "none", "md", "md"]} align={["center", "center", "center", "start", "start"]} justify={"center"}>
+              <Flex bgColor={"#C4C4C4"} m={"2em"} boxSize={"14em"} rounded={"md"} align={"center"} justify={"center"}>
+                {profile?.token && <Image as={QRCode} alt="qr-absensi" value={profile?.token!} fgColor="#1B4173" />}
               </Flex>
             </Flex>
           </Skeleton>
@@ -141,31 +99,15 @@ export default function Profile() {
             rounded={["none", "none", "none", "md", "md"]}
           >
             <Box w={"full"} mb={"2em"}>
-              <Text
-                align={"left"}
-                color={"#1B4173"}
-                fontSize={"xl"}
-                fontWeight={"bold"}
-              >
+              <Text align={"left"} color={"#1B4173"} fontSize={"xl"} fontWeight={"bold"}>
                 Hai,
               </Text>
-              <Text
-                align={"left"}
-                color={"#1B4173"}
-                fontSize={"4xl"}
-                fontWeight={"extrabold"}
-              >
+              <Text align={"left"} color={"#1B4173"} fontSize={"4xl"} fontWeight={"extrabold"}>
                 {profile?.name}
               </Text>
             </Box>
 
-            <Text
-              align={"left"}
-              color={"#1B4173"}
-              fontSize={"md"}
-              fontWeight={"semibold"}
-              opacity={"0.9"}
-            >
+            <Text align={"left"} color={"#1B4173"} fontSize={"md"} fontWeight={"semibold"} opacity={"0.9"}>
               Email Student
             </Text>
             <InputGroup w={"full"} rounded={"2xl"}>
@@ -178,30 +120,16 @@ export default function Profile() {
                 value={profile?.email.split("@")[0]}
                 rounded={"3xl"}
               />
-              <InputRightAddon
-                rounded={"3xl"}
-                bg={"#F7B70C"}
-                textColor={"#FFFFFF"}
-              >
+              <InputRightAddon rounded={"3xl"} bg={"#F7B70C"} textColor={"#FFFFFF"}>
                 @student.umn.ac.id
               </InputRightAddon>
             </InputGroup>
 
-            <Text
-              align={"left"}
-              color={"#1B4173"}
-              fontSize={"md"}
-              fontWeight={"semibold"}
-              opacity={"0.9"}
-            >
+            <Text align={"left"} color={"#1B4173"} fontSize={"md"} fontWeight={"semibold"} opacity={"0.9"}>
               NIM
             </Text>
             <InputGroup w={"full"} rounded={"2xl"}>
-              <InputLeftAddon
-                rounded={"3xl"}
-                bg="#F7B70C"
-                textColor={"#FFFFFF"}
-              >
+              <InputLeftAddon rounded={"3xl"} bg="#F7B70C" textColor={"#FFFFFF"}>
                 000000
               </InputLeftAddon>
               <Input
@@ -217,14 +145,7 @@ export default function Profile() {
 
             <Stack direction={["column", "column", "row"]} spacing={"1em"}>
               <Box w={"full"}>
-                <Text
-                  align={"left"}
-                  color={"#1B4173"}
-                  fontSize={"md"}
-                  fontWeight={"semibold"}
-                  opacity={"0.9"}
-                  mb={"5px"}
-                >
+                <Text align={"left"} color={"#1B4173"} fontSize={"md"} fontWeight={"semibold"} opacity={"0.9"} mb={"5px"}>
                   Program Studi
                 </Text>
                 <InputGroup w={"full"} rounded={"2xl"}>
@@ -240,14 +161,7 @@ export default function Profile() {
                 </InputGroup>
               </Box>
               <Box w={"full"}>
-                <Text
-                  align={"left"}
-                  color={"#1B4173"}
-                  fontSize={"md"}
-                  fontWeight={"semibold"}
-                  opacity={"0.9"}
-                  mb={"5px"}
-                >
+                <Text align={"left"} color={"#1B4173"} fontSize={"md"} fontWeight={"semibold"} opacity={"0.9"} mb={"5px"}>
                   Angkatan
                 </Text>
                 <InputGroup w={"full"} rounded={"2xl"}>
@@ -266,14 +180,7 @@ export default function Profile() {
 
             <Stack direction={["column", "column", "row"]} spacing={"1em"}>
               <Box w={"full"}>
-                <Text
-                  align={"left"}
-                  color={"#1B4173"}
-                  fontSize={"md"}
-                  fontWeight={"semibold"}
-                  opacity={"0.9"}
-                  mb={"5px"}
-                >
+                <Text align={"left"} color={"#1B4173"} fontSize={"md"} fontWeight={"semibold"} opacity={"0.9"} mb={"5px"}>
                   Whatsapp
                 </Text>
                 <InputGroup w={"full"} rounded={"2xl"}>
@@ -289,14 +196,7 @@ export default function Profile() {
                 </InputGroup>
               </Box>
               <Box w={"full"}>
-                <Text
-                  align={"left"}
-                  color={"#1B4173"}
-                  fontSize={"md"}
-                  fontWeight={"semibold"}
-                  opacity={"0.9"}
-                  mb={"5px"}
-                >
+                <Text align={"left"} color={"#1B4173"} fontSize={"md"} fontWeight={"semibold"} opacity={"0.9"} mb={"5px"}>
                   ID Line
                 </Text>
                 <InputGroup w={"full"} rounded={"2xl"}>

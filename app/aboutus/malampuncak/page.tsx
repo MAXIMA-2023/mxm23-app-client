@@ -12,7 +12,7 @@ import { Box, Flex, Center, Text, Button, Stack, Img } from "@chakra-ui/react";
 
 const MalamPuncak: NextPage = () => {
   return (
-    <Layout>
+    <Layout title={"MAXIMA 2023 - About Us (Malam Puncak)"} backButton>
       <Flex
         minH={"100vh"}
         bgImage={["../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg"]}
@@ -71,7 +71,6 @@ const MalamPuncak: NextPage = () => {
           </Center>
         </Box>
       </Flex>
-      <BackButton />
     </Layout>
   );
 };
