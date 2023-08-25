@@ -264,6 +264,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
               <>
                 <Box>
                   <Button
+                    bgColor={"rgb(27, 65, 115, 0.3)"}
                     w={"7em"}
                     h={"auto"}
                     py={"0.7em"}
@@ -285,6 +286,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                 </Box>
                 <Box>
                   <Button
+                    bgColor={"rgb(27, 65, 115, 0.3)"}
                     w={"7em"}
                     h={"auto"}
                     py={"0.7em"}
@@ -292,7 +294,11 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                     color={"white"}
                     borderWidth={"0.15em"}
                     borderRadius={"full"}
-                    _hover={{ color: "#E4E4E4" }}
+                    _hover={{
+                      bgColor: "white",
+                      color: "black",
+                      borderColor: "white",
+                    }}
                     transition={"0.2s ease-in-out"}
                     as={Link}
                     href={"/signup"}
@@ -310,7 +316,6 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
 
   const NavbarMobile = () => {
     const { isOpen, onToggle } = useDisclosure();
-
     return (
       <>
         <Flex
@@ -320,7 +325,6 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
           py={"1.5em"}
           justifyContent={"space-between"}
           alignItems={"center"}
-          bgColor={"#D9D9D9"}
         >
           <Center onClick={onToggle}>
             <IconButton
@@ -418,6 +422,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
               </Menu>
             ) : (
               <Button
+                bgColor={"rgb(27, 65, 115, 0.3)"}
                 w={"6em"}
                 h={"auto"}
                 py={"0.5em"}
@@ -425,6 +430,12 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                 color={"white"}
                 borderWidth={"0.15em"}
                 borderRadius={"full"}
+                _hover={{
+                  bgColor: "white",
+                  color: "black",
+                  borderColor: "white",
+                }}
+                transition={"0.2s ease-in-out"}
                 as={Link}
                 href={"/signin"}
               >
@@ -435,6 +446,8 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
         </Flex>
         <Box
           as={motion.div}
+          initial={{ x: '-10em' }}
+          animate={{ x: isOpen ? '0em' : '-10em' }}
           position={"fixed"}
           w={"auto"}
           h={"auto"}
@@ -443,7 +456,6 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
           bgColor={"#1B4173"}
           p={"1.5em"}
           borderEndRadius={"3xl"}
-          transition={"0.2 ease-in-out"}
           zIndex={"1000"}
         >
           <Stack
