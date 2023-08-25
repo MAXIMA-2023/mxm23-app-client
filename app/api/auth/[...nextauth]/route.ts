@@ -40,7 +40,7 @@ type ApiJWT = {
   expiresIn: number;
 };
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   callbacks: {
     session: ({ session, token }) => {
       session.user = token.user;
