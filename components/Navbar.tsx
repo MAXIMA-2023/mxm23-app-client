@@ -6,27 +6,7 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 
 //importing chakra ui components
-import {
-  Box,
-  Flex,
-  Text,
-  Stack,
-  Button,
-  IconButton,
-  Image,
-  Center,
-  useDisclosure,
-  Avatar,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-  Icon,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, Stack, Button, IconButton, Image, Center, useDisclosure, Avatar, Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, Icon } from "@chakra-ui/react";
 
 //importing chakra ui icons
 
@@ -37,58 +17,6 @@ import Swal from "sweetalert2";
 type NavbarData = {
   name: string;
   link: string;
-};
-
-const NavbarIcon = () => {
-  return (
-    <Flex display={["none", "block"]} alignItems="center">
-      <Box
-        display={["none", "none", "none", "none", "block"]}
-        as={"a"}
-        href="/"
-      >
-        <Image src={"/Assets/MaximaLogo_Navbar.svg"} alt="logo" width={"180"} />
-      </Box>
-      <Box
-        display={["none", "none", "none", "block", "none"]}
-        as={"a"}
-        href="/"
-      >
-        <Image src={"/Assets/MaximaLogo_Navbar.svg"} alt="logo" width={"140"} />
-      </Box>
-      <Box
-        display={["none", "none", "block", "none", "none"]}
-        as={"a"}
-        href="/"
-      >
-        <Image src={"/Assets/MaximaLogo_Navbar.svg"} alt="logo" width={"120"} />
-      </Box>
-      <Box
-        display={["none", "block", "none", "none", "none"]}
-        as={"a"}
-        href="/"
-      >
-        <Image src={"/Assets/MaximaLogo_Navbar.svg"} alt="logo" width={"100"} />
-      </Box>
-    </Flex>
-  );
-};
-
-const FullBorder = () => {
-  // const router = useRouter();
-  // const malpun = router.pathname === "/malpun";
-  return (
-    <Flex
-      w={"75%"}
-      position={"fixed"}
-      mx={"-5em"}
-      p={["3em", "3.2em"]}
-      bgColor={"#1B4173"}
-      border={"2px solid white"}
-      shadow={"0 4px 4px rgb(0,0,0,0.25)"}
-      opacity={"30%"}
-    />
-  );
 };
 
 export default function Navbar({ coloredName }: { coloredName?: boolean }) {
@@ -120,15 +48,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
   const NavbarDesktop = () => {
     return (
       <>
-        <Flex
-          w={"full"}
-          h={"auto"}
-          mt={"2em"}
-          pr={["0em", "0em", "0em", "2em", "3.5em"]}
-          position={"fixed"}
-          alignItems={"center"}
-          justifyContent={"space-between"}
-        >
+        <Flex w={"full"} h={"auto"} mt={"2em"} pr={["0em", "0em", "0em", "2em", "3.5em"]} position={"fixed"} alignItems={"center"} justifyContent={"space-between"}>
           <Flex
             w={"auto"}
             h={"auto"}
@@ -146,31 +66,15 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
           >
             <Flex alignItems={"center"}>
               <Link href={"/"}>
-                <Image
-                  w={"10em"}
-                  h={"full"}
-                  src={"/Assets/MaximaLogo_Navbar.svg"}
-                  alt={"Maxima Logo"}
-                  objectFit={"cover"}
-                />
+                <Image w={"10em"} h={"full"} src={"/assets/MaximaLogo_Navbar.svg"} alt={"Maxima Logo"} objectFit={"cover"} />
               </Link>
               <Box ml={["2em", "2em", "2em", "3em", "4.5em"]}>
-                <Stack
-                  direction={"row"}
-                  spacing={["2em", "2em", "2em", "2em", "4em"]}
-                >
+                <Stack direction={"row"} spacing={["2em", "2em", "2em", "2em", "4em"]}>
                   {NavbarData.map((data, index) => {
                     return (
                       <Box key={index}>
                         <Link href={data.link}>
-                          <Text
-                            fontSize={["md", "md", "md", "md", "lg"]}
-                            fontWeight={"bold"}
-                            color={"white"}
-                            textShadow={"0px 4px 4px rgb(0,0,0,0.25)"}
-                            _hover={{ color: "#E4E4E4" }}
-                            transition={"0.2s ease-in-out"}
-                          >
+                          <Text fontSize={["md", "md", "md", "md", "lg"]} fontWeight={"bold"} color={"white"} textShadow={"0px 4px 4px rgb(0,0,0,0.25)"} _hover={{ color: "#E4E4E4" }} transition={"0.2s ease-in-out"}>
                             {data.name}
                           </Text>
                         </Link>
@@ -181,44 +85,20 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
               </Box>
             </Flex>
           </Flex>
-          <Stack
-            ml={"2em"}
-            direction={"row"}
-            spacing={["2em", "2em", "2em", "1.5em", "2em"]}
-            alignItems={"center"}
-          >
+          <Stack ml={"2em"} direction={"row"} spacing={["2em", "2em", "2em", "1.5em", "2em"]} alignItems={"center"}>
             {session.status === "authenticated" ? (
               <>
                 <Menu placement="bottom-end">
                   <MenuButton>
-                    <Stack
-                      direction={"row"}
-                      align={"center"}
-                      gap={"1em"}
-                      cursor={"pointer"}
-                    >
-                      <Text
-                        fontSize={["md", "md", "md", "md", "lg"]}
-                        fontWeight={"bold"}
-                        color={coloredName ? "#1B4173" : "white"}
-                        textShadow={"0px 4px 4px rgb(0,0,0,0.25)"}
-                      >
+                    <Stack direction={"row"} align={"center"} gap={"1em"} cursor={"pointer"}>
+                      <Text fontSize={["md", "md", "md", "md", "lg"]} fontWeight={"bold"} color={coloredName ? "#1B4173" : "white"} textShadow={"0px 4px 4px rgb(0,0,0,0.25)"}>
                         {session.data.user.name}
                       </Text>
-                      <Avatar
-                        boxSize={"2.5em"}
-                        shadow={"0px 4px 4px rgb(0,0,0,0.25)"}
-                      />
+                      <Avatar boxSize={"2.5em"} shadow={"0px 4px 4px rgb(0,0,0,0.25)"} />
                     </Stack>
                   </MenuButton>
                   <MenuList border={"none"} bgColor={"#1B4173"}>
-                    <MenuItem
-                      as={Link}
-                      href={"/profile"}
-                      bgColor={"#1B4173"}
-                      color={"white"}
-                      fontWeight={"bold"}
-                    >
+                    <MenuItem as={Link} href={"/profile"} bgColor={"#1B4173"} color={"white"} fontWeight={"bold"}>
                       <Icon as={MdPerson} />
                       <Text px={"1em"}>Profile</Text>
                     </MenuItem>
@@ -318,69 +198,36 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
     const { isOpen, onToggle } = useDisclosure();
     return (
       <>
-        <Flex
-          position={"fixed"}
-          w={"full"}
-          px={"1em"}
-          py={"1.5em"}
-          justifyContent={"space-between"}
-          alignItems={"center"}
-        >
+        <Flex position={"fixed"} w={"full"} px={"1em"} py={"1.5em"} justifyContent={"space-between"} alignItems={"center"}>
           <Center onClick={onToggle}>
-            <IconButton
-              variant={"unstyled"}
-              aria-label={"Sidebar"}
-              icon={<MdDehaze />}
-              fontSize={"3xl"}
-              color={"white"}
-            />
+            <IconButton variant={"unstyled"} aria-label={"Sidebar"} icon={<MdDehaze />} fontSize={"3xl"} color={"white"} textShadow={"0px 4px 4px rgb(0,0,0,0.25)"} />
           </Center>
-          <Center w={"full"}>
-            <Link href={"/"}>
-              <Image
-                w={"8em"}
-                src={"/Assets/MaximaLogo_Navbar.svg"}
-                alt={"MAXIMA Logo"}
-              />
-            </Link>
-          </Center>
+          {session.status == "authenticated" ? (
+            <>
+              <Center w={"full"}>
+                <Link href={"/"}>
+                  <Image w={"8em"} src={"/assets/MaximaLogo_Navbar.svg"} alt={"MAXIMA Logo"} />
+                </Link>
+              </Center>
+            </>
+          ) : (
+            <></>
+          )}
           <Center>
             {session.status === "authenticated" ? (
               <Menu placement="bottom-end">
                 <MenuButton>
-                  <Stack
-                    direction={"row"}
-                    align={"center"}
-                    gap={"1em"}
-                    cursor={"pointer"}
-                  >
-                    <Avatar
-                      boxSize={"2em"}
-                      // shadow={"0px 4px 4px rgb(0,0,0,0.25)"}
-                    />
+                  <Stack direction={"row"} align={"center"} gap={"1em"} cursor={"pointer"}>
+                    <Avatar boxSize={"2em"} shadow={"0px 2px 2px rgb(0,0,0,0.25)"} />
                   </Stack>
                 </MenuButton>
-                <MenuList border={"none"} bgColor={"#1B4173"}>
-                  <Text
-                    textColor={"white"}
-                    fontWeight={"bold"}
-                    ml={"1em"}
-                    maxW={"12em"}
-                    textOverflow={"ellipsis"}
-                    overflow={"hidden"}
-                    whiteSpace={"nowrap"}
-                  >
+                <MenuList border={"none"} bgColor={"#1B4173"} boxShadow={"md"}>
+                  <Text textColor={"white"} fontWeight={"bold"} ml={"1em"} maxW={"12em"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"}>
                     {session.data.user.name}
                   </Text>
                   <MenuDivider color={"white"} />
 
-                  <MenuItem
-                    as={Link}
-                    href={"/profile"}
-                    bgColor={"#1B4173"}
-                    color={"white"}
-                    fontWeight={"bold"}
-                  >
+                  <MenuItem as={Link} href={"/profile"} bgColor={"#1B4173"} color={"white"} fontWeight={"bold"}>
                     <Icon as={MdPerson} />
                     <Text px={"1em"}>Profile</Text>
                   </MenuItem>
@@ -423,9 +270,9 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
             ) : (
               <Button
                 bgColor={"rgb(27, 65, 115, 0.3)"}
-                w={"6em"}
+                w={"7em"}
                 h={"auto"}
-                py={"0.5em"}
+                py={"0.7em"}
                 variant={"none"}
                 color={"white"}
                 borderWidth={"0.15em"}
@@ -438,40 +285,20 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                 transition={"0.2s ease-in-out"}
                 as={Link}
                 href={"/signin"}
+                boxShadow={"md"}
               >
                 Log in
               </Button>
             )}
           </Center>
         </Flex>
-        <Box
-          as={motion.div}
-          initial={{ x: '-10em' }}
-          animate={{ x: isOpen ? '0em' : '-10em' }}
-          position={"fixed"}
-          w={"auto"}
-          h={"auto"}
-          mt={"6em"}
-          ml={isOpen ? "0em" : "-10em"}
-          bgColor={"#1B4173"}
-          p={"1.5em"}
-          borderEndRadius={"3xl"}
-          zIndex={"1000"}
-        >
-          <Stack
-            direction={"column"}
-            spacing={["1em", "1em", "2em", "2em", "4em"]}
-          >
+        <Box as={motion.div} position={"fixed"} w={"auto"} h={"auto"} mt={"6em"} ml={isOpen ? "0em" : "-10em"} bgColor={"#1B4173"} p={"1.5em"} borderEndRadius={"3xl"} transition={"0.2 ease-in-out"} zIndex={"1000"}>
+          <Stack direction={"column"} spacing={["1em", "1em", "2em", "2em", "4em"]}>
             {NavbarData.map((data, index) => {
               return (
                 <Box key={index}>
                   <Link href={data.link}>
-                    <Text
-                      fontSize={["md", "md", "md", "md", "lg"]}
-                      fontWeight={"bold"}
-                      color={"white"}
-                      textShadow={"0px 4px 4px rgb(0,0,0,0.25)"}
-                    >
+                    <Text fontSize={["md", "md", "md", "md", "lg"]} fontWeight={"bold"} color={"white"} textShadow={"0px 4px 4px rgb(0,0,0,0.25)"}>
                       {data.name}
                     </Text>
                   </Link>
@@ -486,24 +313,11 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
 
   return (
     <>
-      <Flex
-        w={"full"}
-        h={"auto"}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-      >
-        <Flex
-          w={"full"}
-          display={["none", "none", "none", "flex"]}
-          zIndex={"999"}
-        >
+      <Flex w={"full"} h={"auto"} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex w={"full"} display={["none", "none", "none", "flex"]} zIndex={"999"}>
           <NavbarDesktop />
         </Flex>
-        <Box
-          w={"full"}
-          display={["flex", "flex", "flex", "none"]}
-          zIndex={"999"}
-        >
+        <Box w={"full"} display={["flex", "flex", "flex", "none"]} zIndex={"999"}>
           <NavbarMobile />
         </Box>
       </Flex>
