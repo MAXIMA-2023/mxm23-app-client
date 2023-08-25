@@ -1,12 +1,11 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 import React from "react";
-
 
 //importing chakra ui components
 import { Flex, Center, Button, Img } from "@chakra-ui/react";
 
-const BackButton = () => {
+const BackButton = ({ bgColor = "#062D5F" }: { bgColor?: string }) => {
   const router = useRouter();
   return (
     <>
@@ -21,7 +20,7 @@ const BackButton = () => {
             w={["2.5rem", "2.5rem", "4rem", "4rem", "4rem"]}
             h={["2.5rem", "2.5rem", "4rem", "4rem", "4rem"]}
             mb={["4.8rem"]}
-            bgColor={"#062D5F"}
+            bgColor={`${bgColor}`}
             border={["5px solid white", "5px solid white", "4px solid white", "4px solid white", "4px solid white"]}
             borderRadius={"full"}
             shadow={"0px 4px 4px rgba(0,0,0,0.25)"}
