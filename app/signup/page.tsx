@@ -26,7 +26,7 @@ type RegisterForm = {
 
 const dataProdi = ["Akuntansi", "Arsitektur", "DKV", "Film dan Animasi", "Informatika", "Jurnalistik", "Manajemen", "Perhotelan", "Sistem Informasi", "Strategic Communication", "Teknik Elektro", "Teknik Fisika", "Teknik Komputer"];
 
-const tahunAngkatan = [2019, 2020, 2021, 2022, 2023];
+const tahunAngkatan = [2023];
 
 export default function Signup() {
   const [isSelanjutnya, setIsSelanjutnya] = useState(false);
