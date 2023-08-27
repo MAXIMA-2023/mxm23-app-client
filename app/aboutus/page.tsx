@@ -60,7 +60,13 @@ const AboutUs: NextPage = () => {
 
   return (
     <Layout title={"MAXIMA 2023 - About Us"} backButton>
-      <Flex minH={"100vh"} bgImage={["/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg", "/Assets/BG_MaximaD.svg"]} bgPosition={["center"]} bgSize={"cover"} bgRepeat={"no-repeat"}>
+      <Flex
+        minH={"100vh"}
+        bgImage={["../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg"]}
+        bgPosition={["center"]}
+        bgSize={"cover"}
+        bgRepeat={"no-repeat"}
+      >
         <Box w={"full"} zIndex={"0"}>
           <Box display={isSmallerThan320 ? "none" : ["block", "none", "none", "none", "none"]} mb={["30.35rem", "45.35rem", "", "30.35rem", "30.35rem"]} position={"absolute"} bottom={0}>
             {/* image BG mobile */}
@@ -79,7 +85,7 @@ const AboutUs: NextPage = () => {
               <Center w={"100%"} h={["100%"]}>
                 <Box>
                   <Center mt={["1em", "1em", "0em", "1em", "1em"]}>
-                    <Img src={"/Assets/aboutus/AboutUs.svg"} w={["12.5em", "15em", "42vw", "20em", "27em"]}></Img>
+                    <Img src={"../assets/aboutus/AboutUs.svg"} w={["12.5em", "15em", "42vw", "20em", "27em"]}></Img>
                   </Center>
                   <Center display={["none", "block"]}>
                     <Text fontSize={["md", "lg", "2.5vh", "17.5px", "xl"]} color={"#1B4173"} textAlign={"center"}>

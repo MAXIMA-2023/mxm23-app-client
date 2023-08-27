@@ -15,7 +15,7 @@ const MalamPuncak: NextPage = () => {
     <Layout title={"MAXIMA 2023 - About Us (Malam Puncak)"} backButton>
       <Flex
         minH={"100vh"}
-        bgImage={["../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg"]}
+        bgImage={["../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg"]}
         bgPosition={["center", "bottom", "bottom", "bottom"]}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}
@@ -37,7 +37,7 @@ const MalamPuncak: NextPage = () => {
               <Center w={"100%"} h={["100%"]}>
                 <Box>
                   <Center mt={"0em"}>
-                    <Img src={"/Assets/aboutus/AboutUs_Malpun.svg"} w={["10em", "15em", "40vw", "15em", "18em"]}></Img>
+                    <Img src={"../assets/aboutus/AboutUs_Malpun.svg"} w={["10em", "15em", "40vw", "15em", "18em"]}></Img>
                   </Center>
                   <Center display={["none", "block"]}>
                     <Stack direction={"column"} spacing={[5, 5, 7, 5, 8]}>

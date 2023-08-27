@@ -75,7 +75,18 @@ export default function Signup() {
   return (
     <>
       <Layout title={"MAXIMA 2023 - Sign Up"} showNavbar={false} showLogoHeader showTitleFooter>
-        <Flex w={"full"} h={"auto"} minH={"100vh"} p={"1em"} justifyContent={"center"} alignItems={"center"} bgImage={["", "", "", "/Assets/signup/MaximaBG_Signup_Desktop.svg"]} bgPosition={"center"} bgSize={"cover"} bgRepeat={"no-repeat"}>
+        <Flex
+          w={"full"}
+          h={"auto"}
+          minH={"100vh"}
+          p={"1em"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          bgImage={["", "", "", "./assets/signup/MaximaBG_Signup_Desktop.svg"]}
+          bgPosition={"center"}
+          bgSize={"cover"}
+          bgRepeat={"no-repeat"}
+        >
           <Box w={["full", "full", "35em"]} h={"auto"} px={["1em", "1em", "2.5em"]} py={["0", "1.5em"]} bgColor={"white"} borderRadius={"lg"} boxShadow={["none", "none", "-1.2px 5px 4px rgb(0,0,0,0.25)"]}>
             <Text fontSize={"3xl"} fontWeight={"bold"} color={"#1B4173"} align={"center"}>
               Daftar Sekarang
