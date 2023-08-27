@@ -22,7 +22,7 @@ export default function LoadingSpinner() {
           },
         }}
       >
-        <Image src={"./assets/MaximaLogo_Loading.svg"} boxSize={["5em", "8em"]} alt={"MAXIMA Logo"} />
+        <Image src={"../assets/MaximaLogo_Loading.svg"} boxSize={["5em", "8em"]} alt={"MAXIMA Logo"} />
       </Center>
     </Box>
   );
