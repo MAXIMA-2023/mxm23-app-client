@@ -62,7 +62,7 @@ const AboutUs: NextPage = () => {
     <Layout title={"MAXIMA 2023 - About Us"} backButton>
       <Flex
         minH={"100vh"}
-        bgImage={["../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg"]}
+        bgImage={["./assets/MaximaBG_AboutUs_Mobile.svg", "./assets/MaximaBG_AboutUs_Mobile.svg", "./assets/MaximaBG_AboutUs_Mobile.svg", "./assets/MaximaBG_AboutUs_Desktop.svg", "./assets/MaximaBG_AboutUs_Desktop.svg"]}
         bgPosition={["center"]}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}
@@ -85,7 +85,7 @@ const AboutUs: NextPage = () => {
               <Center w={"100%"} h={["100%"]}>
                 <Box>
                   <Center mt={["1em", "1em", "0em", "1em", "1em"]}>
-                    <Img src={"../assets/aboutus/AboutUs.svg"} w={["12.5em", "15em", "42vw", "20em", "27em"]}></Img>
+                    <Img src={"./assets/aboutus/AboutUs.svg"} w={["12.5em", "15em", "42vw", "20em", "27em"]}></Img>
                   </Center>
                   <Center display={["none", "block"]}>
                     <Text fontSize={["md", "lg", "2.5vh", "17.5px", "xl"]} color={"#1B4173"} textAlign={"center"}>

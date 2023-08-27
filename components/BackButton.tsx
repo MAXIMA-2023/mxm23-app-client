@@ -25,7 +25,7 @@ const BackButton = ({ bgColor = "#062D5F" }: { bgColor?: string }) => {
             borderRadius={"full"}
             shadow={"0px 4px 4px rgba(0,0,0,0.25)"}
           >
-            <Img src={"/Assets/Expand_Left.svg"} w={["2rem", "2rem", "2rem", "2rem", "2rem"]} h={["1.2rem", "1.2rem", "2rem", "2rem", "2rem"]} />
+            <Img src={"../assets/BackButton.svg"} w={["2rem", "2rem", "2rem", "2rem", "2rem"]} h={["1.2rem", "1.2rem", "2rem", "2rem", "2rem"]} />
           </Center>
         </Button>
       </Flex>

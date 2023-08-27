@@ -60,6 +60,12 @@ const dataProdi = [
 
 const tahunAngkatan = [2023];
 
+type Toggle = {
+  id: number;
+  name: string;
+  toggle: boolean;
+};
+
 export default function Signup() {
   const [isSelanjutnya, setIsSelanjutnya] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -79,6 +85,25 @@ export default function Signup() {
     trigger,
   } = useForm<RegisterForm>();
 
+  const fetchToggle = async () => {
+    try {
+      const { data } = await api.get<Toggle[]>("/toggle");
+
+      if (!data.find((v) => v.name === "signupMahasiswa")?.toggle) {
+        Swal.fire({
+          title: "Signup belum dibuka!",
+          color: "#062D5F",
+          text: "Maaf, saat ini Signup belum dibuka. Silahkan cek kembali nanti!",
+          icon: "error",
+          confirmButtonColor: "#F7B70C",
+        });
+        router.push("/");
+      }
+    } catch (error) {
+      HandleAxiosError(error);
+    }
+  };
+
   useEffect(() => {
     if (session.status === "authenticated") {
       Swal.fire({
@@ -89,7 +114,10 @@ export default function Signup() {
         confirmButtonColor: "#F7B70C",
       });
       router.push("/");
+      return;
     }
+
+    fetchToggle();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
@@ -199,11 +227,15 @@ export default function Signup() {
                 {!isSelanjutnya ? (
                   <>
                     <Stack w={"full"} spacing={"1em"}>
-                      <Flex
-                        justifyContent={"space-between"}
-                        alignItems={"center"}
+                      <Stack
+                        justify={"space-between"}
+                        align={"center"}
+                        direction={["column", "column", "column", "row", "row"]}
                       >
-                        <Box w={"55%"} mr={"1em"}>
+                        <Box
+                          w={["full", "full", "full", "55%", "55%"]}
+                          mr={"1em"}
+                        >
                           <FormControl isInvalid={!!errors.name}>
                             <FormLabel
                               fontSize={"sm"}
@@ -230,7 +262,7 @@ export default function Signup() {
                             </FormErrorMessage>
                           </FormControl>
                         </Box>
-                        <Box w={"45%"}>
+                        <Box w={["full", "full", "full", "45%", "45%"]}>
                           <FormControl isInvalid={!!errors.nim}>
                             <FormLabel
                               fontSize={"sm"}
@@ -275,7 +307,7 @@ export default function Signup() {
                             </FormErrorMessage>
                           </FormControl>
                         </Box>
-                      </Flex>
+                      </Stack>
                       <Box>
                         <FormControl isInvalid={!!errors.email}>
                           <FormLabel
@@ -318,106 +350,107 @@ export default function Signup() {
                           </FormErrorMessage>
                         </FormControl>
                       </Box>
-                      <Flex
-                        justifyContent={"space-between"}
-                        alignItems={"center"}
+                      <Stack
+                        justify={"space-between"}
+                        align={"center"}
+                        direction={["column", "column", "column", "row", "row"]}
                       >
-                        <Box w={"full"} mr={"1em"}>
-                          <FormControl isInvalid={!!errors.password}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
-                              Password
-                            </FormLabel>
-                            <InputGroup>
-                              <Input
-                                {...register("password", {
-                                  required: "Password harus diisi",
-                                  minLength: {
-                                    value: 8,
-                                    message: "Password minimum 8 karakter",
-                                  },
-                                })}
-                                w={"full"}
-                                type={showPassword ? "text" : "password"}
-                                rounded={"full"}
-                                borderColor={"#E2E8F0"}
-                                borderWidth={"2px"}
-                              />
-                              <InputRightElement py={"1.25em"} width="4.5rem">
-                                <Button
-                                  variant={"none"}
-                                  onClick={handleShowPassword}
-                                >
-                                  {showPassword ? (
-                                    <Icon as={BiShow} boxSize={5} />
-                                  ) : (
-                                    <Icon as={BiHide} boxSize={5} />
-                                  )}
-                                </Button>
-                              </InputRightElement>
-                            </InputGroup>
-                            <FormErrorMessage>
-                              {errors.password?.message}
-                            </FormErrorMessage>
-                          </FormControl>
-                        </Box>
-                        <Box w={"full"}>
-                          <FormControl isInvalid={!!errors.confirmPassword}>
-                            <FormLabel
-                              fontSize={"sm"}
-                              fontWeight={"semibold"}
-                              color={"rgb(27,65,114,0.8)"}
-                            >
-                              Konfirmasi Password
-                            </FormLabel>
-                            <InputGroup>
-                              <Input
-                                {...register("confirmPassword", {
-                                  required: "Konfirmasi Password harus diisi",
-                                  min: {
-                                    value: 8,
-                                    message:
-                                      "Konfirmasi Password minimum 8 karakter",
-                                  },
-                                  validate: (value) =>
-                                    value === getValues("password") ||
-                                    "Konfirmasi Password tidak sama dengan Password",
-                                })}
-                                w={"full"}
-                                type={showConfirmPassword ? "text" : "password"}
-                                rounded={"full"}
-                                borderColor={"#E2E8F0"}
-                                borderWidth={"2px"}
-                              />
-                              <InputRightElement py={"1.25em"} width="4.5rem">
-                                <Button
-                                  variant={"none"}
-                                  onClick={handleShowConfirmPassword}
-                                >
-                                  {showConfirmPassword ? (
-                                    <Icon as={BiShow} boxSize={5} />
-                                  ) : (
-                                    <Icon as={BiHide} boxSize={5} />
-                                  )}
-                                </Button>
-                              </InputRightElement>
-                            </InputGroup>
-                            <FormErrorMessage>
-                              {errors.confirmPassword?.message}
-                            </FormErrorMessage>
-                          </FormControl>
-                        </Box>
-                      </Flex>
+                        <FormControl isInvalid={!!errors.password}>
+                          <FormLabel
+                            fontSize={"sm"}
+                            fontWeight={"semibold"}
+                            color={"rgb(27,65,114,0.8)"}
+                          >
+                            Password
+                          </FormLabel>
+                          <InputGroup>
+                            <Input
+                              {...register("password", {
+                                required: "Password harus diisi",
+                                minLength: {
+                                  value: 8,
+                                  message: "Password minimum 8 karakter",
+                                },
+                              })}
+                              w={"full"}
+                              type={showPassword ? "text" : "password"}
+                              rounded={"full"}
+                              borderColor={"#E2E8F0"}
+                              borderWidth={"2px"}
+                            />
+                            <InputRightElement py={"1.25em"} width="4.5rem">
+                              <Button
+                                variant={"none"}
+                                onClick={handleShowPassword}
+                              >
+                                {showPassword ? (
+                                  <Icon as={BiShow} boxSize={5} />
+                                ) : (
+                                  <Icon as={BiHide} boxSize={5} />
+                                )}
+                              </Button>
+                            </InputRightElement>
+                          </InputGroup>
+                          <FormErrorMessage>
+                            {errors.password?.message}
+                          </FormErrorMessage>
+                        </FormControl>
+                        <FormControl isInvalid={!!errors.confirmPassword}>
+                          <FormLabel
+                            fontSize={"sm"}
+                            fontWeight={"semibold"}
+                            color={"rgb(27,65,114,0.8)"}
+                          >
+                            Konfirmasi Password
+                          </FormLabel>
+                          <InputGroup>
+                            <Input
+                              {...register("confirmPassword", {
+                                required: "Konfirmasi Password harus diisi",
+                                min: {
+                                  value: 8,
+                                  message:
+                                    "Konfirmasi Password minimum 8 karakter",
+                                },
+                                validate: (value) =>
+                                  value === getValues("password") ||
+                                  "Konfirmasi Password tidak sama dengan Password",
+                              })}
+                              w={"full"}
+                              type={showConfirmPassword ? "text" : "password"}
+                              rounded={"full"}
+                              borderColor={"#E2E8F0"}
+                              borderWidth={"2px"}
+                            />
+                            <InputRightElement py={"1.25em"} width="4.5rem">
+                              <Button
+                                variant={"none"}
+                                onClick={handleShowConfirmPassword}
+                              >
+                                {showConfirmPassword ? (
+                                  <Icon as={BiShow} boxSize={5} />
+                                ) : (
+                                  <Icon as={BiHide} boxSize={5} />
+                                )}
+                              </Button>
+                            </InputRightElement>
+                          </InputGroup>
+                          <FormErrorMessage>
+                            {errors.confirmPassword?.message}
+                          </FormErrorMessage>
+                        </FormControl>
+                      </Stack>
                     </Stack>
                   </>
                 ) : (
                   <>
                     <Stack w={"full"} spacing={"1em"}>
-                      <Stack w={"full"} direction={"row"} spacing={"1em"}>
-                        <Box w={"65%"}>
+                      <Stack
+                        w={"full"}
+                        direction={["column", "column", "column", "row", "row"]}
+                        spacing={"1em"}
+                      >
+                        <Box w={["full", "full", "full", "65%", "65%"]}>
                           <FormControl isInvalid={!!errors.prodi}>
                             <FormLabel
                               fontSize={"sm"}
@@ -453,7 +486,7 @@ export default function Signup() {
                             </FormErrorMessage>
                           </FormControl>
                         </Box>
-                        <Box w={"45%"}>
+                        <Box w={["full", "full", "full", "45%", "45%"]}>
                           <FormControl isInvalid={!!errors.angkatan}>
                             <FormLabel
                               fontSize={"sm"}
@@ -494,8 +527,12 @@ export default function Signup() {
                           </FormControl>
                         </Box>
                       </Stack>
-                      <Stack w={"full"} direction={"row"} spacing={"1em"}>
-                        <Box w={"65%"}>
+                      <Stack
+                        w={"full"}
+                        direction={["column", "column", "column", "row", "row"]}
+                        spacing={"1em"}
+                      >
+                        <Box w={["full", "full", "full", "65%", "65%"]}>
                           <FormControl isInvalid={!!errors.whatsapp}>
                             <FormLabel
                               fontSize={"sm"}
@@ -522,7 +559,7 @@ export default function Signup() {
                             </FormErrorMessage>
                           </FormControl>
                         </Box>
-                        <Box w={"45%"}>
+                        <Box w={["full", "full", "full", "45%", "45%"]}>
                           <FormControl isInvalid={!!errors.idLine}>
                             <FormLabel
                               fontSize={"sm"}
@@ -550,7 +587,7 @@ export default function Signup() {
                   </>
                 )}
               </Center>
-              <Center w={"full"} h={"auto"} mt={"auto"}>
+              <Center w={"full"} h={"auto"} mt={"2em"}>
                 {!isSelanjutnya ? (
                   <>
                     <Button
