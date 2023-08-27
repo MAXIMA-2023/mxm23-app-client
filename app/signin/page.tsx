@@ -5,7 +5,23 @@ import React, { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 
 //importing chakra ui components
-import { Box, Flex, Center, Text, Button, Stack, Image, FormControl, FormLabel, Input, InputGroup, InputLeftAddon, FormErrorMessage, InputRightElement, Icon } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Center,
+  Text,
+  Button,
+  Stack,
+  Image,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  FormErrorMessage,
+  InputRightElement,
+  Icon,
+} from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useSession, signIn } from "next-auth/react";
 import Swal from "sweetalert2";
@@ -28,6 +44,7 @@ export default function Signin() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<LoginData>();
 
   useEffect(() => {
@@ -42,11 +59,31 @@ export default function Signin() {
 
   return (
     <>
-      <Layout title={"MAXIMA 2023 - Sign In"} showNavbar={false} showLogoHeader showTitleFooter>
-        <Center display={["block", "block", "flex"]} w={"full"} h={["auto", "auto", "100vh"]} py={["0em", "2em", "27.5em", "0em"]} mt={["2em", "0em"]} mb={["5em", "0em"]}>
-          <Stack w={["full", "full", "80%"]} h={"auto"} direction={"row"} spacing={"3em"}>
+      <Layout
+        title={"MAXIMA 2023 - Sign In"}
+        showNavbar={false}
+        showLogoHeader
+        showTitleFooter
+      >
+        <Center
+          display={["block", "block", "flex"]}
+          w={"full"}
+          h={["auto", "auto", "100vh"]}
+          py={["0em", "2em", "27.5em", "0em"]}
+          mt={["2em", "0em"]}
+          mb={["5em", "0em"]}
+        >
+          <Stack
+            w={["full", "full", "80%"]}
+            h={"auto"}
+            direction={"row"}
+            spacing={"3em"}
+          >
             <Center display={["none", "none", "none", "flex"]} w={"65%"}>
-              <Image src={"./assets/signin/MaximaBG_Signin_Desktop.svg"} alt={"MAXIMA Logo"} />
+              <Image
+                src={"./assets/signin/MaximaBG_Signin_Desktop.svg"}
+                alt={"MAXIMA Logo"}
+              />
             </Center>
             <Box
               w={["full", "full", "full", "35%"]}
@@ -59,11 +96,21 @@ export default function Signin() {
               borderRadius={"lg"}
             >
               <Box mb={"2em"}>
-                <Text fontSize={"3xl"} fontWeight={"bold"} color={"#1B4173"} align={"center"}>
+                <Text
+                  fontSize={"3xl"}
+                  fontWeight={"bold"}
+                  color={"#1B4173"}
+                  align={"center"}
+                >
                   Masuk
                 </Text>
                 <Box>
-                  <Text fontSize={"md"} fontWeight={"medium"} color={"#1B4173"} align={"center"}>
+                  <Text
+                    fontSize={"md"}
+                    fontWeight={"medium"}
+                    color={"#1B4173"}
+                    align={"center"}
+                  >
                     Belum punya akun?{" "}
                     <Link href={"/signup"}>
                       <span
@@ -79,8 +126,18 @@ export default function Signin() {
                     </Link>
                   </Text>
                 </Box>
-                <Center display={["flex", "flex", "flex", "none"]} w={"full"} my={"2em"}>
-                  <Image w={"full"} h={"10em"} src={""} bgColor={"grey"} alt={""}/>
+                <Center
+                  display={["flex", "flex", "flex", "none"]}
+                  w={"full"}
+                  my={"2em"}
+                >
+                  <Image
+                    w={"full"}
+                    h={"10em"}
+                    src={""}
+                    bgColor={"grey"}
+                    alt={""}
+                  />
                 </Center>
               </Box>
               <form
@@ -124,23 +181,36 @@ export default function Signin() {
                 <Stack direction={"column"} spacing={"1.5em"}>
                   <Box>
                     <FormControl isInvalid={!!errors.nim}>
-                      <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
+                      <FormLabel
+                        fontSize={"sm"}
+                        fontWeight={"semibold"}
+                        color={"rgb(27,65,114,0.8)"}
+                      >
                         NIM
                       </FormLabel>
                       <InputGroup>
-                        <InputLeftAddon py={"1.5em"} rounded={"3xl"} bg={"#F7B70C"} textColor={"#FFFFFF"} fontWeight={"semibold"} fontSize={"sm"}>
-                          000000
+                        <InputLeftAddon
+                          py={"1.5em"}
+                          rounded={"3xl"}
+                          bg={"#F7B70C"}
+                          textColor={"#FFFFFF"}
+                          fontWeight={"semibold"}
+                          fontSize={"sm"}
+                        >
+                          {watch("nim", 11111).toString().length < 6
+                            ? "000000"
+                            : "00000"}
                         </InputLeftAddon>
                         <Input
                           {...register("nim", {
                             required: "NIM harus diisi",
                             min: {
                               value: 10000,
-                              message: "NIM harus 5 digit",
+                              message: "NIM harus 5/6 digit",
                             },
-                            maxLength: {
-                              value: 99999,
-                              message: "NIM harus 5 digit",
+                            max: {
+                              value: 999999,
+                              message: "NIM harus 5/6 digit",
                             },
                             valueAsNumber: true,
                           })}
@@ -156,7 +226,11 @@ export default function Signin() {
                   </Box>
                   <Box>
                     <FormControl isInvalid={!!errors.password}>
-                      <FormLabel fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
+                      <FormLabel
+                        fontSize={"sm"}
+                        fontWeight={"semibold"}
+                        color={"rgb(27,65,114,0.8)"}
+                      >
                         Password
                       </FormLabel>
                       <InputGroup>
@@ -176,13 +250,24 @@ export default function Signin() {
                         />
                         <InputRightElement py={"1.25em"} width="4.5rem">
                           <Button variant={"none"} onClick={handleShowPassword}>
-                            {showPassword ? <Icon as={BiShow} boxSize={5} /> : <Icon as={BiHide} boxSize={5} />}
+                            {showPassword ? (
+                              <Icon as={BiShow} boxSize={5} />
+                            ) : (
+                              <Icon as={BiHide} boxSize={5} />
+                            )}
                           </Button>
                         </InputRightElement>
                       </InputGroup>
-                      <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
+                      <FormErrorMessage>
+                        {errors.password?.message}
+                      </FormErrorMessage>
                     </FormControl>
-                    <Text mt={"0.5em"} fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
+                    <Text
+                      mt={"0.5em"}
+                      fontSize={"sm"}
+                      fontWeight={"semibold"}
+                      color={"rgb(27,65,114,0.8)"}
+                    >
                       Lupa kata sandimu?{" "}
                       <Link href={"/forgot-password"}>
                         <span
@@ -200,7 +285,16 @@ export default function Signin() {
                   </Box>
                 </Stack>
                 <Center mt={"2em"}>
-                  <Button type={"submit"} w={["full", "full", "10em"]} py={"1.5em"} rounded={"full"} bg={"#F7B70C"} color={"#FFFFFF"} fontWeight={"bold"} _hover={{ bg: "#C89E30" }}>
+                  <Button
+                    type={"submit"}
+                    w={["full", "full", "10em"]}
+                    py={"1.5em"}
+                    rounded={"full"}
+                    bg={"#F7B70C"}
+                    color={"#FFFFFF"}
+                    fontWeight={"bold"}
+                    _hover={{ bg: "#C89E30" }}
+                  >
                     MASUK
                   </Button>
                 </Center>
