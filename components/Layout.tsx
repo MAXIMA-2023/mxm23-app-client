@@ -34,8 +34,8 @@ export default function Layout({
       {showLogoHeader && (
         <Center w={"full"} h={"auto"} position={["relative", "relative", "absolute"]} top={["3vh"]}>
           <Link href={"/"}>
-            <Image display={["none", "flex"]} w={"10em"} src={"./assets/MaximaLogo_Desktop.svg"} alt={"MAXIMA Logo"} />
-            <Image display={["flex", "none"]} w={"2.5em"} src={"./assets/MaximaLogo_Mobile.svg"} alt={"MAXIMA Logo"} />
+            <Image display={["none", "flex"]} w={"10em"} src={"../assets/MaximaLogo_Desktop.svg"} alt={"MAXIMA Logo"} />
+            <Image display={["flex", "none"]} w={"2.5em"} src={"../assets/MaximaLogo_Mobile.svg"} alt={"MAXIMA Logo"} />
           </Link>
         </Center>
       )}
