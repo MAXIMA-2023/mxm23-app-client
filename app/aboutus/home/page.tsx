@@ -15,13 +15,23 @@ const HoME: NextPage = () => {
     <Layout title={"MAXIMA 2023 - About Us (HoME)"} backButton>
       <Flex
         minH={"100vh"}
-        bgImage={["../assets/MaximaBG_AboutUs_Mobile.svg", "../assets/MaximaBG_AboutUs_Mobile.svg", "../assets/MaximaBG_AboutUs_Mobile.svg", "../assets/MaximaBG_AboutUs_Desktop.svg", "../assets/MaximaBG_AboutUs_Desktop.svg"]}
+        bgImage={[
+          "../assets/MaximaBG_AboutUs_Mobile.svg",
+          "../assets/MaximaBG_AboutUs_Mobile.svg",
+          "../assets/MaximaBG_AboutUs_Mobile.svg",
+          "../assets/MaximaBG_AboutUs_Desktop.svg",
+          "../assets/MaximaBG_AboutUs_Desktop.svg",
+        ]}
         bgPosition={["center", "bottom", "bottom", "bottom"]}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}
       >
         <Box w={"full"} zIndex={"0"}>
-          <Box display={["block", "block", "block", "none", "none"]} position={"absolute"} bottom={0}>
+          <Box
+            display={["block", "block", "block", "none", "none"]}
+            position={"absolute"}
+            bottom={0}
+          >
             {/* Image BG Mobile */}
           </Box>
           <Center>
@@ -38,18 +48,45 @@ const HoME: NextPage = () => {
               <Center w={"100%"} h={["100%"]}>
                 <Box>
                   <Center mt={"0em"}>
-                    <Img src={"../assets/aboutus/AboutUs_Home.svg"} w={["12.5em", "10em", "20em", "20em", "auto"]}></Img>
+                    <Img
+                      src={"../assets/aboutus/AboutUs_Home.svg"}
+                      w={["12.5em", "10em", "20em", "20em", "auto"]}
+                    ></Img>
                   </Center>
                   <Center display={["none", "block"]}>
-                    <Text fontSize={["md", "md", "xl", "xl", "2xl"]} color={"#1B4173"} textAlign={"center"}>
-                      <span style={{ fontWeight: "1000" }}>Hall of Maxima Exhibition (HoME) </span> merupakan pameran UKM, komunitas dan media kampus yang ada di Universitas Multimedia Nusantara. HoME bertujuan untuk memperkenalkan dan
-                      menginformasikan garis besar kegiatan serta visi misi setiap organisasi.
+                    <Text
+                      fontSize={["md", "md", "xl", "xl", "xl"]}
+                      color={"#1B4173"}
+                      textAlign={"center"}
+                    >
+                      <Text as={"span"} fontWeight={"bold"}>
+                        Hall of Maxima Exhibition (HoME){" "}
+                      </Text>{" "}
+                      merupakan kegiatan pertama yang membuka seluruh rangkaian
+                      MAXIMA berupa sebuah pameran perkenalan dari UKM,
+                      Organisasi, LSO, Media yang ada di Kampus Universitas
+                      Multimedia Nusantara. HoME bertujuan untuk menarik
+                      perhatian mahasiswa baru agar memiliki gambaran dan
+                      pengetahuan tentang UKM/Organisasi/LSO/Media Kampus yang
+                      diminati.
                     </Text>
                   </Center>
                   <Center display={["block", "none"]}>
-                    <Text fontSize={["md", "md", "lg", "xl", "2xl"]} color={"#1B4173"} textAlign={"center"}>
-                      <span style={{ fontWeight: "1000", fontSize: "17px" }}>Hall of Maxima Exhibition (HoME) </span> <br /> merupakan pameran UKM, komunitas dan media kampus yang ada di Universitas Multimedia Nusantara. <br /> <br /> HoME
-                      bertujuan untuk memperkenalkan dan menginformasikan garis besar kegiatan serta visi misi setiap organisasi.
+                    <Text
+                      fontSize={["md", "md", "lg", "xl", "2xl"]}
+                      color={"#1B4173"}
+                      textAlign={"center"}
+                    >
+                      <Text as={"span"} fontWeight={"bold"}>
+                        Hall of Maxima Exhibition (HoME){" "}
+                      </Text>{" "}
+                      merupakan kegiatan pertama yang membuka seluruh rangkaian
+                      MAXIMA berupa sebuah pameran perkenalan dari UKM,
+                      Organisasi, LSO, Media yang ada di Kampus Universitas
+                      Multimedia Nusantara. HoME bertujuan untuk menarik
+                      perhatian mahasiswa baru agar memiliki gambaran dan
+                      pengetahuan tentang UKM/Organisasi/LSO/Media Kampus yang
+                      diminati.
                     </Text>
                   </Center>
                 </Box>
