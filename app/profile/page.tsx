@@ -62,7 +62,7 @@ export default function Profile() {
         p={["none", "none", "none", "1em", "1em"]}
         justifyContent={"center"}
         alignItems={"center"}
-        bgImage={["none", "none", "none", "/assets/profile/MaximaBG_Profile_Desktop.svg", "/assets/profile/MaximaBG_Profile_Desktop.svg"]}
+        bgImage={["none", "none", "none", "./assets/profile/MaximaBG_Profile_Desktop.svg", "./assets/profile/MaximaBG_Profile_Desktop.svg"]}
         bgPosition={"center"}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}

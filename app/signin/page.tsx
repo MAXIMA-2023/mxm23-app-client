@@ -80,7 +80,7 @@ export default function Signin() {
                   </Text>
                 </Box>
                 <Center display={["flex", "flex", "flex", "none"]} w={"full"} my={"2em"}>
-                  <Image w={"full"} h={"10em"} src={""} bgColor={"grey"} />
+                  <Image w={"full"} h={"10em"} src={""} bgColor={"grey"} alt={""}/>
                 </Center>
               </Box>
               <form

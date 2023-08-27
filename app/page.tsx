@@ -15,7 +15,7 @@ export default function App() {
           p={"1em"}
           justifyContent={"center"}
           alignItems={"center"}
-          bgImage={["/assets/MaximaBG_Mobile.svg", "/assets/MaximaBG_Desktop.svg", "/assets/MaximaBG_Mobile.svg", "/assets/MaximaBG_Desktop.svg"]}
+          bgImage={["./assets/MaximaBG_Mobile.svg", "./assets/MaximaBG_Desktop.svg", "./assets/MaximaBG_Mobile.svg", "./assets/MaximaBG_Desktop.svg"]}
           bgPosition={"bottom"}
           bgSize={"cover"}
           bgRepeat={"no-repeat"}
