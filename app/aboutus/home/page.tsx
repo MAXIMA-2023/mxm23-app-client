@@ -15,7 +15,7 @@ const HoME: NextPage = () => {
     <Layout title={"MAXIMA 2023 - About Us (HoME)"} backButton>
       <Flex
         minH={"100vh"}
-        bgImage={["../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg", "../Assets/BG_MaximaD.svg"]}
+        bgImage={["../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg"]}
         bgPosition={["center", "bottom", "bottom", "bottom"]}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}
@@ -38,7 +38,7 @@ const HoME: NextPage = () => {
               <Center w={"100%"} h={["100%"]}>
                 <Box>
                   <Center mt={"0em"}>
-                    <Img src={"/Assets/aboutus/AboutUs_Home.svg"} w={["12.5em", "10em", "20em", "20em", "auto"]}></Img>
+                    <Img src={"../assets/aboutus/AboutUs_Home.svg"} w={["12.5em", "10em", "20em", "20em", "auto"]}></Img>
                   </Center>
                   <Center display={["none", "block"]}>
                     <Text fontSize={["md", "md", "xl", "xl", "2xl"]} color={"#1B4173"} textAlign={"center"}>
