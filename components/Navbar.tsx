@@ -93,7 +93,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
           >
             <Flex alignItems={"center"}>
               <Link href={"/"}>
-                <Image w={"10em"} h={"full"} src={"/assets/MaximaLogo_Navbar.svg"} alt={"Maxima Logo"} objectFit={"cover"} />
+                <Image w={"10em"} h={"full"} src={"./assets/MaximaLogo_Navbar.svg"} alt={"Maxima Logo"} objectFit={"cover"} />
               </Link>
               <Box ml={["2em", "2em", "2em", "3em", "4.5em"]}>
                 <Stack direction={"row"} spacing={["2em", "2em", "2em", "2em", "4em"]}>
@@ -245,7 +245,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
             <>
               <Center w={"full"}>
                 <Link href={"/"}>
-                  <Image w={"8em"} src={"/assets/MaximaLogo_Navbar.svg"} alt={"MAXIMA Logo"} />
+                  <Image w={"8em"} src={"./assets/MaximaLogo_Navbar.svg"} alt={"MAXIMA Logo"} />
                 </Link>
               </Center>
             </>
