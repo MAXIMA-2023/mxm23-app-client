@@ -114,7 +114,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                         isDisabled={!data.toggle}
                         key={index}
                       >
-                        <Tooltip label={`${data.name} belum dibuka`} isDisabled={data.toggle} rounded={"full"} bgColor={"#1B4173"}>
+                        <Tooltip label={`${data.name} akan datang!`} isDisabled={data.toggle} rounded={"full"} bgColor={"#1B4173"}>
                           {data.name}
                         </Tooltip>
                       </Button>
@@ -364,7 +364,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                   p={"0em"}
                   isDisabled={!data.toggle}
                 >
-                  <Tooltip label={`${data.name} belum dibuka`} isDisabled={data.toggle} rounded={"full"} bgColor={"#1B4173"}>
+                  <Tooltip label={`${data.name} akan datang!`} isDisabled={data.toggle} rounded={"full"} bgColor={"#1B4173"}>
                     {data.name}
                   </Tooltip>
                 </Button>
