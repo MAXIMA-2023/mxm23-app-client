@@ -15,7 +15,7 @@ const STATE: NextPage = () => {
     <Layout title={"MAXIMA 2023 - About Us (STATE)"} backButton>
       <Flex
         minH={"100vh"}
-        bgImage={["../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg", "../assets/BG_MaximaD.svg"]}
+        bgImage={["../assets/MaximaBG_AboutUs_Mobile.svg", "../assets/MaximaBG_AboutUs_Mobile.svg", "../assets/MaximaBG_AboutUs_Mobile.svg", "../assets/MaximaBG_AboutUs_Desktop.svg", "../assets/MaximaBG_AboutUs_Desktop.svg"]}
         bgPosition={["center", "bottom", "bottom", "bottom"]}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}

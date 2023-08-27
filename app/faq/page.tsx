@@ -17,7 +17,13 @@ const FAQ: NextPage = () => {
   const [isSmallerThan320] = useMediaQuery("(max-width: 320px)");
   return (
     <Layout title={"MAXIMA 2023 - FAQ"} backButton>
-      <Flex minH={"100vh"} bgImage={["./assets/BG_MaximaD.svg", "./assets/BG_MaximaD.svg", "./assets/BG_MaximaD.svg", "./assets/BG_MaximaD.svg", "./assets/BG_MaximaD.svg"]} bgPosition={["center"]} bgSize={"cover"} bgRepeat={"no-repeat"}>
+      <Flex
+        minH={"100vh"}
+        bgImage={["./assets/MaximaBG_AboutUs_Mobile.svg", "./assets/MaximaBG_AboutUs_Mobile.svg", "./assets/MaximaBG_AboutUs_Mobile.svg", "./assets/MaximaBG_AboutUs_Desktop.svg", "./assets/MaximaBG_AboutUs_Desktop.svg"]}
+        bgPosition={["center"]}
+        bgSize={"cover"}
+        bgRepeat={"no-repeat"}
+      >
         <Box w={"full"} zIndex={"0"}>
           <Box display={isSmallerThan320 ? "none" : ["block", "none", "none", "none", "none"]} mb={["30.35rem", "45.35rem", "", "30.35rem", "30.35rem"]} position={"absolute"} bottom={0}>
             {/* Image Mobile */}
