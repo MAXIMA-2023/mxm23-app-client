@@ -55,16 +55,37 @@ const steps = [
 
 const MaximaLogo = () => {
   return (
-    <Center mt={["5vh", "5vh"]} position={["relative", "absolute"]} left={0} right={0} top={0}>
-      <Img display={["none", "block"]} src={"./assets/MaximaLogo_Desktop.svg"} w={["9rem"]} />
-      <Img display={["block", "none"]} src={"./assets/MaximaLogo_Mobile.svg"} w={["3rem"]} />
+    <Center
+      mt={["5vh", "5vh"]}
+      position={["relative", "absolute"]}
+      left={0}
+      right={0}
+      top={0}
+    >
+      <Img
+        display={["none", "block"]}
+        src={"./assets/MaximaLogo_Desktop.svg"}
+        w={["9rem"]}
+      />
+      <Img
+        display={["block", "none"]}
+        src={"./assets/MaximaLogo_Mobile.svg"}
+        w={["3rem"]}
+      />
     </Center>
   );
 };
 
 const Footer = () => {
   return (
-    <Center position={["absolute"]} left={0} right={0} bottom={[0]} mb={["5vh", "5vh"]} mt={["8vh", "0"]}>
+    <Center
+      position={["absolute"]}
+      left={0}
+      right={0}
+      bottom={[0]}
+      mb={["5vh", "5vh"]}
+      mt={["8vh", "0"]}
+    >
       <Text color={"#1B4173"} fontSize={"sm"} fontWeight={"bold"}>
         MAXIMA 2023
       </Text>
@@ -135,16 +156,29 @@ const ForgotPassword = () => {
             zIndex={1}
           >
             <Center mt={"4vh"}>
-              <Text fontSize={["3xl", "3xl", "3xl", "2xl", "3xl"]} fontWeight={"bold"} color={"#1B4173"}>
+              <Text
+                fontSize={["3xl", "3xl", "3xl", "2xl", "3xl"]}
+                fontWeight={"bold"}
+                color={"#1B4173"}
+              >
                 Ubah Kata Sandi
               </Text>
             </Center>
             <Box my={"2rem"}>
-              <Stepper size={"sm"} index={stepProgress > 1 ? 3 : stepProgress} colorScheme="facebook" color={"#1B4173"}>
+              <Stepper
+                size={"sm"}
+                index={stepProgress > 1 ? 3 : stepProgress}
+                colorScheme="facebook"
+                color={"#1B4173"}
+              >
                 {steps.map((step, index) => (
                   <Step key={index}>
                     <StepIndicator>
-                      <StepStatus complete={<StepIcon />} incomplete={<StepNumber />} active={<StepNumber />} />
+                      <StepStatus
+                        complete={<StepIcon />}
+                        incomplete={<StepNumber />}
+                        active={<StepNumber />}
+                      />
                     </StepIndicator>
 
                     <StepSeparator />
@@ -166,7 +200,10 @@ const ForgotPassword = () => {
                 <form
                   onSubmit={reqChangeForm.handleSubmit((data) =>
                     api
-                      .post<ResponseModel<undefined>>("/mahasiswa/forgot-password", data)
+                      .post<ResponseModel<undefined>>(
+                        "/mahasiswa/forgot-password",
+                        data
+                      )
                       .then((res) => {
                         Swal.fire({
                           title: "Berhasil",
@@ -179,25 +216,43 @@ const ForgotPassword = () => {
                       .catch(HandleAxiosError)
                   )}
                 >
-                  <FormControl isInvalid={!!reqChangeForm.formState.errors.nim} my={"1em"}>
-                    <FormLabel color={"#1B4173"} fontSize={"sm"} fontWeight={"semibold"} opacity={"0.9"}>
+                  <FormControl
+                    isInvalid={!!reqChangeForm.formState.errors.nim}
+                    my={"1em"}
+                  >
+                    <FormLabel
+                      color={"#1B4173"}
+                      fontSize={"sm"}
+                      fontWeight={"semibold"}
+                      opacity={"0.9"}
+                    >
                       NIM
                     </FormLabel>
                     <InputGroup>
-                      <InputLeftAddon fontSize={"sm"} m={"auto"} p={2} bgColor={"#F7B70C"} color={"white"} borderTopLeftRadius={"44px"} borderBottomLeftRadius={"44px"}>
-                        000000
+                      <InputLeftAddon
+                        fontSize={"sm"}
+                        m={"auto"}
+                        p={2}
+                        bgColor={"#F7B70C"}
+                        color={"white"}
+                        borderTopLeftRadius={"44px"}
+                        borderBottomLeftRadius={"44px"}
+                      >
+                        {reqChangeForm.watch("nim", 11111).toString().length < 6
+                          ? "000000"
+                          : "00000"}
                       </InputLeftAddon>
                       <Input
                         {...reqChangeForm.register("nim", {
                           required: "NIM harap diisi",
                           valueAsNumber: true,
-                          maxLength: {
-                            value: 5,
-                            message: "NIM harus 5 digit, kamu tidak perlu memasukkan 000000",
+                          min: {
+                            value: 10000,
+                            message: "NIM harus 5/6 digit",
                           },
-                          minLength: {
-                            value: 5,
-                            message: "NIM harus 5 digit",
+                          max: {
+                            value: 999999,
+                            message: "NIM harus 5/6 digit",
                           },
                         })}
                         size={"md"}
@@ -211,10 +266,20 @@ const ForgotPassword = () => {
                         borderRadius={"full"}
                       />
                     </InputGroup>
-                    <FormErrorMessage>{reqChangeForm.formState.errors.nim?.message}</FormErrorMessage>
+                    <FormErrorMessage>
+                      {reqChangeForm.formState.errors.nim?.message}
+                    </FormErrorMessage>
                   </FormControl>
-                  <FormControl isInvalid={!!reqChangeForm.formState.errors.email} my={"1em"}>
-                    <FormLabel color={"#1B4173"} fontSize={"sm"} fontWeight={"semibold"} opacity={"0.9"}>
+                  <FormControl
+                    isInvalid={!!reqChangeForm.formState.errors.email}
+                    my={"1em"}
+                  >
+                    <FormLabel
+                      color={"#1B4173"}
+                      fontSize={"sm"}
+                      fontWeight={"semibold"}
+                      opacity={"0.9"}
+                    >
                       Email Student
                     </FormLabel>
                     <InputGroup rounded={"2xl"}>
@@ -223,7 +288,7 @@ const ForgotPassword = () => {
                           required: "Email student harap diisi",
                           setValueAs: (value) => `${value}@student.umn.ac.id`,
                           pattern: {
-                            value: /^[a-zA-Z0-9._%+-]+@student\.umn\.ac\.id$/,
+                            value: /^(\w+(\.\w+)*)@student\.umn\.ac\.id$/gm,
                             message: "Email student tidak valid",
                           },
                         })}
@@ -237,13 +302,24 @@ const ForgotPassword = () => {
                         borderRadius={"full"}
                         // _hover={{ border: "solid #CBD5E0" }}
                       />
-                      <InputRightAddon rounded={"3xl"} bg={"#F7B70C"} textColor={"#FFFFFF"}>
+                      <InputRightAddon
+                        rounded={"3xl"}
+                        bg={"#F7B70C"}
+                        textColor={"#FFFFFF"}
+                      >
                         @student.umn.ac.id
                       </InputRightAddon>
                     </InputGroup>
-                    <FormErrorMessage>{reqChangeForm.formState.errors.email?.message}</FormErrorMessage>
+                    <FormErrorMessage>
+                      {reqChangeForm.formState.errors.email?.message}
+                    </FormErrorMessage>
                   </FormControl>
-                  <Flex w={"100%"} justifyContent={"center"} mt={"3em"} mb={"1em"}>
+                  <Flex
+                    w={"100%"}
+                    justifyContent={"center"}
+                    mt={"3em"}
+                    mb={"1em"}
+                  >
                     <Button
                       // isLoading
                       w={["full", "full", "auto"]}
@@ -266,15 +342,26 @@ const ForgotPassword = () => {
                 <form
                   onSubmit={excForm.handleSubmit((data) => {
                     api
-                      .post<ResponseModel<undefined>>("/mahasiswa/forgot-password/validate-token", { password: data.password, token: token })
+                      .post<ResponseModel<undefined>>(
+                        "/mahasiswa/forgot-password/validate-token",
+                        { password: data.password, token: token }
+                      )
                       .then((res) => {
                         setStepProgress(2);
                       })
                       .catch(HandleAxiosError);
                   })}
                 >
-                  <FormControl isInvalid={!!excForm.formState.errors.password} my={"1em"}>
-                    <FormLabel color={"#1B4173"} fontSize={"sm"} fontWeight={"semibold"} opacity={"0.9"}>
+                  <FormControl
+                    isInvalid={!!excForm.formState.errors.password}
+                    my={"1em"}
+                  >
+                    <FormLabel
+                      color={"#1B4173"}
+                      fontSize={"sm"}
+                      fontWeight={"semibold"}
+                      opacity={"0.9"}
+                    >
                       Kata sandi baru
                     </FormLabel>
                     <InputGroup>
@@ -299,23 +386,43 @@ const ForgotPassword = () => {
                         borderRadius={"full"}
                       />
                       <InputRightElement py={"1.25em"} width="4.5rem">
-                        <Button variant={"none"} color={"#1B4173"} onClick={() => setShowPassword((value) => !value)}>
-                          {showPassword ? <Icon as={BiHide} boxSize={5} /> : <Icon as={BiShow} boxSize={5} />}
+                        <Button
+                          variant={"none"}
+                          color={"#1B4173"}
+                          onClick={() => setShowPassword((value) => !value)}
+                        >
+                          {showPassword ? (
+                            <Icon as={BiHide} boxSize={5} />
+                          ) : (
+                            <Icon as={BiShow} boxSize={5} />
+                          )}
                         </Button>
                       </InputRightElement>
                     </InputGroup>
-                    <FormErrorMessage>{excForm.formState.errors.password?.message}</FormErrorMessage>
+                    <FormErrorMessage>
+                      {excForm.formState.errors.password?.message}
+                    </FormErrorMessage>
                   </FormControl>
 
-                  <FormControl isInvalid={!!excForm.formState.errors.confirmPassword} my={"1em"}>
-                    <FormLabel color={"#1B4173"} fontSize={"sm"} fontWeight={"semibold"} opacity={"0.9"}>
+                  <FormControl
+                    isInvalid={!!excForm.formState.errors.confirmPassword}
+                    my={"1em"}
+                  >
+                    <FormLabel
+                      color={"#1B4173"}
+                      fontSize={"sm"}
+                      fontWeight={"semibold"}
+                      opacity={"0.9"}
+                    >
                       Konfirmasi kata sandi baru
                     </FormLabel>
                     <InputGroup>
                       <Input
                         {...excForm.register("confirmPassword", {
                           required: "Konfirmasi kata sandi baru harus diisi",
-                          validate: (value) => value === excForm.getValues("password") || "Kata sandi tidak sama",
+                          validate: (value) =>
+                            value === excForm.getValues("password") ||
+                            "Kata sandi tidak sama",
                         })}
                         type={showPassword ? "text" : "password"}
                         size={"md"}
@@ -326,14 +433,31 @@ const ForgotPassword = () => {
                         // _hover={{ border: "solid #CBD5E0" }}
                       />
                       <InputRightElement py={"1.25em"} width="4.5rem">
-                        <Button variant={"none"} color={"#1B4173"} onClick={() => setShowConfirmPassword((value) => !value)}>
-                          {showConfirmPassword ? <Icon as={BiHide} boxSize={5} /> : <Icon as={BiShow} boxSize={5} />}
+                        <Button
+                          variant={"none"}
+                          color={"#1B4173"}
+                          onClick={() =>
+                            setShowConfirmPassword((value) => !value)
+                          }
+                        >
+                          {showConfirmPassword ? (
+                            <Icon as={BiHide} boxSize={5} />
+                          ) : (
+                            <Icon as={BiShow} boxSize={5} />
+                          )}
                         </Button>
                       </InputRightElement>
                     </InputGroup>
-                    <FormErrorMessage>{excForm.formState.errors.confirmPassword?.message}</FormErrorMessage>
+                    <FormErrorMessage>
+                      {excForm.formState.errors.confirmPassword?.message}
+                    </FormErrorMessage>
                   </FormControl>
-                  <Flex w={"100%"} justifyContent={"center"} mt={"3em"} mb={"1em"}>
+                  <Flex
+                    w={"100%"}
+                    justifyContent={"center"}
+                    mt={"3em"}
+                    mb={"1em"}
+                  >
                     <Button
                       // isLoading
                       w={["full", "full", "auto"]}
@@ -355,7 +479,13 @@ const ForgotPassword = () => {
               <Box>
                 <Text fontSize={"lg"} color={"#1B4173"}>
                   Maximers, kata sandimu telah berhasil diperbaharui{" "}
-                  <Link href={"/signin"} color={"#F7B70C"} fontWeight={"bold"} textDecoration={"underline"} cursor={"pointer"}>
+                  <Link
+                    href={"/signin"}
+                    color={"#F7B70C"}
+                    fontWeight={"bold"}
+                    textDecoration={"underline"}
+                    cursor={"pointer"}
+                  >
                     klik disini
                   </Link>{" "}
                   untuk masuk.
