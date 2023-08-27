@@ -8,13 +8,16 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/assets/MaximaLogo.png",
+  },
   description: "-",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id">
-      <link rel="icon" href="./assets/MaximaLogo_Mobile.svg" />
+      <link rel="icon" href="/assets/MaximaLogo.png" />
       <body className={poppins.className}>
         <Providers>{children}</Providers>
       </body>
