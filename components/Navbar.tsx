@@ -6,7 +6,28 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 
 //importing chakra ui components
-import { Box, Flex, Text, Stack, Button, IconButton, Image, Center, useDisclosure, Avatar, Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, Icon, Tooltip } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Text,
+  Stack,
+  Button,
+  IconButton,
+  Image,
+  Center,
+  useDisclosure,
+  Avatar,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+  Icon,
+  Tooltip,
+} from "@chakra-ui/react";
 
 //importing chakra ui icons
 
@@ -36,9 +57,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
   useEffect(() => {
     api
       .get<Toggle[]>("/toggle")
-      .then(({ data }) => {
-        setToggle(data);
-      })
+      .then(({ data }) => setToggle(data))
       .catch(HandleAxiosError);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -72,10 +91,20 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
     },
   ];
 
+  const registerToggle = toggle[0]?.toggle;
+
   const NavbarDesktop = () => {
     return (
       <>
-        <Flex w={"full"} h={"auto"} mt={"2em"} pr={["0em", "0em", "0em", "2em", "3.5em"]} position={"fixed"} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex
+          w={"full"}
+          h={"auto"}
+          mt={"2em"}
+          pr={["0em", "0em", "0em", "2em", "3.5em"]}
+          position={"fixed"}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
           <Flex
             w={"auto"}
             h={"auto"}
@@ -93,10 +122,19 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
           >
             <Flex alignItems={"center"}>
               <Link href={"/"}>
-                <Image w={"10em"} h={"full"} src={"./assets/MaximaLogo_Navbar.svg"} alt={"Maxima Logo"} objectFit={"cover"} />
+                <Image
+                  w={"10em"}
+                  h={"full"}
+                  src={"./assets/MaximaLogo_Navbar.svg"}
+                  alt={"Maxima Logo"}
+                  objectFit={"cover"}
+                />
               </Link>
               <Box ml={["2em", "2em", "2em", "3em", "4.5em"]}>
-                <Stack direction={"row"} spacing={["2em", "2em", "2em", "2em", "4em"]}>
+                <Stack
+                  direction={"row"}
+                  spacing={["2em", "2em", "2em", "2em", "4em"]}
+                >
                   {NavbarData.map((data, index) => {
                     return (
                       <Button
@@ -114,7 +152,12 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                         isDisabled={!data.toggle}
                         key={index}
                       >
-                        <Tooltip label={`${data.name} akan datang!`} isDisabled={data.toggle} rounded={"full"} bgColor={"#1B4173"}>
+                        <Tooltip
+                          label={`${data.name} akan datang!`}
+                          isDisabled={data.toggle}
+                          rounded={"full"}
+                          bgColor={"#1B4173"}
+                        >
                           {data.name}
                         </Tooltip>
                       </Button>
@@ -124,20 +167,44 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
               </Box>
             </Flex>
           </Flex>
-          <Stack ml={"2em"} direction={"row"} spacing={["2em", "2em", "2em", "1.5em", "2em"]} alignItems={"center"}>
+          <Stack
+            ml={"2em"}
+            direction={"row"}
+            spacing={["2em", "2em", "2em", "1.5em", "2em"]}
+            alignItems={"center"}
+          >
             {session.status === "authenticated" ? (
               <>
                 <Menu placement="bottom-end">
                   <MenuButton>
-                    <Stack direction={"row"} align={"center"} gap={"1em"} cursor={"pointer"}>
-                      <Text fontSize={["md", "md", "md", "md", "lg"]} fontWeight={"bold"} color={coloredName ? "#1B4173" : "white"} textShadow={"0px 4px 4px rgb(0,0,0,0.25)"}>
+                    <Stack
+                      direction={"row"}
+                      align={"center"}
+                      gap={"1em"}
+                      cursor={"pointer"}
+                    >
+                      <Text
+                        fontSize={["md", "md", "md", "md", "lg"]}
+                        fontWeight={"bold"}
+                        color={coloredName ? "#1B4173" : "white"}
+                        textShadow={"0px 4px 4px rgb(0,0,0,0.25)"}
+                      >
                         {session.data.user.name}
                       </Text>
-                      <Avatar boxSize={"2.5em"} shadow={"0px 4px 4px rgb(0,0,0,0.25)"} />
+                      <Avatar
+                        boxSize={"2.5em"}
+                        shadow={"0px 4px 4px rgb(0,0,0,0.25)"}
+                      />
                     </Stack>
                   </MenuButton>
                   <MenuList border={"none"} bgColor={"#1B4173"}>
-                    <MenuItem as={Link} href={"/profile"} bgColor={"#1B4173"} color={"white"} fontWeight={"bold"}>
+                    <MenuItem
+                      as={Link}
+                      href={"/profile"}
+                      bgColor={"#1B4173"}
+                      color={"white"}
+                      fontWeight={"bold"}
+                    >
                       <Icon as={MdPerson} />
                       <Text px={"1em"}>Profile</Text>
                     </MenuItem>
@@ -219,8 +286,9 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                       borderColor: "white",
                     }}
                     transition={"0.2s ease-in-out"}
-                    as={Link}
-                    href={"/signup"}
+                    as={registerToggle ? Link : undefined}
+                    href={registerToggle ? "/signup" : undefined}
+                    isDisabled={!registerToggle}
                   >
                     Sign Up
                   </Button>
@@ -237,15 +305,33 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
     const { isOpen, onToggle } = useDisclosure();
     return (
       <>
-        <Flex position={"fixed"} w={"full"} px={"1em"} py={"1.5em"} justifyContent={"space-between"} alignItems={"center"}>
+        <Flex
+          position={"fixed"}
+          w={"full"}
+          px={"1em"}
+          py={"1.5em"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+        >
           <Center onClick={onToggle}>
-            <IconButton variant={"unstyled"} aria-label={"Sidebar"} icon={<MdDehaze />} fontSize={"3xl"} color={"white"} textShadow={"0px 4px 4px rgb(0,0,0,0.25)"} />
+            <IconButton
+              variant={"unstyled"}
+              aria-label={"Sidebar"}
+              icon={<MdDehaze />}
+              fontSize={"3xl"}
+              color={"white"}
+              textShadow={"0px 4px 4px rgb(0,0,0,0.25)"}
+            />
           </Center>
           {session.status == "authenticated" ? (
             <>
               <Center w={"full"}>
                 <Link href={"/"}>
-                  <Image w={"8em"} src={"./assets/MaximaLogo_Navbar.svg"} alt={"MAXIMA Logo"} />
+                  <Image
+                    w={"8em"}
+                    src={"./assets/MaximaLogo_Navbar.svg"}
+                    alt={"MAXIMA Logo"}
+                  />
                 </Link>
               </Center>
             </>
@@ -256,17 +342,39 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
             {session.status === "authenticated" ? (
               <Menu placement="bottom-end">
                 <MenuButton>
-                  <Stack direction={"row"} align={"center"} gap={"1em"} cursor={"pointer"}>
-                    <Avatar boxSize={"2em"} shadow={"0px 2px 2px rgb(0,0,0,0.25)"} />
+                  <Stack
+                    direction={"row"}
+                    align={"center"}
+                    gap={"1em"}
+                    cursor={"pointer"}
+                  >
+                    <Avatar
+                      boxSize={"2em"}
+                      shadow={"0px 2px 2px rgb(0,0,0,0.25)"}
+                    />
                   </Stack>
                 </MenuButton>
                 <MenuList border={"none"} bgColor={"#1B4173"} boxShadow={"md"}>
-                  <Text textColor={"white"} fontWeight={"bold"} ml={"1em"} maxW={"12em"} textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace={"nowrap"}>
+                  <Text
+                    textColor={"white"}
+                    fontWeight={"bold"}
+                    ml={"1em"}
+                    maxW={"12em"}
+                    textOverflow={"ellipsis"}
+                    overflow={"hidden"}
+                    whiteSpace={"nowrap"}
+                  >
                     {session.data.user.name}
                   </Text>
                   <MenuDivider color={"white"} />
 
-                  <MenuItem as={Link} href={"/profile"} bgColor={"#1B4173"} color={"white"} fontWeight={"bold"}>
+                  <MenuItem
+                    as={Link}
+                    href={"/profile"}
+                    bgColor={"#1B4173"}
+                    color={"white"}
+                    fontWeight={"bold"}
+                  >
                     <Icon as={MdPerson} />
                     <Text px={"1em"}>Profile</Text>
                   </MenuItem>
@@ -348,7 +456,10 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
           // transition={{ type: "linear", duration: 0.2 }}
           zIndex={"1000"}
         >
-          <Stack direction={"column"} spacing={["1em", "1em", "2em", "2em", "4em"]}>
+          <Stack
+            direction={"column"}
+            spacing={["1em", "1em", "2em", "2em", "4em"]}
+          >
             {NavbarData.map((data, index) => {
               return (
                 <Button
@@ -364,7 +475,12 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                   p={"0em"}
                   isDisabled={!data.toggle}
                 >
-                  <Tooltip label={`${data.name} akan datang!`} isDisabled={data.toggle} rounded={"full"} bgColor={"#1B4173"}>
+                  <Tooltip
+                    label={`${data.name} akan datang!`}
+                    isDisabled={data.toggle}
+                    rounded={"full"}
+                    bgColor={"#1B4173"}
+                  >
                     {data.name}
                   </Tooltip>
                 </Button>
@@ -378,11 +494,24 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
 
   return (
     <>
-      <Flex w={"full"} h={"auto"} alignItems={"center"} justifyContent={"space-between"}>
-        <Flex w={"full"} display={["none", "none", "none", "flex"]} zIndex={"999"}>
+      <Flex
+        w={"full"}
+        h={"auto"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+      >
+        <Flex
+          w={"full"}
+          display={["none", "none", "none", "flex"]}
+          zIndex={"999"}
+        >
           <NavbarDesktop />
         </Flex>
-        <Box w={"full"} display={["flex", "flex", "flex", "none"]} zIndex={"999"}>
+        <Box
+          w={"full"}
+          display={["flex", "flex", "flex", "none"]}
+          zIndex={"999"}
+        >
           <NavbarMobile />
         </Box>
       </Flex>
