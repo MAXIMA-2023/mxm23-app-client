@@ -71,11 +71,9 @@ export default function Profile() {
           direction={["column", "column", "column", "row", "row"]}
           justify={"center"}
           align={["center", "center", "center", "start", "start"]}
-          w={"full"}
           h={"full"}
           mt={["8em", "8em", "8em", "4em", "4em"]}
           gap={["none", "none", "none", "1em", "1em"]}
-          mx={["none", "none", "none", "8em", "16em", "32em"]}
         >
           {/* QR Panel */}
           <Skeleton isLoaded={!isLoading} my={["1em", "0", "0", "0", "0"]}>
