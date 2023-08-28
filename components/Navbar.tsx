@@ -357,19 +357,19 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
           position={"fixed"}
           w={"auto"}
           h={"auto"}
-          top={"6em"}
+          top={["6em", "5em", "6em"]}
           animate={isOpen ? "open" : "closed"}
           variants={{
             open: { opacity: 1, x: 0 },
             closed: { opacity: 0, x: "-100%" },
           }}
+          initial={"closed"}
           bgColor={"#1B4173"}
           p={"1.5em"}
           borderEndRadius={"3xl"}
-          // transition={{ type: "linear", duration: 0.2 }}
           zIndex={"1000"}
         >
-          <Stack direction={"column"} spacing={["1em", "1em", "2em", "2em", "4em"]}>
+          <Stack direction={"column"} spacing={["1em", "0em", "2em", "2em", "4em"]}>
             {NavbarData.map((data, index) => {
               return (
                 <Button
