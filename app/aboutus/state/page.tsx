@@ -29,7 +29,8 @@ const STATE: NextPage = () => {
               p={["1em 2em", "3em 5em", "3em 3em", "3em 4em", "4em 5em"]}
               mt={["17.5vh", "17.5vh", "16vh", "17vh", "14vh"]}
               w={["85%", "85%", "85%", "55%", "55%"]}
-              h={["77vh", "81vh", "77vh", "81vh", "83vh"]}
+              h={"auto"}
+              minH={["77vh", "auto", "76vh", "81vh", "83vh"]}
               bgColor={"white"}
               borderRadius={"xl"}
               boxShadow={"0px 3px 3px 3px rgb(0,0,0,0.25)"}
