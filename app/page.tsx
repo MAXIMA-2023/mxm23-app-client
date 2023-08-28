@@ -2,6 +2,7 @@
 import React from "react";
 import Layout from "@/components/Layout";
 import { Flex, Text, Box, Center, Button, Image } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function App() {
@@ -15,12 +16,7 @@ export default function App() {
           p={"1em"}
           justifyContent={"center"}
           alignItems={"center"}
-          bgImage={[
-            "./assets/MaximaBG_Mobile.svg",
-            "./assets/MaximaBG_Desktop.svg",
-            "./assets/MaximaBG_Mobile.svg",
-            "./assets/MaximaBG_Desktop.svg",
-          ]}
+          bgImage={["./assets/MaximaBG_Mobile.svg", "./assets/MaximaBG_Desktop.svg", "./assets/MaximaBG_Mobile.svg", "./assets/MaximaBG_Desktop.svg"]}
           bgPosition={"bottom"}
           bgSize={"cover"}
           bgRepeat={"no-repeat"}
@@ -28,12 +24,7 @@ export default function App() {
           <Box w={"100%"} h={["80vh", "100vh", "65vh"]}>
             <Box display={["block", "none"]} mt={"5em"} mb={"1em"}>
               <Center>
-                <Box
-                  boxShadow={"2px 4px 4px rgb(0,0,0,0.25)"}
-                  p={"1em"}
-                  rounded={"full"}
-                  bgColor={"white"}
-                >
+                <Box as={motion.div} boxShadow={"2px 4px 4px rgb(0,0,0,0.25)"} p={"1em"} rounded={"full"} bgColor={"white"} initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1, transition: { delay: 0.5, type: "spring" } }}>
                   <Image
                     boxSize={"5em"}
                     src={"./assets/MaximaLogo_Mobile.svg"}
@@ -43,40 +34,36 @@ export default function App() {
                 </Box>
               </Center>
             </Box>
-            <Box
-              mt={["0em", "5em", "0em"]}
-              lineHeight={["3.5em", "3.5em", "5em"]}
-            >
+            <Box mt={["0em", "5em", "0em"]} lineHeight={["3.5em", "3.5em", "5em"]}>
               <Text
+                as={motion.div}
                 fontSize={["4xl", "4xl", "7xl"]}
                 fontWeight={["extrabold", "bold"]}
                 color={"white"}
                 align={"center"}
                 textTransform={["none", "none", "uppercase"]}
-                textShadow={[
-                  "3px 4px 4px rgb(0,0,0,0.25)",
-                  "3px 4px 4px rgb(0,0,0,0.25)",
-                  "0px 4px 4px rgb(0,0,0,0.25)",
-                ]}
+                textShadow={["3px 4px 4px rgb(0,0,0,0.25)", "3px 4px 4px rgb(0,0,0,0.25)", "0px 4px 4px rgb(0,0,0,0.25)"]}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1, transition: { delay: 1, type: "spring" } }}
               >
                 Selamat Datang,
               </Text>
               <Text
+                as={motion.div}
                 fontSize={"5xl"}
                 fontWeight={"bold"}
                 color={"white"}
                 align={"center"}
-                textShadow={[
-                  "3px 4px 4px rgb(0,0,0,0.25)",
-                  "3px 4px 4px rgb(0,0,0,0.25)",
-                  "0px 4px 4px rgb(0,0,0,0.25)",
-                ]}
+                textShadow={["3px 4px 4px rgb(0,0,0,0.25)", "3px 4px 4px rgb(0,0,0,0.25)", "0px 4px 4px rgb(0,0,0,0.25)"]}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1, transition: { delay: 1.3, type: "spring" } }}
               >
                 MAXIMERS!
               </Text>
             </Box>
             <Center>
               <Button
+                as={motion.div}
                 position={"absolute"}
                 bottom={"10vh"}
                 w={["7em", "7em", "10em"]}
@@ -88,6 +75,9 @@ export default function App() {
                 color={"#062D5F"}
                 borderRadius={"full"}
                 fontWeight={"black"}
+                _hover={{ bgColor: "#C89E30", cursor: "pointer" }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1, transition: { delay: 1.6, type: "spring" } }}
               >
                 <Link href={"/home"}>START</Link>
               </Button>
