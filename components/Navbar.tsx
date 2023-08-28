@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -10,10 +10,12 @@ import { Box, Flex, Text, Stack, Button, IconButton, Image, Center, useDisclosur
 
 //importing chakra ui icons
 
-import { motion } from "framer-motion";
 import { MdDehaze, MdLogout, MdPerson } from "react-icons/md";
 import Swal from "sweetalert2";
 import { HandleAxiosError, useApi } from "@/services/api";
+
+//importing framer motion
+import { motion } from "framer-motion";
 
 type NavbarData = {
   name: string;
@@ -75,7 +77,24 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
   const NavbarDesktop = () => {
     return (
       <>
-        <Flex w={"full"} h={"auto"} mt={"2em"} pr={["0em", "0em", "0em", "2em", "3.5em"]} position={"fixed"} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex
+          as={motion.div}
+          w={"full"}
+          h={"auto"}
+          mt={"-10em"}
+          pr={["0em", "0em", "0em", "2em", "3.5em"]}
+          position={"fixed"}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          animate={{
+            marginTop: "2em",
+            transition: {
+              duration: 0.8,
+              type: "spring",
+              bounce: 0.15,
+            },
+          }}
+        >
           <Flex
             w={"auto"}
             h={"auto"}
@@ -236,9 +255,10 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
 
   const NavbarMobile = () => {
     const { isOpen, onToggle } = useDisclosure();
+    const pathname = usePathname();
     return (
       <>
-        <Flex position={"fixed"} w={"full"} px={"1em"} py={"1.5em"} justifyContent={"space-between"} alignItems={"center"}>
+        <Flex position={"fixed"} w={"full"} px={"1em"} py={"1.5em"} justifyContent={"space-between"} alignItems={"center"} bgColor={pathname == "/profile" ? "#F7B70C" : "none"}>
           <Center onClick={onToggle}>
             <IconButton variant={"unstyled"} aria-label={"Sidebar"} icon={<MdDehaze />} fontSize={"3xl"} color={"white"} textShadow={"0px 4px 4px rgb(0,0,0,0.25)"} />
           </Center>
