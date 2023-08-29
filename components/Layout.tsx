@@ -39,7 +39,7 @@ export default function Layout({
           </Link>
         </Center>
       )}
-      <Box w={"full"} h={"auto"} maxW={"full"} overflow={"hidden"}>
+      <Box w={"full"} h={"auto"}>
         {children}
         {backButton && <BackButton bgColor={`${backbuttonBgColor}`} />}
       </Box>

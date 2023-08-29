@@ -161,6 +161,8 @@ export default function Home() {
         bgPosition={["bottom", "bottom", "top"]}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}
+        maxW={"full"}
+        overflow={"hidden"} 
       >
         <Box pt={["11em", "11em", "18vh", "8em", "9em"]} mx={["1em", "1em", "3em", "3em", "9em"]} textAlign={"right"}>
           <Box textColor={"#FF6835"}>

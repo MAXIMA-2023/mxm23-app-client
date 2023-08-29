@@ -75,7 +75,7 @@ const AboutUs: NextPage = () => {
             <Box
               p={["1em 0.5em", "1em 0.5em", "1.5em 3em", "1em 3em", "4em 4em"]}
               mt={["17.5vh", "17.5vh", "16vh", "17vh", "14vh"]}
-              mb={["0", "3em", "0"]}
+              mb={"3em"}
               w={["85%", "85%", "85%", "55%", "55%"]}
               h={"auto"}
               minH={["77vh", "auto", "76vh", "81vh", "83vh"]}
