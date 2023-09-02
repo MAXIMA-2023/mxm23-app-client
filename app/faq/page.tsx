@@ -61,16 +61,50 @@ const FAQ: NextPage = () => {
                       <TabPanel mt={"1em"} h={"auto"} overflow={"auto"}>
                         <Stack spacing={[2, 2, 2, 2, 3]}>
                           <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Apa itu HoME?
+                          </Text>
+                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                            HoME merupakan kegiatan exhibition atau pameran berbagai organisasi di UMN, seperti Unit Kegiatan Mahasiswa, Lembaga Semi Otonom (LSO), Lembaga Kampus, Himpunan, Media
+                            Kampus, dan sebagainya. Pameran tersebut terdiri dari penjelasan organisasi, foto-foto organisasi, prestasi organisasi, serta berbagai kegiatan menarik.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Ada apa saja di HoME?
+                          </Text>
+                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                            Pameran 61 organisasi, Challenge MAXPRESSION, dan Photo Spot.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
                             Kapan HoME Maxima 2023 akan dilaksanakan?
                           </Text>
                           <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
-                            11-15 September 2023
+                            11-15 September 2023.
                           </Text>
                         </Stack>
-                        <Box mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                        <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Ikut HoME dapat SKKM atau tidak?
+                          </Text>
+                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                            MAXIMERS bisa mendapatkan SKKM apabila mengikuti challenge 
+                            <span
+                                    style={{
+                                      fontWeight: "bold",
+                                      color: "#D01E20",
+                                    }}
+                                  >
+                                    {" "}
+                                    MAXPRESSION.
+                                  </span>
+                          </Text>
+                        </Stack>
+                        {/* <Box mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
                           <Text>
                             <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
-                              Bagaimana tata cara mengakses HoME MAXIMA 2023?
+                              Apa itu HoME?
                             </Text>
                             <OrderedList mt={"0.5em"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} color={"#1B4173"} spacing={3}>
                               <ListItem>
@@ -100,7 +134,7 @@ const FAQ: NextPage = () => {
                               </ListItem>
                             </OrderedList>
                           </Text>
-                        </Box>
+                        </Box> */}
                       </TabPanel>
                       <TabPanel>
                         <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
@@ -132,13 +166,47 @@ const FAQ: NextPage = () => {
                       <TabPanel h={"auto"} overflow={"auto"}>
                         <Stack spacing={[1, 1, 2, 2, 3]}>
                           <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Apa itu HoME?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                            HoME merupakan kegiatan exhibition atau pameran berbagai organisasi di UMN, seperti Unit Kegiatan Mahasiswa, Lembaga Semi Otonom (LSO), Lembaga Kampus, Himpunan, Media
+                            Kampus, dan sebagainya. Pameran tersebut terdiri dari penjelasan organisasi, foto-foto organisasi, prestasi organisasi, serta berbagai kegiatan menarik.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Ada apa saja di HoME?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                            Pameran 61 organisasi, Challenge MAXPRESSION, dan Photo Spot.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
                             Kapan HoME Maxima 2023 akan dilaksanakan?
                           </Text>
                           <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
-                            11-15 September2023
+                            11-15 September 2023.
                           </Text>
                         </Stack>
-                        <Box mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Ikut HoME dapat SKKM atau tidak?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.2vh", "sm", "lg"]}>
+                            MAXIMERS bisa mendapatkan SKKM apabila mengikuti challenge 
+                            <span
+                              style={{
+                              fontWeight: "bold",
+                              color: "#D01E20",
+                              }}
+                            >
+                            {" "}
+                              MAXPRESSION.
+                            </span>
+                          </Text>
+                        </Stack>
+                        {/* <Box mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
                           <Text>
                             <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
                               Bagaimana tata cara mengakses HoME MAXIMA 2023?
@@ -171,7 +239,7 @@ const FAQ: NextPage = () => {
                               </ListItem>
                             </OrderedList>
                           </Text>
-                        </Box>
+                        </Box> */}
                       </TabPanel>
                       <TabPanel h={"23em"} overflow={"auto"}>
                         <p>COMING SOON!</p>
