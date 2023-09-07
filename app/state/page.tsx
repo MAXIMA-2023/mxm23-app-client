@@ -7,7 +7,27 @@ import Layout from "@/components/Layout";
 import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
-import { Box, Flex, Center, Heading, Text, Button, Stack, Img, HStack, Icon, Image, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Center,
+  Heading,
+  Text,
+  Button,
+  Stack,
+  Img,
+  HStack,
+  Icon,
+  Image,
+  IconButton,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BsPlus, BsTrash, BsTrashFill } from "react-icons/bs";
@@ -15,6 +35,8 @@ import Swal from "sweetalert2";
 import { HandleAxiosError, ResponseModel, useApi } from "@/services/api";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 type StateReg = {
   stateID: number;
@@ -39,7 +61,7 @@ const STATE = () => {
   const [dataState, setDataState] = useState<StateReg[]>([]);
   const [selectedItem, setSelectedItem] = useState<StateReg | null>(null);
   const [toggle, setToggle] = useState<Toggle[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const pilihStateRef = useRef<HTMLDivElement>(null);
   const today = new Date();
@@ -84,7 +106,9 @@ const STATE = () => {
 
   const fetchStateReg = async () => {
     try {
-      const { data } = await api.get<ResponseModel<StateReg[]>>(`/state/regData`);
+      const { data } = await api.get<ResponseModel<StateReg[]>>(
+        `/state/regData`
+      );
       setDataState(data.data!);
     } catch (error) {
       HandleAxiosError(error);
@@ -93,14 +117,18 @@ const STATE = () => {
 
   useEffect(() => {
     if (session.status === "authenticated") {
-      Promise.all([fetchToggle(), fetchStateReg()]).finally(() => setIsLoading(false));
+      Promise.all([fetchToggle(), fetchStateReg()]).finally(() =>
+        setIsLoading(false)
+      );
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
   // toggles
-  const stateRegToggle = toggle.find((v) => v.name === "stateRegistration")?.toggle;
+  const stateRegToggle = toggle.find(
+    (v) => v.name === "stateRegistration"
+  )?.toggle;
 
   const STATEButton = ({ data }: { data?: StateReg }) => {
     const stateDate = Date.parse(data?.date!);
@@ -112,7 +140,7 @@ const STATE = () => {
         position={"relative"}
         display={"flex"}
         flexDir={"column"}
-        boxSize={["8em", "8em", "10em", "12em", "1`4em`"]}
+        boxSize={["7.5em", "10em", "10em", "12em", "1`4em`"]}
         bgColor={
           // kalo udah lewatin day state nya, kita kasih result
           stateDate < today.getTime()
@@ -126,9 +154,9 @@ const STATE = () => {
         justifyContent={"center"}
         color={"#F7B70C"}
         p={["0.75em", "0.75em", "0.75em", "1em", "1em"]}
-        shadow={"0px 0px 8px rgb(255,255,255,0.5)"}
+        shadow={"0px 0px 32px rgb(255,255,255,0.5)"}
         _hover={{
-          shadow: "0px 0px 16px rgb(255,255,255,0.75)",
+          shadow: "0px 0px 64px rgb(255,255,255,0.75)",
         }}
         transition={"all 0.2s ease-in-out"}
         cursor={"pointer"}
@@ -190,7 +218,9 @@ const STATE = () => {
                     if (result.isConfirmed) {
                       // api call -- delete state
                       api
-                        .delete<ResponseModel<undefined>>(`/state/cancel_registration/${data.stateID}`)
+                        .delete<ResponseModel<undefined>>(
+                          `/state/cancel_registration/${data.stateID}`
+                        )
                         .then(({ data }) => {
                           Swal.fire({
                             title: "Berhasil!",
@@ -212,7 +242,13 @@ const STATE = () => {
         ) : (
           <>
             {stateRegToggle ? ( // check toggle stateRegistration
-              <Stack position={"absolute"} direction={"column"} align={"center"} justify={"center"} mt={"1em"}>
+              <Stack
+                position={"absolute"}
+                direction={"column"}
+                align={"center"}
+                justify={"center"}
+                mt={"1em"}
+              >
                 <Icon as={BsPlus} boxSize={"3em"} />
                 <Text fontWeight={"bold"} mt={"-1em"}>
                   Add
@@ -238,17 +274,26 @@ const STATE = () => {
             bounce: 0.5,
           }}
           exit={{ scale: 0 }}
+          whileInView="visible"
+          viewport={{ once: true }}
         >
-          <Text color={"white"} align={"end"} fontSize={["4xl", "6xl", "7xl", "8xl"]} fontWeight={"bold"} textShadow={"0px 0px 8px #1B4173"}>
+          <Text
+            textColor={"#D01E20"}
+            align={"end"}
+            fontSize={["6xl", "6xl", "8xl", "8xl", "8xl"]}
+            fontWeight={"bold"}
+            lineHeight={"1em"}
+            textShadow={"0px 0px 32px white"}
+          >
             STATE
           </Text>
           <Text
-            mt={"-0.3em"}
-            color={"white"}
+            textColor={"#D01E20"}
             align={"end"}
-            fontSize={["4xl", "6xl", "7xl", "8xl"]}
+            textShadow={"0px 0px 32px white"}
+            fontSize={["5xl", "5xl", "8xl", "8xl", "8xl"]}
             fontWeight={"bold"}
-            textShadow={"0px 0px 8px #1B4173"}
+            lineHeight={"1em"}
             // style={{
             //   WebkitTextStroke: "8px rgba(31, 67, 115, 0.35)",
             //   paintOrder: "stroke fill",
@@ -262,13 +307,15 @@ const STATE = () => {
           maxW={["100%", "100%", "65%", "50%"]}
           color={"white"}
           align={"end"}
-          fontSize={["14px", "14px", "16px", "20px"]}
-          fontWeight={"bold"}
-          textShadow={"0px  0px 8px rgb(0,0,0,0.75)"}
+          fontSize={["lg", "xl"]}
+          fontWeight={"normal"}
+          textAlign={"right"}
+          textShadow={"2px 2px 4px rgba(0, 0, 0, 0.5)"}
         >
-          Selamat datang di STATE MAXIMA 2023! Di sini kamu dapat memilih UKM yang ingin kamu ketahui!
+          Selamat datang di STATE MAXIMA 2023! Di sini kamu dapat memilih UKM
+          yang ingin kamu ketahui!
         </Text>
-        <Flex justify={["center", "center", "center", "end"]} w={"full"}>
+        <Flex justify={"end"} w={"full"}>
           <Button
             // as={Link}
             // href={"#pilih-state"}
@@ -287,10 +334,7 @@ const STATE = () => {
             boxShadow={"0px 0px 4px rgb(0,0,0,0.25)"}
             variant={"none"}
           >
-            <Text display={["block", "block", "block", "none", "none"]} color={"white"} fontWeight={["black", "bold"]}>
-              Pilih Sekarang!
-            </Text>
-            <Text display={["none", "none", "none", "block", "block"]} color={"white"} fontWeight={["black", "bold"]}>
+            <Text color={"white"} fontWeight={["black", "bold"]}>
               Pilih UKM & Komunitas
             </Text>
           </Button>
@@ -299,81 +343,165 @@ const STATE = () => {
     );
   };
 
+  if (session.status === "loading" || isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <>
       <Layout title={"MAXIMA 2023 - STATE"}>
         <Flex
+          // mt={"16vh"}]
           w={"full"}
-          h={"auto"}
-          minH={"100vh"}
-          p={"3.5em"}
+          h={"100vh"}
+          px={["1em", "1em", "1em", "8em", "8em"]}
+          py={["16em", "16em", "16em", "12em", "12em"]}
           // justify={"center"}
           // align={"center"}
-          // bgImage={["", "", "", "/Assets/MaximaBG_Desktop.svg"]}
-          bgColor={"gray.900"} // DEBUG - tunggu assets dari design
-          bgPosition={"center"}
+          bgImage={[
+            "./assets/state/MaximaBG_STATE_Mobile.svg",
+            "./assets/state/MaximaBG_STATE_Desktop.svg",
+            "./assets/state/MaximaBG_STATE_Desktop.svg",
+            "./assets/state/MaximaBG_STATE_Desktop.svg",
+          ]}
+          bgPosition={"bottom"}
           bgSize={"cover"}
           bgRepeat={"no-repeat"}
           direction={"column"}
         >
-          <Flex mt={"16vh"}>
-            <Header />
-          </Flex>
+          <Header />
+        </Flex>
+        <Flex
+          mt="-4px" // ini buat ngilangin border top
+          h={"100vh"}
+          align={"end"}
+          justify={"center"}
+          ref={pilihStateRef} // ini buat scrollIntoView
+          justifyContent={"space-evenly"}
+          px={["none", "none", "4em", "8em", "16em"]}
+          bgImage={[
+            "./assets/state/MaximaBG_STATE_Mobile_Bottom.svg",
+            "./assets/state/MaximaBG_STATE_Desktop_Bottom.svg",
+            "./assets/state/MaximaBG_STATE_Desktop_Bottom.svg",
+            "./assets/state/MaximaBG_STATE_Desktop_Bottom.svg",
+          ]}
+          bgPosition={["bottom", "bottom", "bottom", "end", "end"]}
+          bgSize={"cover"}
+          bgRepeat={"no-repeat"}
+        >
           <Flex
-            mt={"32vh"}
-            minH={"68vh"}
-            align={"center"}
-            justify={"center"}
-            ref={pilihStateRef} // ini buat scrollIntoView
-            justifyContent={"space-evenly"}
-            px={["none", "none", "4em", "8em", "16em"]}
+            display={["none", "none", "none", "flex", "flex"]}
+            w={"full"}
+            justify={"space-evenly"}
           >
-            <Flex display={["none", "none", "none", "flex", "flex"]} w={"full"} align={"center"} justify={"space-evenly"}>
-              {Array.from({ length: 3 }, (_, index) => dataState[index]).map((data, index) => (
-                <STATEButton data={data} key={`state ${index}`} />
-              ))}
+            {Array.from({ length: 3 }, (_, index) => dataState[index]).map(
+              (data, index) => (
+                <Flex
+                  key={`state ${index}`}
+                  bgImage={"./assets/state/MaximaAssets_STATE_Lampu.svg"}
+                  bgPosition={"center"}
+                  bgSize={"contain"}
+                  bgRepeat={"no-repeat"}
+                  h={"32em"}
+                  w={"16em"}
+                  pt={"3.5em"}
+                  justify={"center"}
+                >
+                  <STATEButton data={data} />
+                </Flex>
+              )
+            )}
+          </Flex>
+
+          <Stack
+            direction={"row"}
+            align={"end"}
+            justify={"center"}
+            w={"full"}
+            display={["flex", "flex", "flex", "none", "none"]}
+          >
+            <Flex
+              bgImage={
+                "./assets/state/MaximaAssets_STATE_Mobile_Lampu_Short.svg"
+              }
+              bgPosition={"bottom"}
+              bgSize={"contain"}
+              bgRepeat={"no-repeat"}
+              h={["22em", "28em"]}
+              w={"12em"}
+              pt={["2em", "2.3em"]}
+              justify={"center"}
+              mr={["-4em", "1em"]}
+            >
+              <STATEButton data={dataState[0]} />
             </Flex>
 
-            <Box display={["block", "block", "block", "none", "none"]}>
-              <Box mr={["10em", "20em", "none", "none", "none"]} my={"3em"}>
-                <STATEButton data={dataState[0]} />
-              </Box>
-
-              <Box ml={["10em", "20em", "none", "none", "none"]} my={"3em"}>
-                <STATEButton data={dataState[1]} />
-              </Box>
-
-              <Box mr={["10em", "20em", "none", "none", "none"]} my={"3em"}>
-                <STATEButton data={dataState[2]} />
-              </Box>
-            </Box>
-
-            {/* <STATEButton
-              data={{
-                date: "2023-08-18T10:15:00.000Z",
-                isFirstAttended: false,
-                isLastAttended: false,
-                stateLogo:
-                  "https://mxmdev.jamu.online/69e2d485-80c0-420a-b8c2-51ccd87c4910.png",
-              }}
-            /> */}
-          </Flex>
+            <Flex
+              bgImage={"./assets/state/MaximaAssets_STATE_Mobile_Lampu.svg"}
+              bgPosition={"bottom"}
+              bgSize={"contain"}
+              bgRepeat={"no-repeat"}
+              h={["33em", "42em"]}
+              w={"12em"}
+              pt={["2em", "2.3em", "2.3em"]}
+              justify={"center"}
+              mb={"9em"}
+            >
+              <STATEButton data={dataState[1]} />
+            </Flex>
+            <Flex
+              bgImage={"./assets/state/MaximaAssets_STATE_Mobile_Lampu.svg"}
+              bgPosition={"bottom"}
+              bgSize={"contain"}
+              bgRepeat={"no-repeat"}
+              h={["33em", "42em"]}
+              w={"12em"}
+              pt={["2em", "2.3em"]}
+              justify={"center"}
+              ml={["-4em", "1em"]}
+            >
+              <STATEButton data={dataState[2]} />
+            </Flex>
+          </Stack>
         </Flex>
       </Layout>
-      <Modal isOpen={selectedItem !== null} onClose={() => setSelectedItem(null)} size="lg" isCentered>
+      <Modal
+        isOpen={selectedItem !== null}
+        onClose={() => setSelectedItem(null)}
+        size="lg"
+        isCentered
+      >
         <ModalOverlay />
         <ModalContent borderRadius="md" m={"1em"} p={4}>
           {/* <ModalCloseButton /> */}
           <ModalBody>
             <Box>
               <Center flexDirection={"column"}>
-                <Img src={selectedItem?.stateLogo} boxSize={["135px", "165px"]} objectFit="contain" borderRadius="2xl" />
+                <Img
+                  src={selectedItem?.stateLogo}
+                  boxSize={["135px", "165px"]}
+                  objectFit="contain"
+                  borderRadius="2xl"
+                />
               </Center>
               <Center flexDirection={"column"}>
-                <Text mt={4} color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
+                <Text
+                  mt={4}
+                  color="#062D5F"
+                  fontSize="md"
+                  fontWeight="semibold"
+                  textAlign="center"
+                  letterSpacing={0.2}
+                >
                   {selectedItem?.name}
                 </Text>
-                <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
+                <Text
+                  color="#062D5F"
+                  fontSize="md"
+                  fontWeight="semibold"
+                  textAlign="center"
+                  letterSpacing={0.2}
+                >
                   {new Date(selectedItem?.date!).toLocaleDateString("id-ID", {
                     weekday: "long",
                     year: "numeric",
@@ -381,7 +509,13 @@ const STATE = () => {
                     day: "numeric",
                   })}
                 </Text>
-                <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
+                <Text
+                  color="#062D5F"
+                  fontSize="md"
+                  fontWeight="semibold"
+                  textAlign="center"
+                  letterSpacing={0.2}
+                >
                   {selectedItem?.location}
                 </Text>
                 <Text my={"1em"}>{selectedItem?.stateDesc}</Text>
@@ -389,7 +523,11 @@ const STATE = () => {
             </Box>
           </ModalBody>
           <ModalFooter justifyContent={"center"}>
-            <Button onClick={() => setSelectedItem(null)} color={"white"} bgColor={"#F7B70C"}>
+            <Button
+              onClick={() => setSelectedItem(null)}
+              color={"white"}
+              bgColor={"#F7B70C"}
+            >
               Close
             </Button>
           </ModalFooter>
