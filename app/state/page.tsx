@@ -385,7 +385,7 @@ const STATE = () => {
             "./assets/state/MaximaBG_STATE_Desktop_Bottom.svg",
             "./assets/state/MaximaBG_STATE_Desktop_Bottom.svg",
           ]}
-          bgPosition={["bottom", "bottom", "bottom", "end", "end"]}
+          bgPosition={["50% 28%", "center", "center", "bottom", "bottom"]}
           bgSize={"cover"}
           bgRepeat={"no-repeat"}
         >
@@ -431,7 +431,8 @@ const STATE = () => {
               w={"12em"}
               pt={["2em", "2.3em"]}
               justify={"center"}
-              mr={["-4em", "1em"]}
+              mr={["-6em", "-2em"]}
+              zIndex={3}
             >
               <STATEButton data={dataState[0]} />
             </Flex>
@@ -445,7 +446,7 @@ const STATE = () => {
               w={"12em"}
               pt={["2em", "2.3em", "2.3em"]}
               justify={"center"}
-              mb={"9em"}
+              mb={"11em"}
             >
               <STATEButton data={dataState[1]} />
             </Flex>
@@ -458,7 +459,7 @@ const STATE = () => {
               w={"12em"}
               pt={["2em", "2.3em"]}
               justify={"center"}
-              ml={["-4em", "1em"]}
+              ml={["-6em", "-2em"]}
             >
               <STATEButton data={dataState[2]} />
             </Flex>
