@@ -13,6 +13,8 @@ import { HandleAxiosError, ResponseModel, useApi } from "@/services/api";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
+import LoadingSpinner from "@/components/LoadingSpinner";
+
 type DayManagement = {
   day: string;
   hari: number;
@@ -166,7 +168,7 @@ const PilihState = () => {
           </Text>
         </Center>
         <Divider w={"full"} mt={"1em"} mb={"2.5em"} borderWidth={"0.12em"} borderRadius={"20px"} borderColor={"white"} opacity={1} />
-        <Wrap spacing={["1em", "2.5em"]} justify="center" py={"0.5em"}>
+        <Wrap spacing={["1em", "2.5em"]} justify={"center"} p={"0.5em"}>
           {dataState
             .filter((state) => state.date === day.date)
             .map((data) => (
@@ -180,18 +182,20 @@ const PilihState = () => {
   const Body = () => {
     return (
       <Stack
-        mt={["70vh", "85vh", "70vh", "70vh", "70vh"]}
-        mb={"15vh"}
+        mt={["35vh", "35vh", "50vh", "68vh", "75vh"]}
+        mb={"5vh"}
         direction={"column"}
         // zIndex={"4"}
         justify={"center"}
         align={"center"}
       >
-        <Text color={"#062D5F"} fontSize={["3xl", "4xl"]} fontWeight={["extrabold", "bold"]}>
-          Pilih STATE
-        </Text>
+        <Box bgColor={"rgb(0,0,0,0.25)"} p="2em" py="0.5em" px="2em" rounded={"xl"}>
+          <Text color={"#F7B70C"} fontSize={["3xl", "4xl"]} fontWeight={["extrabold", "bold"]}>
+            Pilih STATE
+          </Text>
+        </Box>
         {/* <Box borderRadius={"xl"}> */}
-        <Box w={["92%", "95%", "90vw", "95vw", "70vw"]} maxW={"auto"}>
+        <Box w={["92%", "95%", "90vw", "95vw", "65vw"]} maxW={"auto"}>
           <Tabs
             variant="soft-rounded"
             isFitted
@@ -249,6 +253,10 @@ const PilihState = () => {
     );
   };
 
+  if (session.status === "loading" || isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <Layout title={"MAXIMA 2023 - Pilih STATE"}>
       <Flex
@@ -258,12 +266,15 @@ const PilihState = () => {
         // p={"3.5em"}
         // justify={"center"}
         // align={"center"}
-        // bgImage={["", "", "", ""]}
-        // bgColor={"gray.900"} // sambi nunggu assets dari design
-        bgPosition={"center"}
-        bgSize={"cover"}
+        bgColor={"#3A3A3C"}
+        // px={["1em", "1em", "1em", "8em", "8em"]}
+        // py={["0em", "16em", "16em", "12em", "12em"]}
+        bgImage={["../assets/state/MaximaBG_PilihSTATE_Mobile.svg", "../assets/state/MaximaBG_STATE_Desktop.svg", "../assets/state/MaximaBG_STATE_Desktop.svg", "../assets/state/MaximaBG_STATE_Desktop.svg"]}
+        // bgColor={"gray.900"} // sambi nunggu assets dari desig
+        bgSize={"100vw auto"}
         bgRepeat={"no-repeat"}
         direction={"column"}
+        top={"0"}
       >
         <Body />
         {/* <BackButton /> */}
