@@ -183,7 +183,7 @@ export default function Signin() {
                       </InputGroup>
                       <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
                     </FormControl>
-                    <Text mt={"0.5em"} fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
+                    {/* <Text mt={"0.5em"} fontSize={"sm"} fontWeight={"semibold"} color={"rgb(27,65,114,0.8)"}>
                       Lupa kata sandimu?{" "}
                       <Link href={"/forgot-password"}>
                         <span
@@ -197,7 +197,7 @@ export default function Signin() {
                           Klik disini
                         </span>
                       </Link>
-                    </Text>
+                    </Text> */}
                   </Box>
                 </Stack>
                 <Center mt={"2em"}>
