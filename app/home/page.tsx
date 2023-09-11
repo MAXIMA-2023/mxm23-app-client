@@ -1,6 +1,12 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
-import { Center, Box, Text, HStack, Flex, Image, useMediaQuery } from "@chakra-ui/react";
+import { Center, Box, Text, Stack, Flex, Image,  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton, Button, useMediaQuery, useDisclosure } from "@chakra-ui/react";
 import { motion, transform, useInView } from "framer-motion";
 
 import Layout from "@/components/Layout";
@@ -17,6 +23,18 @@ type Toggle = {
 export default function Home() {
   const router = useRouter();
   const api = useApi();
+  
+  const { 
+    isOpen: isOpenChallenge, 
+    onOpen: onOpenChallenge, 
+    onClose: onCloseChallenge 
+  } = useDisclosure();
+
+  const { 
+    isOpen: isOpenHandbook, 
+    onOpen: onOpenHandbook, 
+    onClose: onCloseHandbook 
+  } = useDisclosure();
 
   const fetchToggle = async () => {
     try {
@@ -116,14 +134,14 @@ export default function Home() {
     );
   };
 
-  const InViewButtonLeft = ({ children }: any) => {
+  const InViewButton1 = ({ children }: any) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
     return (
       <Box ref={ref}>
         <Box
           style={{
-            transform: isInView ? "none" : "translateX(-25px)",
+            transform: isInView ? "none" : "translateY(100px)",
             opacity: isInView ? 1 : 0,
             transition: "all 0.5s ease-in-out 0.25s",
           }}
@@ -134,22 +152,40 @@ export default function Home() {
     );
   };
 
-  const InViewButtonRight = ({ children }: any) => {
+  const InViewButton2 = ({ children }: any) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
     return (
       <Box ref={ref}>
         <Box
           style={{
-            transform: isInView ? "none" : "translateX(25px)",
+            transform: isInView ? "none" : "translateY(100px)",
             opacity: isInView ? 1 : 0,
-            transition: "all 0.5s ease-in-out 0.25s",
+            transition: "all 0.5s ease-in-out 0.5s",
           }}
         >
           {children}
         </Box>
       </Box>
-    );
+    );  
+  };
+
+   const InViewButton3 = ({ children }: any) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+    return (
+      <Box ref={ref}>
+        <Box
+          style={{
+            transform: isInView ? "none" : "translateY(100px)",
+            opacity: isInView ? 1 : 0,
+            transition: "all 0.5s ease-in-out 0.75s",
+          }}
+        >
+          {children}
+        </Box>
+      </Box>
+    );  
   };
 
   return (
@@ -206,32 +242,131 @@ export default function Home() {
           </InViewHoMEInfo>
         </Box>
       </Box>
-      <Flex justifyContent={"center"} alignItems={"center"} w={"full"} h={"15em"} bgColor={"#6F563A"}>
-        <InViewButtonLeft>
-          <Flex mt={["-7.5em", "-7.5em", "0em"]} mr={"1em"} px={["0em", "0em", "0.5em"]} rounded={"xl"} bg={"#FFFFFF"} py={"0.5em"} boxShadow={["0px 4px 4px rgb(0, 0, 0, 0.25)", "0px 4px 4px rgb(0, 0, 0, 0.25)", "none"]}>
-            <Flex display={["block", "block", "flex"]} justifyContent={"center"} alignItems={"center"} p={"1em"}>
-              <Center>
-                <Image src={"./assets/home/ChallengeIcon.svg"} alt={"Challenge Icon"} boxSize={["4.5em", "5em", "3em"]} mr={["0em", "0em", "2em"]} />
-              </Center>
-              <Text mt={["1.25em", "1.25em", "0em"]} fontSize={"xl"} fontWeight={"bold"} textColor={"#1B4173"} alignItems={"center"}>
+      <Flex w={"full"} h={"auto"} maxH={"full"} p={["2em 0.5em","0.5em","5em"]} display={["block", "block","flex"]}  overflow={"hidden"} justifyContent={"center"} alignItems={"center"} bgColor={"#6F563A"}>
+        <Center mb={["1em", "1em", "0em"]}>
+          <InViewButton1>
+            <Flex mr={"1em"} px={["0em", "0em", "1.5em"]} rounded={"xl"} bg={"#FFFFFF"} py={"0.5em"} boxShadow={["0px 4px 4px rgb(0, 0, 0, 0.25)", "0px 4px 4px rgb(0, 0, 0, 0.25)", "none"]}
+              _hover={{ bgColor: "#EBEBEB", transition:"0.2s", cursor: "pointer"}} onClick={onOpenChallenge}>
+              <Flex display={["block", "block", "flex"]} justifyContent={"center"} alignItems={"center"} p={"1em"}>
+                <Center>
+                  <Image src={"./assets/home/ChallengeIcon.svg"} alt={"Challenge Icon"} boxSize={["4.5em", "5em", "3em"]} mr={["0em", "0em", "1em"]} />
+                </Center>
+                <Text mt={["1.25em", "1.25em", "0em"]} fontSize={"xl"} fontWeight={"bold"} textColor={"#1B4173"} alignItems={"center"}>
+                  Challenge
+                </Text>
+              </Flex>
+            </Flex>
+          </InViewButton1>
+          <InViewButton2>
+            <Flex px={["0em", "0em", "1.5em"]} rounded={"xl"} bg={"#FFFFFF"} py={"0.5em"} boxShadow={["0px 4px 4px rgb(0, 0, 0, 0.25)", "0px 4px 4px rgb(0, 0, 0, 0.25)", "none"]} 
+              _hover={{ bgColor: "#EBEBEB", transition:"0.2s", cursor: "not-allowed"}}>
+              <Flex display={["block", "block", "flex"]} justifyContent={"center"} alignItems={"center"} p={"1em"}>
+                <Center>
+                  <Image src={"./assets/home/Handbook.svg"} alt={"QR Icon"} boxSize={["4.5em", "5em", "3em"]} mr={["0em", "0em", "1em"]} />
+                </Center>
+                <Text mt={["1.25em", "1.25em", "0em"]} fontSize={"xl"} fontWeight={"bold"} textColor={"#1B4173"} alignItems={"center"}>
+                  Handbook
+                </Text>
+              </Flex>
+            </Flex>
+          </InViewButton2>
+        </Center>
+        <InViewButton3>
+          <Center>
+            <Flex w={"18em"} ml={["0em", "0em", "1em"]} px={["1.5em"]} rounded={"xl"} bg={"#FFFFFF"} py={"0.5em"} boxShadow={["0px 4px 4px rgb(0, 0, 0, 0.25)", "0px 4px 4px rgb(0, 0, 0, 0.25)", "none"]} 
+              _hover={{ bgColor: "#EBEBEB", transition:"0.2s", cursor: "pointer"}} onClick={()=>{
+                window.open("https://bit.ly/TwibbonHoME2023", "_blank");
+              }}>              
+              <Flex display={["flex"]} justifyContent={"center"} alignItems={"center"} p={"1em"}>
+                <Center>
+                  <Image src={"./assets/home/Twibbon.svg"} alt={"QR Icon"} boxSize={["4.5em", "5em", "3em"]} mr={["2em", "2em", "1em"]} />
+                </Center>
+                <Text fontSize={"xl"} fontWeight={"bold"} textColor={"#1B4173"} alignItems={"center"}>
+                  Twibbon
+                </Text>
+              </Flex>
+            </Flex>
+          </Center>
+        </InViewButton3>
+      </Flex>
+      <Modal size={"lg"} onClose={onCloseChallenge} isOpen={isOpenChallenge} isCentered>
+        <ModalOverlay />
+        <ModalContent borderRadius={"2xl"}>
+          <ModalHeader>
+            <Center>
+              <Text fontSize={"3xl"} fontWeight={"bold"} textColor={"#1B4173"} alignItems={"center"}>
                 Challenge
               </Text>
-            </Flex>
-          </Flex>
-        </InViewButtonLeft>
-        <InViewButtonRight>
-          <Flex mt={["-7.5em", "-7.5em", "0em"]} px={["0em", "0em", "0.5em"]} rounded={"xl"} bg={"#FFFFFF"} py={"0.5em"} boxShadow={["0px 4px 4px rgb(0, 0, 0, 0.25)", "0px 4px 4px rgb(0, 0, 0, 0.25)", "none"]}>
-            <Flex display={["block", "block", "flex"]} justifyContent={"center"} alignItems={"center"} p={"1em"}>
-              <Center>
-                <Image src={"./assets/home/QRIcon.svg"} alt={"QR Icon"} boxSize={["4.5em", "5em", "3em"]} mr={["0em", "0em", "2em"]} />
-              </Center>
-              <Text mt={["1.25em", "1.25em", "0em"]} fontSize={"xl"} fontWeight={"bold"} textColor={"#1B4173"} alignItems={"center"}>
-                QR Absensi
+            </Center>
+          </ModalHeader>
+          <ModalBody>
+            <Stack py={"2em"} spacing={"0.5em"}>
+              <Button w={"full"} bgColor={"#1B4173"} _hover={{ bgColor: "#173153" }} onClick={()=>{
+                window.open("https://bit.ly/ChallengeMAXPRESSION", "_blank");
+              }}>              
+                <Flex justifyContent={"space-between"} alignItems={"center"}>
+                  <Text fontSize={"xl"} fontWeight={"semibolf"} textColor={"white"} alignItems={"center"}>
+                    MAXPRESSION
+                  </Text>
+                </Flex>
+              </Button>
+              <Button w={"full"} bgColor={"#1B4173"} _hover={{ bgColor: "#173153" }} onClick={()=>{
+                window.open("https://bit.ly/ChallengeDMAXMORIES", "_blank");
+              }}>  
+                <Flex justifyContent={"space-between"} alignItems={"center"}>
+                  <Text fontSize={"xl"} fontWeight={"semibolf"} textColor={"white"} alignItems={"center"}>
+                    D’MAXMORIES
+                  </Text>
+                </Flex>
+              </Button>
+            </Stack>
+          </ModalBody>
+          <ModalFooter>
+            <Center w={"full"}>
+              <Button w={"7.5em"} onClick={onCloseChallenge} borderRadius={"full"} bgColor={"#F7B70C"} _hover={{ bgColor: "#D3A11A" }} fontWeight={"bold"} color={"white"}>Close</Button>
+            </Center>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+     <Modal size={"lg"} onClose={onCloseHandbook} isOpen={isOpenHandbook} isCentered>
+        <ModalOverlay />
+        <ModalContent borderRadius={"2xl"}>
+          <ModalHeader>
+            <Center>
+              <Text fontSize={"3xl"} fontWeight={"bold"} textColor={"#1B4173"} alignItems={"center"}>
+                Handbook
               </Text>
-            </Flex>
-          </Flex>
-        </InViewButtonRight>
-      </Flex>
+            </Center>
+          </ModalHeader>
+          <ModalBody>
+            <Stack py={"2em"} spacing={"0.5em"}>
+              <Button w={"full"} bgColor={"#1B4173"} _hover={{ bgColor: "#173153" }} onClick={()=>{
+                window.open("https://bit.ly/ChallengeMAXPRESSION", "_blank");
+              }}>              
+                <Flex justifyContent={"space-between"} alignItems={"center"}>
+                  <Text fontSize={"xl"} fontWeight={"semibolf"} textColor={"white"} alignItems={"center"}>
+                    STATE
+                  </Text>
+                </Flex>
+              </Button>
+              <Button w={"full"} bgColor={"#1B4173"} _hover={{ bgColor: "#173153" }} onClick={()=>{
+                window.open("https://bit.ly/ChallengeDMAXMORIES", "_blank");
+              }}>  
+                <Flex justifyContent={"space-between"} alignItems={"center"}>
+                  <Text fontSize={"xl"} fontWeight={"semibolf"} textColor={"white"} alignItems={"center"}>
+                    MALPUN
+                  </Text>
+                </Flex>
+              </Button>
+            </Stack>
+          </ModalBody>
+          <ModalFooter>
+            <Center w={"full"}>
+              <Button w={"7.5em"} onClick={onCloseHandbook} borderRadius={"full"} bgColor={"#F7B70C"} _hover={{ bgColor: "#D3A11A" }} fontWeight={"bold"} color={"white"}>Close</Button>
+            </Center>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Layout>
   );
 }

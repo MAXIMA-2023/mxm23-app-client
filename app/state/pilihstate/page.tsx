@@ -168,7 +168,7 @@ const PilihState = () => {
           </Text>
         </Center>
         <Divider w={"full"} mt={"1em"} mb={"2.5em"} borderWidth={"0.12em"} borderRadius={"20px"} borderColor={"white"} opacity={1} />
-        <Wrap spacing={["1em", "2.5em"]} justify="center" p={"0.5em"}>
+        <Wrap spacing={["1em", "2.5em"]} justify={"center"} p={"0.5em"}>
           {dataState
             .filter((state) => state.date === day.date)
             .map((data) => (
@@ -189,14 +189,8 @@ const PilihState = () => {
         justify={"center"}
         align={"center"}
       >
-        <Box 
-          bgColor={"rgb(0,0,0,0.25)"}
-          p="2em"
-          py="0.5em"
-          px="2em"
-          rounded={"xl"}
-          >
-          <Text color={"#F7B70C"} fontSize={["3xl", "4xl"]} fontWeight={["extrabold", "bold"]} >
+        <Box bgColor={"rgb(0,0,0,0.25)"} p="2em" py="0.5em" px="2em" rounded={"xl"}>
+          <Text color={"#F7B70C"} fontSize={["3xl", "4xl"]} fontWeight={["extrabold", "bold"]}>
             Pilih STATE
           </Text>
         </Box>
@@ -246,11 +240,11 @@ const PilihState = () => {
               </TabList>
               {/* </Box> */}
             </Stack>
-              <TabPanels mt={["1.5em", "1.5em", "5em"]}>
-                {dataDay.map((day, index) => (
-                  <StateTabPanel day={day} key={index} />
-                ))}
-              </TabPanels>
+            <TabPanels mt={["1.5em", "1.5em", "5em"]}>
+              {dataDay.map((day, index) => (
+                <StateTabPanel day={day} key={index} />
+              ))}
+            </TabPanels>
           </Tabs>
         </Box>
         {/* </Box> */}
@@ -275,12 +269,7 @@ const PilihState = () => {
         bgColor={"#3A3A3C"}
         // px={["1em", "1em", "1em", "8em", "8em"]}
         // py={["0em", "16em", "16em", "12em", "12em"]}
-        bgImage={[
-          "../assets/state/MaximaBG_PilihSTATE_Mobile.svg",
-          "../assets/state/MaximaBG_STATE_Desktop.svg",
-          "../assets/state/MaximaBG_STATE_Desktop.svg",
-          "../assets/state/MaximaBG_STATE_Desktop.svg",
-        ]}
+        bgImage={["../assets/state/MaximaBG_PilihSTATE_Mobile.svg", "../assets/state/MaximaBG_STATE_Desktop.svg", "../assets/state/MaximaBG_STATE_Desktop.svg", "../assets/state/MaximaBG_STATE_Desktop.svg"]}
         // bgColor={"gray.900"} // sambi nunggu assets dari desig
         bgSize={"100vw auto"}
         bgRepeat={"no-repeat"}
