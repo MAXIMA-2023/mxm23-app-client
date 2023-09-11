@@ -94,7 +94,7 @@ const ForgotPassword = () => {
     }
 
     //URGENT RECOVERY PW DISABLE
-    router.push("/signin");
+    // router.push("/signin");
 
     const paramToken = searchParams.get("token");
     if (paramToken && paramToken.length === 48) {
