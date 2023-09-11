@@ -6,12 +6,7 @@ import { motion } from "framer-motion";
 export default function NotFound() {
   return (
     <>
-      <Layout title={"MAXIMA 2023 - Not found :("} showNavbar={false}>
-        <Center w={"full"} position={"absolute"} mt={"1em"}>
-          <Flex justifyContent={"center"} alignItems={"center"}>
-            <Image src={"./assets/MaximaLogo.png"} boxSize={["3em", "4em"]} alt={"MAXIMA Logo"} />
-          </Flex>
-        </Center>
+      <Layout title={"MAXIMA 2023 - Not found :("} showLogoHeader>
         <Center w={"full"} h={"100vh"} position={"absolute"} top={"0"} bottom={"0"} left={"0"} right={"0"} justifyContent={"center"} alignItems={"center"}>
           <Box>
             <Center>
