@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export default function NotFound() {
   return (
     <>
-      <Layout title={"MAXIMA 2023 - Not found :("} showLogoHeader>
+      <Layout title={"MAXIMA 2023 - Not found :("} showLogoHeader showNavbar={false}>
         <Center w={"full"} h={"100vh"} position={"absolute"} top={"0"} bottom={"0"} left={"0"} right={"0"} justifyContent={"center"} alignItems={"center"}>
           <Box>
             <Center>
