@@ -270,7 +270,7 @@ const PilihState = () => {
         // px={["1em", "1em", "1em", "8em", "8em"]}
         // py={["0em", "16em", "16em", "12em", "12em"]}
         bgImage={[
-          "../assets/state/MaximaBG_PilihSTATE_Mobile.svg",
+          // "../assets/state/MaximaBG_PilihSTATE_Mobile.svg",
           "../assets/state/MaximaBG_STATE_Desktop.svg",
           "../assets/state/MaximaBG_STATE_Desktop.svg",
           "../assets/state/MaximaBG_STATE_Desktop.svg",
