@@ -159,15 +159,21 @@ const PilihState = () => {
         </Center>
         <Center mt={"-0.2em"}>
           <Text fontSize={["lg", "xs", "sm", "md", "md"]} fontWeight={"bold"} color={"#FF6835"}>
-            {new Date(day.date).toLocaleDateString("id-ID", {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            {new Date(day.date)
+              .toLocaleDateString("id-ID", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "numeric",
+              })
+              .replace("pukul", "")}
           </Text>
         </Center>
-        <Divider w={"full"} mt={"1em"} mb={"2.5em"} borderWidth={"0.12em"} borderRadius={"20px"} borderColor={"white"} opacity={1} />
+        <Box w={"full"} px={"0.5em"}>
+          <Divider w={"full"} mt={"1em"} mb={"2.5em"} borderWidth={"0.12em"} borderRadius={"20px"} borderColor={"white"} opacity={1} />
+        </Box>
         <Wrap spacing={["1em", "2.5em"]} justify={"center"} p={"0.5em"}>
           {dataState
             .filter((state) => state.date === day.date)
@@ -258,7 +264,7 @@ const PilihState = () => {
   }
 
   return (
-    <Layout title={"MAXIMA 2023 - Pilih STATE"}>
+    <Layout title={"MAXIMA 2023 - Pilih STATE"} backButton backbuttonBgColor={"#FF6835"}>
       <Flex
         w={"full"}
         h={"auto"}
@@ -270,7 +276,7 @@ const PilihState = () => {
         // px={["1em", "1em", "1em", "8em", "8em"]}
         // py={["0em", "16em", "16em", "12em", "12em"]}
         bgImage={[
-          "../assets/state/MaximaBG_PilihSTATE_Mobile.svg",
+          // "../assets/state/MaximaBG_PilihSTATE_Mobile.svg",
           "../assets/state/MaximaBG_STATE_Desktop.svg",
           "../assets/state/MaximaBG_STATE_Desktop.svg",
           "../assets/state/MaximaBG_STATE_Desktop.svg",
@@ -298,12 +304,16 @@ const PilihState = () => {
                 {selectedItem?.name}
               </Text>
               <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
-                {new Date(selectedItem?.date!).toLocaleDateString("id-ID", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                {new Date(selectedItem?.date!)
+                  .toLocaleDateString("id-ID", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "numeric",
+                  })
+                  .replace("pukul", "")}
               </Text>
               <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
                 {selectedItem?.location}

@@ -307,7 +307,7 @@ const STATE = () => {
 
   return (
     <>
-      <Layout title={"MAXIMA 2023 - STATE"}>
+      <Layout title={"MAXIMA 2023 - STATE"} backButton backbuttonBgColor={"#FF6835"}>
         <Flex
           // mt={"16vh"}]
           w={"full"}
@@ -384,12 +384,16 @@ const STATE = () => {
                   {selectedItem?.name}
                 </Text>
                 <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
-                  {new Date(selectedItem?.date!).toLocaleDateString("id-ID", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {new Date(selectedItem?.date!)
+                    .toLocaleDateString("id-ID", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "2-digit",
+                      minute: "numeric",
+                    })
+                    .replace("pukul", "")}
                 </Text>
                 <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
                   {selectedItem?.location}
