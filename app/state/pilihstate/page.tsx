@@ -269,7 +269,13 @@ const PilihState = () => {
         bgColor={"#3A3A3C"}
         // px={["1em", "1em", "1em", "8em", "8em"]}
         // py={["0em", "16em", "16em", "12em", "12em"]}
-        bgImage={["../assets/state/MaximaBG_PilihSTATE_Mobile.svg", "../assets/state/MaximaBG_STATE_Desktop.svg", "../assets/state/MaximaBG_STATE_Desktop.svg", "../assets/state/MaximaBG_STATE_Desktop.svg"]}
+        bgImage={[
+          "../assets/state/MaximaBG_PilihSTATE_Mobile.svg",
+          "../assets/state/MaximaBG_STATE_Desktop.svg",
+          "../assets/state/MaximaBG_STATE_Desktop.svg",
+          "../assets/state/MaximaBG_STATE_Desktop.svg",
+          "../assets/state/MaximaBG_STATE_Desktop.svg",
+        ]}
         // bgColor={"gray.900"} // sambi nunggu assets dari desig
         bgSize={"100vw auto"}
         bgRepeat={"no-repeat"}
