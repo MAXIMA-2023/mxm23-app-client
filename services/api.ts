@@ -58,6 +58,17 @@ export const HandleAxiosError = (error: any) => {
     return;
   }
 
+  if (error.response?.status === 500) {
+    Swal.fire({
+      icon: "error",
+      title: "Error!",
+      text: "Terjadi kesalahan pada server",
+      color: "#062D5F",
+      confirmButtonColor: "#F7B70C",
+    });
+    return;
+  }
+
   const { response } = error as AxiosError<{
     message: string;
     error?: ZodError;
