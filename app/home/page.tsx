@@ -170,7 +170,7 @@ export default function Home() {
     );  
   };
 
-   const InViewButton3 = ({ children }: any) => {
+  const InViewButton3 = ({ children }: any) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
     return (
@@ -259,7 +259,9 @@ export default function Home() {
           </InViewButton1>
           <InViewButton2>
             <Flex px={["0em", "0em", "1.5em"]} rounded={"xl"} bg={"#FFFFFF"} py={"0.5em"} boxShadow={["0px 4px 4px rgb(0, 0, 0, 0.25)", "0px 4px 4px rgb(0, 0, 0, 0.25)", "none"]} 
-              _hover={{ bgColor: "#EBEBEB", transition:"0.2s", cursor: "not-allowed"}}>
+              _hover={{ bgColor: "#EBEBEB", transition:"0.2s", cursor: "pointer"}}onClick={()=>{
+                window.open("https://bit.ly/HandbookSTATE", "_blank");
+              }}>              
               <Flex display={["block", "block", "flex"]} justifyContent={"center"} alignItems={"center"} p={"1em"}>
                 <Center>
                   <Image src={"./assets/home/Handbook.svg"} alt={"QR Icon"} boxSize={["4.5em", "5em", "3em"]} mr={["0em", "0em", "1em"]} />
