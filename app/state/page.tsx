@@ -490,6 +490,7 @@ const STATE = () => {
         onClose={() => setSelectedItem(null)}
         size="lg"
         isCentered
+        scrollBehavior="inside"
       >
         <ModalOverlay />
         <ModalContent borderRadius="md" m={"1em"} p={4}>

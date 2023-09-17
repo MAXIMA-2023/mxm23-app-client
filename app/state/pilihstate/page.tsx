@@ -403,6 +403,7 @@ const PilihState = () => {
         onClose={() => setSelectedItem(null)}
         size="lg"
         isCentered
+        scrollBehavior="inside"
       >
         <ModalOverlay />
         <ModalContent bg="white" borderRadius="xl" p={4}>
