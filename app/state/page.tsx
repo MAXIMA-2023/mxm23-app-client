@@ -121,6 +121,15 @@ const STATE = () => {
       Promise.all([fetchToggle(), fetchStateReg()]).finally(() =>
         setIsLoading(false)
       );
+
+      Swal.fire({
+        title: "Reminder!",
+        color: "#062D5F",
+        text: "Jangan lupa untuk cek Handbook, jadwal dan perlengkapan STATE ya!",
+        icon: "warning",
+        confirmButtonColor: "#F7B70C",
+        cancelButtonText: "Kembali",
+      });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
