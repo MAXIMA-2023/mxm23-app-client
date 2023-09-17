@@ -10,7 +10,28 @@ import Layout from "@/components/Layout";
 import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
-import { Box, Flex, Center, Heading, Text, Button, Stack, Img, Tabs, TabList, TabPanels, Tab, TabPanel, Container, List, ListItem, ListIcon, OrderedList, UnorderedList, useMediaQuery } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Center,
+  Heading,
+  Text,
+  Button,
+  Stack,
+  Img,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Container,
+  List,
+  ListItem,
+  ListIcon,
+  OrderedList,
+  UnorderedList,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
 const FAQ: NextPage = () => {
@@ -19,13 +40,28 @@ const FAQ: NextPage = () => {
     <Layout title={"MAXIMA 2023 - FAQ"} backButton>
       <Flex
         minH={"100vh"}
-        bgImage={["./assets/MaximaBG_AboutUs_Mobile.svg", "./assets/MaximaBG_AboutUs_Mobile.svg", "./assets/MaximaBG_AboutUs_Mobile.svg", "./assets/MaximaBG_AboutUs_Desktop.svg", "./assets/MaximaBG_AboutUs_Desktop.svg"]}
+        bgImage={[
+          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaBG_AboutUs_Mobile.webp",
+          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaBG_AboutUs_Mobile.webp",
+          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaBG_AboutUs_Mobile.webp",
+          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaBG_AboutUs_Desktop.webp",
+          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaBG_AboutUs_Desktop.webp",
+        ]}
         bgPosition={["center"]}
         bgSize={"cover"}
         bgRepeat={"no-repeat"}
       >
         <Box w={"full"} zIndex={"0"}>
-          <Box display={isSmallerThan320 ? "none" : ["block", "none", "none", "none", "none"]} mb={["30.35rem", "45.35rem", "", "30.35rem", "30.35rem"]} position={"absolute"} bottom={0}>
+          <Box
+            display={
+              isSmallerThan320
+                ? "none"
+                : ["block", "none", "none", "none", "none"]
+            }
+            mb={["30.35rem", "45.35rem", "", "30.35rem", "30.35rem"]}
+            position={"absolute"}
+            bottom={0}
+          >
             {/* Image Mobile */}
           </Box>
           <Center>
@@ -42,63 +78,139 @@ const FAQ: NextPage = () => {
             >
               <Box w={"100%"}>
                 <Center mt={["1em", "1em", "0em", "1em", "1em"]}>
-                  <Img src={"./assets/faq/FAQ.svg"} w={["5em", "5em", "15vw", "5em", "10em"]}></Img>
+                  <Img
+                    src={"/assets/faq/FAQ.svg"}
+                    w={["5em", "5em", "15vw", "5em", "10em"]}
+                  ></Img>
                 </Center>
                 <Center display={["none", "none", "block"]}>
                   <Tabs variant="soft-rounded" isFitted>
-                    <TabList w={"auto"} p={[" 0.5em 0.5em", " 0.5em 0.5em", " 0.5em 2em", " 0.5em 1em", " 0.5em 2em"]} bgColor={"rgb(247,183,21,0.21)"} borderRadius={"full"}>
-                      <Tab mx={["0.2em", "0.2em", "0.5em", "0.5em", "1em"]} fontSize={["xs", "xs", "md", "sm", "lg"]} color={"white"} bgColor={"rgb(255,104,53,0.35)"} _selected={{ color: "white", bg: "#FF6835" }}>
+                    <TabList
+                      w={"auto"}
+                      p={[
+                        " 0.5em 0.5em",
+                        " 0.5em 0.5em",
+                        " 0.5em 2em",
+                        " 0.5em 1em",
+                        " 0.5em 2em",
+                      ]}
+                      bgColor={"rgb(247,183,21,0.21)"}
+                      borderRadius={"full"}
+                    >
+                      <Tab
+                        mx={["0.2em", "0.2em", "0.5em", "0.5em", "1em"]}
+                        fontSize={["xs", "xs", "md", "sm", "lg"]}
+                        color={"white"}
+                        bgColor={"rgb(255,104,53,0.35)"}
+                        _selected={{ color: "white", bg: "#FF6835" }}
+                      >
                         HoME
                       </Tab>
-                      <Tab mx={["0.2em", "0.2em", "0.5em", "0.5em", "1em"]} fontSize={["xs", "xs", "md", "sm", "lg"]} color={"white"} bgColor={"rgb(255,104,53,0.35)"} _selected={{ color: "white", bg: "#FF6835" }}>
+                      <Tab
+                        mx={["0.2em", "0.2em", "0.5em", "0.5em", "1em"]}
+                        fontSize={["xs", "xs", "md", "sm", "lg"]}
+                        color={"white"}
+                        bgColor={"rgb(255,104,53,0.35)"}
+                        _selected={{ color: "white", bg: "#FF6835" }}
+                      >
                         STATE
                       </Tab>
-                      <Tab mx={["0.2em", "0.2em", "0.5em", "0.5em", "1em"]} fontSize={["xs", "xs", "md", "sm", "lg"]} color={"white"} bgColor={"rgb(255,104,53,0.35)"} _selected={{ color: "white", bg: "#FF6835" }}>
+                      <Tab
+                        mx={["0.2em", "0.2em", "0.5em", "0.5em", "1em"]}
+                        fontSize={["xs", "xs", "md", "sm", "lg"]}
+                        color={"white"}
+                        bgColor={"rgb(255,104,53,0.35)"}
+                        _selected={{ color: "white", bg: "#FF6835" }}
+                      >
                         MalPun
                       </Tab>
                     </TabList>
                     <TabPanels>
                       <TabPanel mt={"1em"} h={"auto"} overflow={"auto"}>
                         <Stack spacing={[2, 2, 2, 2, 3]}>
-                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                          <Text
+                            color={"#1B4173"}
+                            fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}
+                            fontWeight={"extrabold"}
+                          >
                             Apa itu HoME?
                           </Text>
-                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
-                            HoME merupakan kegiatan exhibition atau pameran berbagai organisasi di UMN, seperti Unit Kegiatan Mahasiswa, Lembaga Semi Otonom (LSO), Lembaga Kampus, Himpunan, Media
-                            Kampus, dan sebagainya. Pameran tersebut terdiri dari penjelasan organisasi, foto-foto organisasi, prestasi organisasi, serta berbagai kegiatan menarik.
+                          <Text
+                            color={"#1B4173"}
+                            fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}
+                          >
+                            HoME merupakan kegiatan exhibition atau pameran
+                            berbagai organisasi di UMN, seperti Unit Kegiatan
+                            Mahasiswa, Lembaga Semi Otonom (LSO), Lembaga
+                            Kampus, Himpunan, Media Kampus, dan sebagainya.
+                            Pameran tersebut terdiri dari penjelasan organisasi,
+                            foto-foto organisasi, prestasi organisasi, serta
+                            berbagai kegiatan menarik.
                           </Text>
                         </Stack>
-                        <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
-                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                        <Stack
+                          spacing={[2, 2, 2, 2, 3]}
+                          mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}
+                        >
+                          <Text
+                            color={"#1B4173"}
+                            fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}
+                            fontWeight={"extrabold"}
+                          >
                             Ada apa saja di HoME?
                           </Text>
-                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
-                            Pameran 61 organisasi, Challenge MAXPRESSION, dan Photo Spot.
+                          <Text
+                            color={"#1B4173"}
+                            fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}
+                          >
+                            Pameran 61 organisasi, Challenge MAXPRESSION, dan
+                            Photo Spot.
                           </Text>
                         </Stack>
-                        <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
-                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                        <Stack
+                          spacing={[2, 2, 2, 2, 3]}
+                          mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}
+                        >
+                          <Text
+                            color={"#1B4173"}
+                            fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}
+                            fontWeight={"extrabold"}
+                          >
                             Kapan HoME Maxima 2023 akan dilaksanakan?
                           </Text>
-                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                          <Text
+                            color={"#1B4173"}
+                            fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}
+                          >
                             11-15 September 2023.
                           </Text>
                         </Stack>
-                        <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
-                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                        <Stack
+                          spacing={[2, 2, 2, 2, 3]}
+                          mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}
+                        >
+                          <Text
+                            color={"#1B4173"}
+                            fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}
+                            fontWeight={"extrabold"}
+                          >
                             Ikut HoME dapat SKKM atau tidak?
                           </Text>
-                          <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
-                            MAXIMERS bisa mendapatkan SKKM apabila mengikuti challenge 
+                          <Text
+                            color={"#1B4173"}
+                            fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}
+                          >
+                            MAXIMERS bisa mendapatkan SKKM apabila mengikuti
+                            challenge
                             <span
-                                    style={{
-                                      fontWeight: "bold",
-                                      color: "#D01E20",
-                                    }}
-                                  >
-                                    {" "}
-                                    MAXPRESSION.
-                                  </span>
+                              style={{
+                                fontWeight: "bold",
+                                color: "#D01E20",
+                              }}
+                            >
+                              {" "}
+                              MAXPRESSION.
+                            </span>
                           </Text>
                         </Stack>
                         {/* <Box mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
@@ -137,12 +249,22 @@ const FAQ: NextPage = () => {
                         </Box> */}
                       </TabPanel>
                       <TabPanel>
-                        <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                        <Text
+                          color={"#1B4173"}
+                          textAlign={"start"}
+                          fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}
+                          fontWeight={"extrabold"}
+                        >
                           Coming Soon!
                         </Text>
                       </TabPanel>
                       <TabPanel>
-                        <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                        <Text
+                          color={"#1B4173"}
+                          textAlign={"start"}
+                          fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}
+                          fontWeight={"extrabold"}
+                        >
                           Coming Soon!
                         </Text>
                       </TabPanel>
@@ -151,57 +273,138 @@ const FAQ: NextPage = () => {
                 </Center>
                 <Center display={["block", "block", "none"]}>
                   <Tabs variant="soft-rounded" align={"center"}>
-                    <TabList w={"auto"} p={[" 0.5em 0.5em", " 0.5em 0.5em", " 0.5em 2em", " 0.5em 1em", " 0.5em 2em"]} bgColor={"rgb(247,183,21,0.21)"} borderRadius={"full"}>
-                      <Tab mx={["0.3em", "0.5em", "0.5em", "0.5em", "1em"]} fontSize={["xs", "sm", "sm", "sm", "lg"]} color={"white"} bgColor={"rgb(255,104,53,0.35)"} _selected={{ color: "white", bg: "#FF6835" }}>
+                    <TabList
+                      w={"auto"}
+                      p={[
+                        " 0.5em 0.5em",
+                        " 0.5em 0.5em",
+                        " 0.5em 2em",
+                        " 0.5em 1em",
+                        " 0.5em 2em",
+                      ]}
+                      bgColor={"rgb(247,183,21,0.21)"}
+                      borderRadius={"full"}
+                    >
+                      <Tab
+                        mx={["0.3em", "0.5em", "0.5em", "0.5em", "1em"]}
+                        fontSize={["xs", "sm", "sm", "sm", "lg"]}
+                        color={"white"}
+                        bgColor={"rgb(255,104,53,0.35)"}
+                        _selected={{ color: "white", bg: "#FF6835" }}
+                      >
                         HoME
                       </Tab>
-                      <Tab mx={["0.3em", "0.5em", "0.5em", "0.5em", "1em"]} fontSize={["xs", "sm", "sm", "sm", "lg"]} color={"white"} bgColor={"rgb(255,104,53,0.35)"} _selected={{ color: "white", bg: "#FF6835" }}>
+                      <Tab
+                        mx={["0.3em", "0.5em", "0.5em", "0.5em", "1em"]}
+                        fontSize={["xs", "sm", "sm", "sm", "lg"]}
+                        color={"white"}
+                        bgColor={"rgb(255,104,53,0.35)"}
+                        _selected={{ color: "white", bg: "#FF6835" }}
+                      >
                         STATE
                       </Tab>
-                      <Tab mx={["0.3em", "0.5em", "0.5em", "0.5em", "1em"]} fontSize={["xs", "sm", "sm", "sm", "lg"]} color={"white"} bgColor={"rgb(255,104,53,0.35)"} _selected={{ color: "white", bg: "#FF6835" }}>
+                      <Tab
+                        mx={["0.3em", "0.5em", "0.5em", "0.5em", "1em"]}
+                        fontSize={["xs", "sm", "sm", "sm", "lg"]}
+                        color={"white"}
+                        bgColor={"rgb(255,104,53,0.35)"}
+                        _selected={{ color: "white", bg: "#FF6835" }}
+                      >
                         MalPun
                       </Tab>
                     </TabList>
                     <TabPanels>
                       <TabPanel h={"auto"} overflow={"auto"}>
                         <Stack spacing={[1, 1, 2, 2, 3]}>
-                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                          <Text
+                            color={"#1B4173"}
+                            textAlign={"start"}
+                            fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}
+                            fontWeight={"extrabold"}
+                          >
                             Apa itu HoME?
                           </Text>
-                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
-                            HoME merupakan kegiatan exhibition atau pameran berbagai organisasi di UMN, seperti Unit Kegiatan Mahasiswa, Lembaga Semi Otonom (LSO), Lembaga Kampus, Himpunan, Media
-                            Kampus, dan sebagainya. Pameran tersebut terdiri dari penjelasan organisasi, foto-foto organisasi, prestasi organisasi, serta berbagai kegiatan menarik.
+                          <Text
+                            color={"#1B4173"}
+                            textAlign={"start"}
+                            fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}
+                          >
+                            HoME merupakan kegiatan exhibition atau pameran
+                            berbagai organisasi di UMN, seperti Unit Kegiatan
+                            Mahasiswa, Lembaga Semi Otonom (LSO), Lembaga
+                            Kampus, Himpunan, Media Kampus, dan sebagainya.
+                            Pameran tersebut terdiri dari penjelasan organisasi,
+                            foto-foto organisasi, prestasi organisasi, serta
+                            berbagai kegiatan menarik.
                           </Text>
                         </Stack>
-                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
-                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                        <Stack
+                          spacing={[1, 1, 2, 2, 3]}
+                          mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}
+                        >
+                          <Text
+                            color={"#1B4173"}
+                            textAlign={"start"}
+                            fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}
+                            fontWeight={"extrabold"}
+                          >
                             Ada apa saja di HoME?
                           </Text>
-                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
-                            Pameran 61 organisasi, Challenge MAXPRESSION, dan Photo Spot.
+                          <Text
+                            color={"#1B4173"}
+                            textAlign={"start"}
+                            fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}
+                          >
+                            Pameran 61 organisasi, Challenge MAXPRESSION, dan
+                            Photo Spot.
                           </Text>
                         </Stack>
-                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
-                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                        <Stack
+                          spacing={[1, 1, 2, 2, 3]}
+                          mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}
+                        >
+                          <Text
+                            color={"#1B4173"}
+                            textAlign={"start"}
+                            fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}
+                            fontWeight={"extrabold"}
+                          >
                             Kapan HoME Maxima 2023 akan dilaksanakan?
                           </Text>
-                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                          <Text
+                            color={"#1B4173"}
+                            textAlign={"start"}
+                            fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}
+                          >
                             11-15 September 2023.
                           </Text>
                         </Stack>
-                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
-                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                        <Stack
+                          spacing={[1, 1, 2, 2, 3]}
+                          mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}
+                        >
+                          <Text
+                            color={"#1B4173"}
+                            textAlign={"start"}
+                            fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}
+                            fontWeight={"extrabold"}
+                          >
                             Ikut HoME dapat SKKM atau tidak?
                           </Text>
-                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.2vh", "sm", "lg"]}>
-                            MAXIMERS bisa mendapatkan SKKM apabila mengikuti challenge 
+                          <Text
+                            color={"#1B4173"}
+                            textAlign={"start"}
+                            fontSize={["13px", "lg", "2.2vh", "sm", "lg"]}
+                          >
+                            MAXIMERS bisa mendapatkan SKKM apabila mengikuti
+                            challenge
                             <span
                               style={{
-                              fontWeight: "bold",
-                              color: "#D01E20",
+                                fontWeight: "bold",
+                                color: "#D01E20",
                               }}
                             >
-                            {" "}
+                              {" "}
                               MAXPRESSION.
                             </span>
                           </Text>

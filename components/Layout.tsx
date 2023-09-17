@@ -1,5 +1,16 @@
 import React from "react";
-import { Center, Box, Text, HStack, Flex, Icon, Stack, Tag, Button, Image } from "@chakra-ui/react";
+import {
+  Center,
+  Box,
+  Text,
+  HStack,
+  Flex,
+  Icon,
+  Stack,
+  Tag,
+  Button,
+  Image,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import Navbar from "./Navbar";
 import BackButton from "./BackButton";
@@ -32,10 +43,25 @@ export default function Layout({
       <title>{title}</title>
       {showNavbar && <Navbar coloredName={path === "/profile"} />}
       {showLogoHeader && (
-        <Center w={"full"} h={"auto"} position={["relative", "relative", "absolute"]} top={["3vh"]}>
+        <Center
+          w={"full"}
+          h={"auto"}
+          position={["relative", "relative", "absolute"]}
+          top={["3vh"]}
+        >
           <Link href={"/"}>
-            <Image display={["none", "flex"]} w={"10em"} src={"../assets/MaximaLogo_Desktop.svg"} alt={"MAXIMA Logo"} />
-            <Image display={["flex", "none"]} w={"2.5em"} src={"../assets/MaximaLogo_Mobile.svg"} alt={"MAXIMA Logo"} />
+            <Image
+              display={["none", "flex"]}
+              w={"10em"}
+              src={"/assets/MaximaLogo_Desktop.svg"}
+              alt={"MAXIMA Logo"}
+            />
+            <Image
+              display={["flex", "none"]}
+              w={"2.5em"}
+              src={"/assets/MaximaLogo_Mobile.svg"}
+              alt={"MAXIMA Logo"}
+            />
           </Link>
         </Center>
       )}
@@ -44,7 +70,15 @@ export default function Layout({
         {backButton && <BackButton bgColor={`${backbuttonBgColor}`} />}
       </Box>
       {showTitleFooter && (
-        <Center w={"full"} h={"auto"} position={["relative", "relative", "absolute"]} bottom={"3vh"} color={"#062D5F"} fontSize={["xs", "md"]} fontWeight={"medium"}>
+        <Center
+          w={"full"}
+          h={"auto"}
+          position={["relative", "relative", "absolute"]}
+          bottom={"3vh"}
+          color={"#062D5F"}
+          fontSize={["xs", "md"]}
+          fontWeight={"medium"}
+        >
           <Text>MAXIMA 2023</Text>
         </Center>
       )}
