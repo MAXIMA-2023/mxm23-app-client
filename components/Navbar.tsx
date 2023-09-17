@@ -143,7 +143,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                 <Image
                   w={"10em"}
                   h={"full"}
-                  src={"../assets/MaximaLogo_Navbar.svg"}
+                  src={"/assets/MaximaLogo_Navbar.svg"}
                   alt={"Maxima Logo"}
                   objectFit={"cover"}
                 />
@@ -349,7 +349,7 @@ export default function Navbar({ coloredName }: { coloredName?: boolean }) {
                 <Link href={"/"}>
                   <Image
                     w={"8em"}
-                    src={"../assets/MaximaLogo_Navbar.svg"}
+                    src={"/assets/MaximaLogo_Navbar.svg"}
                     alt={"MAXIMA Logo"}
                   />
                 </Link>

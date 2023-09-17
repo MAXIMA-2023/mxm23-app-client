@@ -7,7 +7,27 @@ import Layout from "@/components/Layout";
 import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
-import { Box, Flex, Center, Heading, Text, Button, Stack, Img, HStack, Icon, Image, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Center,
+  Heading,
+  Text,
+  Button,
+  Stack,
+  Img,
+  HStack,
+  Icon,
+  Image,
+  IconButton,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BsPlus, BsTrash, BsTrashFill } from "react-icons/bs";
@@ -86,7 +106,9 @@ const STATE = () => {
 
   const fetchStateReg = async () => {
     try {
-      const { data } = await api.get<ResponseModel<StateReg[]>>(`/state/regData`);
+      const { data } = await api.get<ResponseModel<StateReg[]>>(
+        `/state/regData`
+      );
       setDataState(data.data!);
     } catch (error) {
       HandleAxiosError(error);
@@ -95,14 +117,18 @@ const STATE = () => {
 
   useEffect(() => {
     if (session.status === "authenticated") {
-      Promise.all([fetchToggle(), fetchStateReg()]).finally(() => setIsLoading(false));
+      Promise.all([fetchToggle(), fetchStateReg()]).finally(() =>
+        setIsLoading(false)
+      );
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
   // toggles
-  const stateRegToggle = toggle.find((v) => v.name === "stateRegistration")?.toggle;
+  const stateRegToggle = toggle.find(
+    (v) => v.name === "stateRegistration"
+  )?.toggle;
 
   const STATEButton = ({ data }: { data?: StateReg }) => {
     const stateDate = Date.parse(data?.date!);
@@ -161,60 +187,67 @@ const STATE = () => {
                 }}
               />
             </Box>
-            {stateDate > today.getTime() && (
-              <IconButton
-                aria-label="delete-state"
-                position={"absolute"}
-                top={0}
-                left={0}
-                rounded={"full"}
-                icon={<BsTrashFill />}
-                bgColor={"white"}
-                color={"red.500"}
-                shadow={"0px 0px 4px rgb(0,0,0,0.25)"}
-                _hover={{
-                  bgColor: "white",
-                  shadow: "0px 0px 16px rgb(255,255,255,0.75)",
-                }}
-                onClick={() =>
-                  Swal.fire({
-                    title: `Batalkan registrasi STATE?`,
-                    color: "#062D5F",
-                    text: `Apakah kamu yakin untuk membatalkan registrasi state ${data.name}?`,
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#D33",
-                    focusCancel: true,
-                    cancelButtonColor: "#F7B70C",
-                    confirmButtonText: "Batal",
-                    cancelButtonText: "Kembali",
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      // api call -- delete state
-                      api
-                        .delete<ResponseModel<undefined>>(`/state/cancel_registration/${data.stateID}`)
-                        .then(({ data }) => {
-                          Swal.fire({
-                            title: "Berhasil!",
-                            color: "#062D5F",
-                            text: data.message,
-                            icon: "success",
-                            confirmButtonColor: "#F7B70C",
-                            cancelButtonText: "Kembali",
-                          });
-                          fetchStateReg();
-                        })
-                        .catch(HandleAxiosError);
-                    }
-                  })
-                }
-              />
-            )}
+            {/* DISABLING BUTTON (REQUEST DARI INSPICE)  */}
+            {/* {stateDate > today.getTime() && ( */}
+            {/*   <IconButton */}
+            {/*     aria-label="delete-state" */}
+            {/*     position={"absolute"} */}
+            {/*     top={0} */}
+            {/*     left={0} */}
+            {/*     rounded={"full"} */}
+            {/*     icon={<BsTrashFill />} */}
+            {/*     bgColor={"white"} */}
+            {/*     color={"red.500"} */}
+            {/*     shadow={"0px 0px 4px rgb(0,0,0,0.25)"} */}
+            {/*     _hover={{ */}
+            {/*       bgColor: "white", */}
+            {/*       shadow: "0px 0px 16px rgb(255,255,255,0.75)", */}
+            {/*     }} */}
+            {/*     onClick={() => */}
+            {/*       Swal.fire({ */}
+            {/*         title: `Batalkan registrasi STATE?`, */}
+            {/*         color: "#062D5F", */}
+            {/*         text: `Apakah kamu yakin untuk membatalkan registrasi state ${data.name}?`, */}
+            {/*         icon: "warning", */}
+            {/*         showCancelButton: true, */}
+            {/*         confirmButtonColor: "#D33", */}
+            {/*         focusCancel: true, */}
+            {/*         cancelButtonColor: "#F7B70C", */}
+            {/*         confirmButtonText: "Batal", */}
+            {/*         cancelButtonText: "Kembali", */}
+            {/*       }).then((result) => { */}
+            {/*         if (result.isConfirmed) { */}
+            {/*           // api call -- delete state */}
+            {/*           api */}
+            {/*             .delete<ResponseModel<undefined>>(`/state/cancel_registration/${data.stateID}`) */}
+            {/*             .then(({ data }) => { */}
+            {/*               Swal.fire({ */}
+            {/*                 title: "Berhasil!", */}
+            {/*                 color: "#062D5F", */}
+            {/*                 text: data.message, */}
+            {/*                 icon: "success", */}
+            {/*                 confirmButtonColor: "#F7B70C", */}
+            {/*                 cancelButtonText: "Kembali", */}
+            {/*               }); */}
+            {/*               fetchStateReg(); */}
+            {/*             }) */}
+            {/*             .catch(HandleAxiosError); */}
+            {/*         } */}
+            {/*       }) */}
+            {/*     } */}
+            {/*   /> */}
+            {/* )} */}
           </>
         ) : (
           <>
             {stateRegToggle ? ( // check toggle stateRegistration
-              <Stack position={"absolute"} direction={"column"} align={"center"} justify={"center"} mt={"1em"}>
+              <Stack
+                position={"absolute"}
+                direction={"column"}
+                align={"center"}
+                justify={"center"}
+                mt={"1em"}
+              >
                 <Icon as={BsPlus} boxSize={"3em"} />
                 <Text fontWeight={"bold"} mt={"-1em"}>
                   Add
@@ -243,7 +276,14 @@ const STATE = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Text textColor={"#D01E20"} align={"end"} fontSize={["6xl", "6xl", "8xl", "8xl", "8xl"]} fontWeight={"bold"} lineHeight={"1em"} textShadow={"0px 0px 32px white"}>
+          <Text
+            textColor={"#D01E20"}
+            align={"end"}
+            fontSize={["6xl", "6xl", "8xl", "8xl", "8xl"]}
+            fontWeight={"bold"}
+            lineHeight={"1em"}
+            textShadow={"0px 0px 32px white"}
+          >
             STATE
           </Text>
           <Text
@@ -271,7 +311,8 @@ const STATE = () => {
           textAlign={"right"}
           textShadow={"2px 2px 4px rgba(0, 0, 0, 0.5)"}
         >
-          Selamat datang di STATE MAXIMA 2023! Di sini kamu dapat memilih UKM yang ingin kamu ketahui!
+          Selamat datang di STATE MAXIMA 2023! Di sini kamu dapat memilih UKM
+          yang ingin kamu ketahui!
         </Text>
         <Flex justify={"end"} w={"full"}>
           <Button
@@ -307,7 +348,11 @@ const STATE = () => {
 
   return (
     <>
-      <Layout title={"MAXIMA 2023 - STATE"} backButton backbuttonBgColor={"#FF6835"}>
+      <Layout
+        title={"MAXIMA 2023 - STATE"}
+        backButton
+        backbuttonBgColor={"#FF6835"}
+      >
         <Flex
           // mt={"16vh"}]
           w={"full"}
@@ -316,7 +361,12 @@ const STATE = () => {
           py={["16em", "16em", "16em", "12em", "12em"]}
           // justify={"center"}
           // align={"center"}
-          bgImage={["./assets/state/MaximaBG_STATE_Mobile.svg", "./assets/state/MaximaBG_STATE_Desktop.svg", "./assets/state/MaximaBG_STATE_Desktop.svg", "./assets/state/MaximaBG_STATE_Desktop.svg"]}
+          bgImage={[
+            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaBG_STATE_Mobile.webp",
+            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaBG_STATE_Desktop.webp",
+            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaBG_STATE_Desktop.webp",
+            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaBG_STATE_Desktop.webp",
+          ]}
           bgPosition={"bottom"}
           bgSize={"cover"}
           bgRepeat={"no-repeat"}
@@ -332,22 +382,53 @@ const STATE = () => {
           ref={pilihStateRef} // ini buat scrollIntoView
           justifyContent={"space-evenly"}
           px={["none", "none", "4em", "8em", "16em"]}
-          bgImage={["./assets/state/MaximaBG_STATE_Mobile_Bottom.svg", "./assets/state/MaximaBG_STATE_Desktop_Bottom.svg", "./assets/state/MaximaBG_STATE_Desktop_Bottom.svg", "./assets/state/MaximaBG_STATE_Desktop_Bottom.svg"]}
+          bgImage={[
+            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaBG_STATE_Mobile_Bottom.webp",
+            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaBG_STATE_Desktop_Bottom.webp",
+            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaBG_STATE_Desktop_Bottom.webp",
+            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaBG_STATE_Desktop_Bottom.webp",
+          ]}
           bgPosition={["50% 28%", "center", "center", "bottom", "bottom"]}
           bgSize={"cover"}
           bgRepeat={"no-repeat"}
         >
-          <Flex display={["none", "none", "none", "flex", "flex"]} w={"full"} justify={"space-evenly"}>
-            {Array.from({ length: 3 }, (_, index) => dataState[index]).map((data, index) => (
-              <Flex key={`state ${index}`} bgImage={"./assets/state/MaximaAssets_STATE_Lampu.svg"} bgPosition={"center"} bgSize={"contain"} bgRepeat={"no-repeat"} h={"32em"} w={"16em"} pt={"3.5em"} justify={"center"}>
-                <STATEButton data={data} />
-              </Flex>
-            ))}
+          <Flex
+            display={["none", "none", "none", "flex", "flex"]}
+            w={"full"}
+            justify={"space-evenly"}
+          >
+            {Array.from({ length: 3 }, (_, index) => dataState[index]).map(
+              (data, index) => (
+                <Flex
+                  key={`state ${index}`}
+                  bgImage={
+                    "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Lampu.webp"
+                  }
+                  bgPosition={"center"}
+                  bgSize={"contain"}
+                  bgRepeat={"no-repeat"}
+                  h={"32em"}
+                  w={"16em"}
+                  pt={"3.5em"}
+                  justify={"center"}
+                >
+                  <STATEButton data={data} />
+                </Flex>
+              )
+            )}
           </Flex>
 
-          <Stack direction={"row"} align={"end"} justify={"center"} w={"full"} display={["flex", "flex", "flex", "none", "none"]}>
+          <Stack
+            direction={"row"}
+            align={"end"}
+            justify={"center"}
+            w={"full"}
+            display={["flex", "flex", "flex", "none", "none"]}
+          >
             <Flex
-              bgImage={"./assets/state/MaximaAssets_STATE_Mobile_Lampu_Short.svg"}
+              bgImage={
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Mobile_Lampu_Short.webp"
+              }
               bgPosition={"bottom"}
               bgSize={"contain"}
               bgRepeat={"no-repeat"}
@@ -361,29 +442,76 @@ const STATE = () => {
               <STATEButton data={dataState[0]} />
             </Flex>
 
-            <Flex bgImage={"./assets/state/MaximaAssets_STATE_Mobile_Lampu.svg"} bgPosition={"bottom"} bgSize={"contain"} bgRepeat={"no-repeat"} h={["33em", "42em"]} w={"12em"} pt={["2em", "2.3em", "2.3em"]} justify={"center"} mb={"11em"}>
+            <Flex
+              bgImage={
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Mobile_Lampu.webp"
+              }
+              bgPosition={"bottom"}
+              bgSize={"contain"}
+              bgRepeat={"no-repeat"}
+              h={["33em", "42em"]}
+              w={"12em"}
+              pt={["2em", "2.3em", "2.3em"]}
+              justify={"center"}
+              mb={"11em"}
+            >
               <STATEButton data={dataState[1]} />
             </Flex>
-            <Flex bgImage={"./assets/state/MaximaAssets_STATE_Mobile_Lampu.svg"} bgPosition={"bottom"} bgSize={"contain"} bgRepeat={"no-repeat"} h={["33em", "42em"]} w={"12em"} pt={["2em", "2.3em"]} justify={"center"} ml={["-6em", "-2em"]}>
+            <Flex
+              bgImage={
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Mobile_Lampu.webp"
+              }
+              bgPosition={"bottom"}
+              bgSize={"contain"}
+              bgRepeat={"no-repeat"}
+              h={["33em", "42em"]}
+              w={"12em"}
+              pt={["2em", "2.3em"]}
+              justify={"center"}
+              ml={["-6em", "-2em"]}
+            >
               <STATEButton data={dataState[2]} />
             </Flex>
           </Stack>
         </Flex>
       </Layout>
-      <Modal isOpen={selectedItem !== null} onClose={() => setSelectedItem(null)} size="lg" isCentered>
+      <Modal
+        isOpen={selectedItem !== null}
+        onClose={() => setSelectedItem(null)}
+        size="lg"
+        isCentered
+      >
         <ModalOverlay />
         <ModalContent borderRadius="md" m={"1em"} p={4}>
           {/* <ModalCloseButton /> */}
           <ModalBody>
             <Box>
               <Center flexDirection={"column"}>
-                <Img src={selectedItem?.stateLogo} boxSize={["135px", "165px"]} objectFit="contain" borderRadius="2xl" />
+                <Img
+                  src={selectedItem?.stateLogo}
+                  boxSize={["135px", "165px"]}
+                  objectFit="contain"
+                  borderRadius="2xl"
+                />
               </Center>
               <Center flexDirection={"column"}>
-                <Text mt={4} color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
+                <Text
+                  mt={4}
+                  color="#062D5F"
+                  fontSize="md"
+                  fontWeight="semibold"
+                  textAlign="center"
+                  letterSpacing={0.2}
+                >
                   {selectedItem?.name}
                 </Text>
-                <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
+                <Text
+                  color="#062D5F"
+                  fontSize="md"
+                  fontWeight="semibold"
+                  textAlign="center"
+                  letterSpacing={0.2}
+                >
                   {new Date(selectedItem?.date!)
                     .toLocaleDateString("id-ID", {
                       weekday: "long",
@@ -395,7 +523,13 @@ const STATE = () => {
                     })
                     .replace("pukul", "")}
                 </Text>
-                <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
+                <Text
+                  color="#062D5F"
+                  fontSize="md"
+                  fontWeight="semibold"
+                  textAlign="center"
+                  letterSpacing={0.2}
+                >
                   {selectedItem?.location}
                 </Text>
                 <Text my={"1em"}>{selectedItem?.stateDesc}</Text>
@@ -403,7 +537,11 @@ const STATE = () => {
             </Box>
           </ModalBody>
           <ModalFooter justifyContent={"center"}>
-            <Button onClick={() => setSelectedItem(null)} color={"white"} bgColor={"#F7B70C"}>
+            <Button
+              onClick={() => setSelectedItem(null)}
+              color={"white"}
+              bgColor={"#F7B70C"}
+            >
               Close
             </Button>
           </ModalFooter>

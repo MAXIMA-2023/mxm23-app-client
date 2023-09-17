@@ -3,7 +3,18 @@ import { motion } from "framer-motion";
 
 export default function LoadingSpinner() {
   return (
-    <Box position="fixed" top="0" left="0" right="0" bottom="0" zIndex="9999" bg="rgba(20,20,20,0.5)" display="flex" justifyContent="center" alignItems="center">
+    <Box
+      position="fixed"
+      top="0"
+      left="0"
+      right="0"
+      bottom="0"
+      zIndex="9999"
+      bg="rgba(20,20,20,0.5)"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Center
         as={motion.div}
         boxSize={["10em", "15em"]}
@@ -22,7 +33,11 @@ export default function LoadingSpinner() {
           },
         }}
       >
-        <Image src={"../assets/MaximaLogo_Loading.svg"} boxSize={["5em", "8em"]} alt={"MAXIMA Logo"} />
+        <Image
+          src={"/assets/MaximaLogo_Loading.svg"}
+          boxSize={["5em", "8em"]}
+          alt={"MAXIMA Logo"}
+        />
       </Center>
     </Box>
   );
