@@ -43,6 +43,7 @@ type StateReg = {
   name: string;
   stateLogo: string;
   stateDesc: string;
+  perlengkapan: string;
   quota: number;
   registered: number;
   date: string;
@@ -533,6 +534,21 @@ const STATE = () => {
                   {selectedItem?.location}
                 </Text>
                 <Text my={"1em"}>{selectedItem?.stateDesc}</Text>
+                <Box w="full">
+                  <Text
+                    mt={4}
+                    color="#062D5F"
+                    fontSize="md"
+                    fontWeight="semibold"
+                    // textAlign="center"
+                    letterSpacing={0.2}
+                  >
+                    Barang yang harus dipersiapkan :
+                  </Text>
+                  <Text my={"1em"} textAlign={"justify"}>
+                    {selectedItem?.perlengkapan}
+                  </Text>
+                </Box>
               </Center>
             </Box>
           </ModalBody>

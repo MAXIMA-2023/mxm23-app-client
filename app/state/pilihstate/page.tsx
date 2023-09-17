@@ -54,6 +54,7 @@ type StateActivities = {
   name: string;
   stateLogo: string;
   stateDesc: string;
+  perlengkapan: string;
   quota: number;
   registered: number;
   date: string; // date
@@ -456,6 +457,21 @@ const PilihState = () => {
               <Text my={"1em"} textAlign={"justify"}>
                 {selectedItem?.stateDesc}
               </Text>
+              <Box w="full">
+                <Text
+                  mt={4}
+                  color="#062D5F"
+                  fontSize="md"
+                  fontWeight="semibold"
+                  // textAlign="center"
+                  letterSpacing={0.2}
+                >
+                  Barang yang harus dipersiapkan :
+                </Text>
+                <Text my={"1em"} textAlign={"justify"}>
+                  {selectedItem?.perlengkapan}
+                </Text>
+              </Box>
               <Flex mt={4} justifyContent="center" alignItems="center">
                 <Button
                   color={"white"}
