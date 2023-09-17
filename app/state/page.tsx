@@ -161,55 +161,56 @@ const STATE = () => {
                 }}
               />
             </Box>
-            {stateDate > today.getTime() && (
-              <IconButton
-                aria-label="delete-state"
-                position={"absolute"}
-                top={0}
-                left={0}
-                rounded={"full"}
-                icon={<BsTrashFill />}
-                bgColor={"white"}
-                color={"red.500"}
-                shadow={"0px 0px 4px rgb(0,0,0,0.25)"}
-                _hover={{
-                  bgColor: "white",
-                  shadow: "0px 0px 16px rgb(255,255,255,0.75)",
-                }}
-                onClick={() =>
-                  Swal.fire({
-                    title: `Batalkan registrasi STATE?`,
-                    color: "#062D5F",
-                    text: `Apakah kamu yakin untuk membatalkan registrasi state ${data.name}?`,
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#D33",
-                    focusCancel: true,
-                    cancelButtonColor: "#F7B70C",
-                    confirmButtonText: "Batal",
-                    cancelButtonText: "Kembali",
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      // api call -- delete state
-                      api
-                        .delete<ResponseModel<undefined>>(`/state/cancel_registration/${data.stateID}`)
-                        .then(({ data }) => {
-                          Swal.fire({
-                            title: "Berhasil!",
-                            color: "#062D5F",
-                            text: data.message,
-                            icon: "success",
-                            confirmButtonColor: "#F7B70C",
-                            cancelButtonText: "Kembali",
-                          });
-                          fetchStateReg();
-                        })
-                        .catch(HandleAxiosError);
-                    }
-                  })
-                }
-              />
-            )}
+            {/* DISABLING BUTTON (REQUEST DARI INSPICE)  */}
+            {/* {stateDate > today.getTime() && ( */}
+            {/*   <IconButton */}
+            {/*     aria-label="delete-state" */}
+            {/*     position={"absolute"} */}
+            {/*     top={0} */}
+            {/*     left={0} */}
+            {/*     rounded={"full"} */}
+            {/*     icon={<BsTrashFill />} */}
+            {/*     bgColor={"white"} */}
+            {/*     color={"red.500"} */}
+            {/*     shadow={"0px 0px 4px rgb(0,0,0,0.25)"} */}
+            {/*     _hover={{ */}
+            {/*       bgColor: "white", */}
+            {/*       shadow: "0px 0px 16px rgb(255,255,255,0.75)", */}
+            {/*     }} */}
+            {/*     onClick={() => */}
+            {/*       Swal.fire({ */}
+            {/*         title: `Batalkan registrasi STATE?`, */}
+            {/*         color: "#062D5F", */}
+            {/*         text: `Apakah kamu yakin untuk membatalkan registrasi state ${data.name}?`, */}
+            {/*         icon: "warning", */}
+            {/*         showCancelButton: true, */}
+            {/*         confirmButtonColor: "#D33", */}
+            {/*         focusCancel: true, */}
+            {/*         cancelButtonColor: "#F7B70C", */}
+            {/*         confirmButtonText: "Batal", */}
+            {/*         cancelButtonText: "Kembali", */}
+            {/*       }).then((result) => { */}
+            {/*         if (result.isConfirmed) { */}
+            {/*           // api call -- delete state */}
+            {/*           api */}
+            {/*             .delete<ResponseModel<undefined>>(`/state/cancel_registration/${data.stateID}`) */}
+            {/*             .then(({ data }) => { */}
+            {/*               Swal.fire({ */}
+            {/*                 title: "Berhasil!", */}
+            {/*                 color: "#062D5F", */}
+            {/*                 text: data.message, */}
+            {/*                 icon: "success", */}
+            {/*                 confirmButtonColor: "#F7B70C", */}
+            {/*                 cancelButtonText: "Kembali", */}
+            {/*               }); */}
+            {/*               fetchStateReg(); */}
+            {/*             }) */}
+            {/*             .catch(HandleAxiosError); */}
+            {/*         } */}
+            {/*       }) */}
+            {/*     } */}
+            {/*   /> */}
+            {/* )} */}
           </>
         ) : (
           <>
