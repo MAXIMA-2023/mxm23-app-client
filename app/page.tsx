@@ -47,6 +47,7 @@ export default function App() {
                     src={
                       "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaLogo_Mobile.webp"
                     }
+                    objectFit={"contain"}
                     alt={"MAXIMA Logo"}
                     // bgColor={"white"}
                   />
