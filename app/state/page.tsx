@@ -125,7 +125,7 @@ const STATE = () => {
       Swal.fire({
         title: "Reminder!",
         color: "#062D5F",
-        text: "Jangan lupa untuk cek Handbook, jadwal dan perlengkapan STATE ya!",
+        text: "Jangan lupa untuk cek Handbook, jadwal dan perlengkapan STATE ya!. KTM juga jangan lupa ya!",
         icon: "warning",
         confirmButtonColor: "#F7B70C",
         cancelButtonText: "Kembali",
