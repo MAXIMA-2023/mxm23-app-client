@@ -32,6 +32,8 @@ type Profile = {
   idLine: string;
   prodi: string;
   token: string;
+  ticketClaimed: boolean;
+  tokenMalpun: string;
 };
 
 export default function Profile() {
