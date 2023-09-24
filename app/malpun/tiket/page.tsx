@@ -147,34 +147,72 @@ const ClaimTicket = () => {
   }, []);
 
   useEffect(() => {
-    api.get<Toggle[]>("/toggle").then(({ data }) => {
-      if (!data.find((v) => v.name === "Malpunpage")?.toggle) {
-        Swal.fire({
-          title: "Malpun ditutup!",
-          color: "#062D5F",
-          text: "Maaf, saat ini Malpun belum dibuka/sudah ditutup. Silahkan cek kembali nanti!",
-          icon: "error",
-          confirmButtonColor: "#F7B70C",
-        });
-        router.push("/");
-        return;
-      }
-    });
-
     if (session.status === "authenticated") {
-      api
-        .get<ResponseModel<Profile>>(`/mahasiswa/profile`)
-        .then(({ data }) => {
-          if (data.data?.ticketClaimed) {
-            router.push(`/malpun/tiket/${data.data.tokenMalpun}`);
-          }
-        })
-        .catch(HandleAxiosError)
-        .finally(() => setIsLoading(false));
+      api.get<Toggle[]>("/toggle").then(({ data }) => {
+        if (!data.find((v) => v.name === "Malpunpage")?.toggle) {
+          Swal.fire({
+            title: "Malpun ditutup!",
+            color: "#062D5F",
+            text: "Maaf, saat ini Malpun belum dibuka/sudah ditutup. Silahkan cek kembali nanti!",
+            icon: "error",
+            confirmButtonColor: "#F7B70C",
+          });
+          router.push("/");
+          return;
+        }
+
+        if (!data.find((v) => v.name === "MabaClaimTicket")?.toggle) {
+          Swal.fire({
+            title: "Malpun ditutup!",
+            color: "#062D5F",
+            text: "Maaf, saat ini masa claim tiket belum dibuka/sudah ditutup!",
+            icon: "error",
+            confirmButtonColor: "#F7B70C",
+          });
+          router.push("/malpun");
+          return;
+        }
+
+        api
+          .get<ResponseModel<Profile>>(`/mahasiswa/profile`)
+          .then(({ data }) => {
+            if (data.data?.ticketClaimed) {
+              router.push(`/malpun/tiket/${data.data.tokenMalpun}`);
+            }
+          })
+          .catch(HandleAxiosError)
+          .finally(() => setIsLoading(false));
+      });
     }
 
     if (session.status === "unauthenticated") {
-      setIsLoading(false);
+      api.get<Toggle[]>("/toggle").then(({ data }) => {
+        if (!data.find((v) => v.name === "Malpunpage")?.toggle) {
+          Swal.fire({
+            title: "Malpun ditutup!",
+            color: "#062D5F",
+            text: "Maaf, saat ini Malpun belum dibuka/sudah ditutup. Silahkan cek kembali nanti!",
+            icon: "error",
+            confirmButtonColor: "#F7B70C",
+          });
+          router.push("/");
+          return;
+        }
+
+        if (!data.find((v) => v.name === "ExternalBuyTicket")?.toggle) {
+          Swal.fire({
+            title: "Malpun ditutup!",
+            color: "#062D5F",
+            text: "Maaf, saat ini pembelian tiket MalPun ditutup, pembelian mulai dibuka pada tanggal 2 Oktorber 2023!",
+            icon: "error",
+            confirmButtonColor: "#F7B70C",
+          });
+          router.push("/malpun");
+          return;
+        }
+
+        setIsLoading(false);
+      });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
