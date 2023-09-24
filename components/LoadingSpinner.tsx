@@ -34,7 +34,9 @@ export default function LoadingSpinner() {
         }}
       >
         <Image
-          src={"/assets/MaximaLogo_Loading.svg"}
+          src={
+            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaLogo_Loading.svg"
+          }
           boxSize={["5em", "8em"]}
           alt={"MAXIMA Logo"}
         />

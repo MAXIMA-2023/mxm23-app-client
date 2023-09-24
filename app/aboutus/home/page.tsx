@@ -50,7 +50,9 @@ const HoME: NextPage = () => {
                 <Box>
                   <Center mt={"0em"}>
                     <Img
-                      src={"/assets/aboutus/AboutUs_Home.svg"}
+                      src={
+                        "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/aboutus/AboutUs_Home.svg"
+                      }
                       w={["12.5em", "10em", "20em", "20em", "auto"]}
                     ></Img>
                   </Center>

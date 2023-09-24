@@ -50,7 +50,9 @@ const MalamPuncak: NextPage = () => {
                 <Box>
                   <Center mt={"0em"}>
                     <Img
-                      src={"/assets/aboutus/AboutUs_Malpun.svg"}
+                      src={
+                        "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/aboutus/AboutUs_Malpun.svg"
+                      }
                       w={["10em", "15em", "40vw", "15em", "18em"]}
                     ></Img>
                   </Center>

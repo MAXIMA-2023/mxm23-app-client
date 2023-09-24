@@ -79,7 +79,9 @@ const FAQ: NextPage = () => {
               <Box w={"100%"}>
                 <Center mt={["1em", "1em", "0em", "1em", "1em"]}>
                   <Img
-                    src={"/assets/faq/FAQ.svg"}
+                    src={
+                      "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/faq/FAQ.svg"
+                    }
                     w={["5em", "5em", "15vw", "5em", "10em"]}
                   ></Img>
                 </Center>

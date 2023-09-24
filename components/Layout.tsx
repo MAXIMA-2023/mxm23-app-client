@@ -53,13 +53,17 @@ export default function Layout({
             <Image
               display={["none", "flex"]}
               w={"10em"}
-              src={"/assets/MaximaLogo_Desktop.svg"}
+              src={
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaLogo_Desktop.svg"
+              }
               alt={"MAXIMA Logo"}
             />
             <Image
               display={["flex", "none"]}
               w={"2.5em"}
-              src={"/assets/MaximaLogo_Mobile.svg"}
+              src={
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaLogo_Mobile.svg"
+              }
               alt={"MAXIMA Logo"}
             />
           </Link>

@@ -279,7 +279,9 @@ export default function Home() {
             >
               <Flex alignItems={"center"}>
                 <Image
-                  src={"/assets/home/LocationIcon_Red.svg"}
+                  src={
+                    "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/home/LocationIcon_Red.svg"
+                  }
                   alt={"Location Icon"}
                   boxSize={["1.25em", "1.25em", "1.75em", "1.75em", "1.75em"]}
                   mr={["0.5em", "0.5em", "1em"]}
@@ -350,7 +352,9 @@ export default function Home() {
               >
                 <Center>
                   <Image
-                    src={"/assets/home/ChallengeIcon.svg"}
+                    src={
+                      "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/home/ChallengeIcon.svg"
+                    }
                     alt={"Challenge Icon"}
                     boxSize={["4.5em", "5em", "3em"]}
                     mr={["0em", "0em", "1em"]}
@@ -399,7 +403,9 @@ export default function Home() {
               >
                 <Center>
                   <Image
-                    src={"/assets/home/Handbook.svg"}
+                    src={
+                      "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/home/Handbook.svg"
+                    }
                     alt={"QR Icon"}
                     boxSize={["4.5em", "5em", "3em"]}
                     mr={["0em", "0em", "1em"]}
@@ -449,7 +455,9 @@ export default function Home() {
               >
                 <Center>
                   <Image
-                    src={"/assets/home/Twibbon.svg"}
+                    src={
+                      "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/home/Twibbon.svg"
+                    }
                     alt={"QR Icon"}
                     boxSize={["4.5em", "5em", "3em"]}
                     mr={["2em", "2em", "1em"]}
