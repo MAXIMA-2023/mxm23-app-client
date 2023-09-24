@@ -41,7 +41,9 @@ const BackButton = ({ bgColor = "#062D5F" }: { bgColor?: string }) => {
             shadow={"0px 4px 4px rgba(0,0,0,0.25)"}
           >
             <Img
-              src={"/assets/BackButton.svg"}
+              src={
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/BackButton.svg"
+              }
               w={["2rem", "2rem", "2rem", "2rem", "2rem"]}
               h={["1.2rem", "1.2rem", "2rem", "2rem", "2rem"]}
             />

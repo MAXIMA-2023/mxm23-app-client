@@ -69,7 +69,9 @@ const STATE: NextPage = () => {
                 <Box>
                   <Center mt={"0em"}>
                     <Img
-                      src={"/assets/aboutus/AboutUs_STATE.svg"}
+                      src={
+                        "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/aboutus/AboutUs_STATE.svg"
+                      }
                       w={["10em", "15em", "40vw", "15em", "25em"]}
                     ></Img>
                   </Center>

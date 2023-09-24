@@ -8,7 +8,17 @@ export default function Testing() {
     <>
       <Layout>
         <Box>
-          <Box position={"absolute"} w={"full"} h={"100vh"} bgImage={"/Assets/MaximaBG_Desktop.svg"} bgPosition={"bottom"} bgSize={"cover"} bgRepeat={"no-repeat"}></Box>
+          <Box
+            position={"absolute"}
+            w={"full"}
+            h={"100vh"}
+            bgImage={
+              "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/Assets/MaximaBG_Desktop.svg"
+            }
+            bgPosition={"bottom"}
+            bgSize={"cover"}
+            bgRepeat={"no-repeat"}
+          ></Box>
         </Box>
       </Layout>
     </>

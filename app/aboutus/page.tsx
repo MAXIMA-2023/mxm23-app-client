@@ -119,7 +119,9 @@ const AboutUs: NextPage = () => {
                 <Box>
                   <Center mt={["1em", "1em", "0em", "1em", "1em"]}>
                     <Img
-                      src={"/assets/aboutus/AboutUs.svg"}
+                      src={
+                        "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/aboutus/AboutUs.svg"
+                      }
                       w={["12.5em", "15em", "42vw", "20em", "27em"]}
                     ></Img>
                   </Center>
