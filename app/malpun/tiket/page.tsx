@@ -280,17 +280,29 @@ const ClaimTicket = () => {
               direction={"column"}
               my={["0.5em", "1em", "1em", "2em", "2em"]}
             >
-              <MenuEntry src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/calendar.svg" alt="tanggal">
+              <MenuEntry
+                src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/calendar.svg"
+                alt="tanggal"
+              >
                 7 Oktober 2023
               </MenuEntry>
-              <MenuEntry src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/clock.svg" alt="jam">
+              <MenuEntry
+                src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/clock.svg"
+                alt="jam"
+              >
                 16:00 WIB
               </MenuEntry>
-              <MenuEntry src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/location.svg" alt="lokasi">
+              <MenuEntry
+                src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/location.svg"
+                alt="lokasi"
+              >
                 Lapangan Parkir UMN
               </MenuEntry>
               {session.status == "unauthenticated" && (
-                <MenuEntry src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/ticket.svg" alt="harga">
+                <MenuEntry
+                  src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/ticket.svg"
+                  alt="harga"
+                >
                   Rp 35.000
                 </MenuEntry>
               )}
@@ -327,8 +339,9 @@ const ClaimTicket = () => {
                           input: "text",
                           inputValidator: (value) => {
                             if (
-                              !value.startsWith("99900") &&
-                              value.length !== 16
+                              !value.startsWith("99900") ||
+                              value.length !== 16 ||
+                              !Number.isInteger(value)
                             )
                               return "Nomor member tidak valid";
                           },
