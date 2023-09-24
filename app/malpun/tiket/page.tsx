@@ -161,6 +161,18 @@ const ClaimTicket = () => {
           return;
         }
 
+        if (!data.find((v) => v.name === "MabaClaimTicket")?.toggle) {
+          Swal.fire({
+            title: "Malpun ditutup!",
+            color: "#062D5F",
+            text: "Maaf, saat ini masa claim tiket belum dibuka/sudah ditutup!",
+            icon: "error",
+            confirmButtonColor: "#F7B70C",
+          });
+          router.push("/malpun");
+          return;
+        }
+
         api
           .get<ResponseModel<Profile>>(`/mahasiswa/profile`)
           .then(({ data }) => {
