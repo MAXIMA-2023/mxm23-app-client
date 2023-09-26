@@ -395,16 +395,18 @@ const ClaimTicket = () => {
                       if (alfagift.isDismissed) {
                         await Swal.fire({
                           title:
-                            "Jangan lupa untuk Download aplikasi Alfagift ya!",
+                            "Download Aplikasi Alfagift",
                           color: "#062D5F",
                           confirmButtonColor: "#F7B70C",
                           confirmButtonText: "Oke",
                           imageUrl:
-                            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/alfagift/qr.png",
+                            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/alfagift/qr-code-with-logo.webp",
                           imageAlt: "QR Alfagift",
-                          imageHeight: 250,
+                          imageHeight: 300,
                           imageWidth: 250,
                           html: `
+                          <h4>Dan raih keuntungannya pada saat Malam Puncak dengan berbagai aktivitas dan hadiah menarik </h4>
+                          </br>
                           <a 
                             href="https://alfagift.onelink.me/1087556432/giftxima?af_qr=true" 
                             style="text-decoration:underline;" 
