@@ -91,7 +91,7 @@ const Malpun = () => {
 
   return (
     <>
-      <Layout title={"MAXIMA 2023 - STATE"} showSponsorFooter>
+      <Layout title={"MAXIMA 2023 - Malam Puncak"} showSponsorFooter>
         <Flex
           // mt={"16vh"}]
           w={"full"}

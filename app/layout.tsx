@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   icons: {
     icon: "/assets/MaximaLogo.png",
   },
-  description: "-",
+  description:
+    "Malam Expresi Mahasiswa adalah kegiatan tahunan di bawah naungan BEM UMN yang bertujuan untuk memperkenalkan UKM (Unit Kegiatan Mahasiswa), Komunitas, Media Kampus, LSO (Lembaga Semi Otonom), dan organisasi lain yang ada di UMN kepada mahasiswa.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

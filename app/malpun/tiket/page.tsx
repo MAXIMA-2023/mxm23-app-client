@@ -728,7 +728,7 @@ const ClaimTicket = () => {
         async
       />
 
-      <Layout title={"MAXIMA 2023 - STATE"}>
+      <Layout title={"MAXIMA 2023 - Malam Puncak (Ticket)"}>
         <Flex
           // mt={"16vh"}]
           w={"full"}
