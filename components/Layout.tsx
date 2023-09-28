@@ -98,6 +98,25 @@ export default function Layout({
                 </WrapItem>
               ))}
             </Wrap>
+            <Wrap mb={"2em"} spacing={"1em"} justify={"center"}>
+              {sponsorSmallData.map((data, id) => (
+                <WrapItem
+                  key={id}
+                  bgColor={"white"}
+                  p={"1em"}
+                  borderRadius={"lg"}
+                  // cursor={"pointer"}
+                  _hover={{
+                    transform: "scale(1.05)",
+                  }}
+                  transition={"0.1s ease-in-out"}
+                >
+                  {/* <Link href={data.sponsorURL} isExternal> */}
+                  <Image boxSize={"13.5em"} src={data.sponsorLogo} alt={data.sponsorName} objectFit={"contain"} />
+                  {/* </Link> */}
+                </WrapItem>
+              ))}
+            </Wrap>
             <Center>
               <Text my={"1em"} textAlign={"center"} color={"white"} fontSize={"2xl"} fontWeight={"bold"}>
                 Media Partner
@@ -117,7 +136,7 @@ export default function Layout({
                   transition={"0.1s ease-in-out"}
                 >
                   {/* <Link href={data.mediaPartnerURL} isExternal> */}
-                  <Image boxSize={"13.5em"} src={data.mediaPartnerLogo} alt={data.mediaPartnerName} objectFit={"contain"} />
+                  <Image boxSize={"14.5em"} src={data.mediaPartnerLogo} alt={data.mediaPartnerName} objectFit={"contain"} />
                   {/* </Link> */}
                 </WrapItem>
               ))}
