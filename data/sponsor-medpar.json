@@ -1,0 +1,409 @@
+{
+  "sponsorBigData": [
+    {
+      "sponsorName": "Pinkberry",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/PINKBERRY.webp",
+      "sponsorURL": "https://www.instagram.com/pinkberryid/"
+    }
+  ],
+
+  "sponsorNormalData": [
+    {
+      "sponsorName": "Glowinc",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/GLOWINC.webp",
+      "sponsorURL": "https://www.instagram.com/pinkberryid/"
+    },
+    {
+      "sponsorName": "K&S",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/KNS.webp",
+      "sponsorURL": "https://www.instagram.com/pinkberryid/"
+    },
+    {
+      "sponsorName": "MIFX",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/MIFX.webp",
+      "sponsorURL": "https://www.instagram.com/pinkberryid/"
+    },
+    {
+      "sponsorName": "Samakitaa",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/SAMAKITAA.webp",
+      "sponsorURL": "https://www.instagram.com/pinkberryid/"
+    }
+  ],
+
+  "sponsorSmallData": [
+    {
+      "sponsorName": "ChuGa",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/CHUGA.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "INDOMILK",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/INDOMIOK.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "Bangor",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/BANGOR.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "Zink",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/ZINC.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "ZILLEARN",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/ZILLEARN.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "BSM RENTAL",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/BSM%20RENTAL.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "Alfa Gift",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/ALFAGIFT.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "NOVOTEL",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/NOVOTEL.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "Softex",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/SOFTEX.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "MILLIO",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/MILLIO.webp",
+      "sponsorURL": "https://www.google.com"
+    },
+    {
+      "sponsorName": "Teman Startup",
+      "sponsorLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/SPONNSOR%20WEBP/TEMAN%20STARTUP.webp",
+      "sponsorURL": "https://www.google.com"
+    }
+  ],
+
+  "mediaPartnerBigData": [
+    {
+      "mediaPartnerName": "Prambors",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/PRAMBORS.webp",
+      "mediaPartnerURL": "https://www.instagram.com/prambors/"
+    }
+  ],
+
+  "mediaPartnerNormalData": [
+    {
+      "mediaPartnerName": "UMN TV",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/UMN%20TV.webp",
+      "mediaPartnerURL": "https://www.instagram.com/prambors/"
+    },
+    {
+      "mediaPartnerName": "KOMPAS ID",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/KOMPAS%20ID.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kompas/"
+    },
+    {
+      "mediaPartnerName": "Kompas Corner",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/KOMPAS%20CORNER.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kompascorner/"
+    },
+    {
+      "mediaPartnerName": "Commpress",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/COMMPRESS.webp",
+      "mediaPartnerURL": "https://www.instagram.com/commpress/"
+    },
+    {
+      "mediaPartnerName": "For People Media",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/FOR%20MEDIA%20PEOPLE.webp",
+      "mediaPartnerURL": "https://www.instagram.com/forpeoplemedia/"
+    }
+  ],
+
+  "mediaPartnerSmallData": [
+    {
+      "mediaPartnerName": "UMN JUICE",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/UMN%20JUICE.webp",
+      "mediaPartnerURL": "https://www.instagram.com/forpeoplemedia/"
+    },
+    {
+      "mediaPartnerName": "About Tangerang",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/ANOUT%20TNG.webp",
+      "mediaPartnerURL": "https://www.instagram.com/abouttangerang/"
+    },
+    {
+      "mediaPartnerName": "Acara Kampus",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/ACARA%20KAMPUS.webp",
+      "mediaPartnerURL": "https://www.instagram.com/acarakampus/"
+    },
+    {
+      "mediaPartnerName": "Banten Vid gram",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/BANTEN%20VID%20GRAM.webp",
+      "mediaPartnerURL": "https://www.instagram.com/bantenvidgram/"
+    },
+    {
+      "mediaPartnerName": "B Voice",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/B%20VOICE.webp",
+      "mediaPartnerURL": "https://www.instagram.com/bvoice.id/"
+    },
+    {
+      "mediaPartnerName": "UMN Capoeira",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/CAPOEIRA.webp",
+      "mediaPartnerURL": "https://www.instagram.com/umn_capoeira/"
+    },
+    {
+      "mediaPartnerName": "Commfest",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/COMFEST.webp",
+      "mediaPartnerURL": "https://www.instagram.com/commfest/"
+    },
+    {
+      "mediaPartnerName": "Kampus Media",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/KAMPUS%20MEDIA.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Ngomong ae dah",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/NGOMONG%20DAH.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "EDARAN EVENT",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/EDARAN%20EVENT.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Era FM",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/ERA%20FM.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "EVENT BANGET",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/EVENT%20BANGET.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "EVENT CENTER",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/EVENT%20CENTER.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "EVENT JAKARTA",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/EVENT%20JAKARTA.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "MOLAU EVEENT",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/MOLAU%20EVENT.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "SEKOLAHKU KAMPUSKU.COM",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/SEKOLAHKUKAMPUSKU.COM.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "EVENT TANGSEL",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/EVEN%20TANGSEL.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Event Fest ID",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/EVENTFEST%20ID.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "FIVE TV",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/FIVE%20TV.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Fun Radio 107.8 FM",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/FUN%20RADIO.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "GDC UMN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/GDC.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Hai Volunteer",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/HAI%20VOLUNTEER.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "ULTIMAGZ",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/ULTIMAGZ.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "KSPM",
+      "mediaPartnerLogo": "",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Heartline Radio 100.6 FM",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/HEARTLINE%20RADIO.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "HIMARS UMN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/HIMARS.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "HIMTARA UMN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/HIMTARA.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "HMDKV UMN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/HM%20DKV.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "HMFILM UMN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/HM%20FILM.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Kampus Event",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/KAMJUS%20EVENT.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Rajanya Event",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/RAJANYA%20EVENT.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "HMP UMN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/HMP.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "IM KOM UMN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/IM%20KOM.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "IKUT EVENT",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/IKUT%20EVENT.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "INARA UMN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/INARA.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Info Event",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/INFO%20EVENT_1.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Informasi Event",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/INFO%20EVENT.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Mr Mrs UMN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/MR%20MS%20UMN.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "MUFOMIC",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/MUFOMIC.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Info Event",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/INFO%20EVENT.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "KUMPULAN",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/KUMPULAN.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Lomba Kampus",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/LOMBA%20KAMPUS.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Atma Jaya Radio",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/ATMA%20JAYA%20RADIO.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Radio Budi Luhur",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/BUDI%20LUHUR%20RADIO.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Moestopo Radio",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/MOESTOPO%20RADIO.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Tarumanegara Radio",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/TARUMANAGAR%20RADIO.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "UMN Festival",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/UMN%20FEST.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "UNPAR Radio",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/UNPAR%20RADIO.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "UMN Radio",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/UMN%20RADIO.webp",
+      "mediaPartnerURL": "https://www.instagram.com/umnradio/"
+    },
+    {
+      "mediaPartnerName": "QORIE",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/QORIE.webp",
+      "mediaPartnerURL": "https://www.instagram.com/qorie_umn/"
+    },
+    {
+      "mediaPartnerName": "SEMINAR INFO ID",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/SEMINAR%20INFO%20ID.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Starlight",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/STAR%20IGHT.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "UKI Voice",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/UKI%20VOICE.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Ultima Sonora",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/ULTIMA%20SONORA.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "Kawal Event",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/KAWAL%20EVENT.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    },
+    {
+      "mediaPartnerName": "UNS Radio",
+      "mediaPartnerLogo": "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/medpar-sponsor/MEDPART%20WEBP/UNS%20RADIO.webp",
+      "mediaPartnerURL": "https://www.instagram.com/kampusmedia/"
+    }
+  ]
+}
