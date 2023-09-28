@@ -7,27 +7,7 @@ import Layout from "@/components/Layout";
 import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
-import {
-  Box,
-  Flex,
-  Center,
-  Heading,
-  Text,
-  Button,
-  Stack,
-  Img,
-  HStack,
-  Icon,
-  Image,
-  IconButton,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+import { Box, Flex, Center, Heading, Text, Button, Stack, Img, HStack, Icon, Image, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BsPlus, BsTrash, BsTrashFill } from "react-icons/bs";
@@ -111,7 +91,7 @@ const Malpun = () => {
 
   return (
     <>
-      <Layout title={"MAXIMA 2023 - STATE"}>
+      <Layout title={"MAXIMA 2023 - STATE"} showSponsorFooter>
         <Flex
           // mt={"16vh"}]
           w={"full"}
@@ -137,31 +117,17 @@ const Malpun = () => {
             align={"center"}
             justify={"center"}
           >
-            <Text
-              fontWeight={"extrabold"}
-              fontSize={["5xl", "6xl", "7xl", "8xl", "8xl"]}
-              textShadow={"0px 0px 8px black"}
-              my={"-0.35em"}
-            >
+            <Text fontWeight={"extrabold"} fontSize={["5xl", "6xl", "7xl", "8xl", "8xl"]} textShadow={"0px 0px 8px black"} my={"-0.35em"}>
               Malam Puncak
             </Text>
-            <Text
-              fontWeight={"extrabold"}
-              fontSize={["4xl", "5xl", "5xl", "6xl", "6xl"]}
-              textShadow={"0px 0px 8px black"}
-            >
+            <Text fontWeight={"extrabold"} fontSize={["4xl", "5xl", "5xl", "6xl", "6xl"]} textShadow={"0px 0px 8px black"}>
               MAXIMA 2023
             </Text>
 
             <Box my={"4em"}>
               <Button
                 as={Link}
-                href={
-                  session.status === "authenticated" &&
-                  malpunData?.ticketClaimed
-                    ? `/malpun/tiket/${malpunData?.tokenMalpun}/`
-                    : "/malpun/tiket"
-                }
+                href={session.status === "authenticated" && malpunData?.ticketClaimed ? `/malpun/tiket/${malpunData?.tokenMalpun}/` : "/malpun/tiket"}
                 color={"#1B4173"}
                 bgColor={"#F7B70C"}
                 border={"2px solid white"}
@@ -170,11 +136,7 @@ const Malpun = () => {
                 px={"2em"}
                 rounded={"full"}
               >
-                {session.status === "authenticated"
-                  ? malpunData?.ticketClaimed
-                    ? "LIHAT TIKET"
-                    : "CLAIM TIKET"
-                  : "BELI TIKET"}
+                {session.status === "authenticated" ? (malpunData?.ticketClaimed ? "LIHAT TIKET" : "CLAIM TIKET") : "BELI TIKET"}
               </Button>
             </Box>
           </Stack>

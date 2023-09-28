@@ -7,27 +7,7 @@ import Layout from "@/components/Layout";
 import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
-import {
-  Box,
-  Flex,
-  Center,
-  Heading,
-  Text,
-  Button,
-  Stack,
-  Img,
-  HStack,
-  Icon,
-  Image,
-  IconButton,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+import { Box, Flex, Center, Heading, Text, Button, Stack, Img, HStack, Icon, Image, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BsPlus, BsTrash, BsTrashFill } from "react-icons/bs";
@@ -107,9 +87,7 @@ const STATE = () => {
 
   const fetchStateReg = async () => {
     try {
-      const { data } = await api.get<ResponseModel<StateReg[]>>(
-        `/state/regData`
-      );
+      const { data } = await api.get<ResponseModel<StateReg[]>>(`/state/regData`);
       setDataState(data.data!);
     } catch (error) {
       HandleAxiosError(error);
@@ -118,9 +96,7 @@ const STATE = () => {
 
   useEffect(() => {
     if (session.status === "authenticated") {
-      Promise.all([fetchToggle(), fetchStateReg()]).finally(() =>
-        setIsLoading(false)
-      );
+      Promise.all([fetchToggle(), fetchStateReg()]).finally(() => setIsLoading(false));
 
       Swal.fire({
         title: "Reminder!",
@@ -136,9 +112,7 @@ const STATE = () => {
   }, [session]);
 
   // toggles
-  const stateRegToggle = toggle.find(
-    (v) => v.name === "stateRegistration"
-  )?.toggle;
+  const stateRegToggle = toggle.find((v) => v.name === "stateRegistration")?.toggle;
 
   const STATEButton = ({ data }: { data?: StateReg }) => {
     const stateDate = Date.parse(data?.date!);
@@ -251,13 +225,7 @@ const STATE = () => {
         ) : (
           <>
             {stateRegToggle ? ( // check toggle stateRegistration
-              <Stack
-                position={"absolute"}
-                direction={"column"}
-                align={"center"}
-                justify={"center"}
-                mt={"1em"}
-              >
+              <Stack position={"absolute"} direction={"column"} align={"center"} justify={"center"} mt={"1em"}>
                 <Icon as={BsPlus} boxSize={"3em"} />
                 <Text fontWeight={"bold"} mt={"-1em"}>
                   Add
@@ -286,14 +254,7 @@ const STATE = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Text
-            textColor={"#D01E20"}
-            align={"end"}
-            fontSize={["6xl", "6xl", "8xl", "8xl", "8xl"]}
-            fontWeight={"bold"}
-            lineHeight={"1em"}
-            textShadow={"0px 0px 32px white"}
-          >
+          <Text textColor={"#D01E20"} align={"end"} fontSize={["6xl", "6xl", "8xl", "8xl", "8xl"]} fontWeight={"bold"} lineHeight={"1em"} textShadow={"0px 0px 32px white"}>
             STATE
           </Text>
           <Text
@@ -321,8 +282,7 @@ const STATE = () => {
           textAlign={"right"}
           textShadow={"2px 2px 4px rgba(0, 0, 0, 0.5)"}
         >
-          Selamat datang di STATE MAXIMA 2023! Di sini kamu dapat memilih UKM
-          yang ingin kamu ketahui!
+          Selamat datang di STATE MAXIMA 2023! Di sini kamu dapat memilih UKM yang ingin kamu ketahui!
         </Text>
         <Flex justify={"end"} w={"full"}>
           <Button
@@ -358,11 +318,7 @@ const STATE = () => {
 
   return (
     <>
-      <Layout
-        title={"MAXIMA 2023 - STATE"}
-        backButton
-        backbuttonBgColor={"#FF6835"}
-      >
+      <Layout title={"MAXIMA 2023 - STATE"} backButton backbuttonBgColor={"#FF6835"} showSponsorFooter sponsorFooterMarginTop={"4.5em"}>
         <Flex
           // mt={"16vh"}]
           w={"full"}
@@ -402,43 +358,27 @@ const STATE = () => {
           bgSize={"cover"}
           bgRepeat={"no-repeat"}
         >
-          <Flex
-            display={["none", "none", "none", "flex", "flex"]}
-            w={"full"}
-            justify={"space-evenly"}
-          >
-            {Array.from({ length: 3 }, (_, index) => dataState[index]).map(
-              (data, index) => (
-                <Flex
-                  key={`state ${index}`}
-                  bgImage={
-                    "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Lampu.webp"
-                  }
-                  bgPosition={"center"}
-                  bgSize={"contain"}
-                  bgRepeat={"no-repeat"}
-                  h={"32em"}
-                  w={"16em"}
-                  pt={"3.5em"}
-                  justify={"center"}
-                >
-                  <STATEButton data={data} />
-                </Flex>
-              )
-            )}
+          <Flex display={["none", "none", "none", "flex", "flex"]} w={"full"} justify={"space-evenly"}>
+            {Array.from({ length: 3 }, (_, index) => dataState[index]).map((data, index) => (
+              <Flex
+                key={`state ${index}`}
+                bgImage={"https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Lampu.webp"}
+                bgPosition={"center"}
+                bgSize={"contain"}
+                bgRepeat={"no-repeat"}
+                h={"32em"}
+                w={"16em"}
+                pt={"3.5em"}
+                justify={"center"}
+              >
+                <STATEButton data={data} />
+              </Flex>
+            ))}
           </Flex>
 
-          <Stack
-            direction={"row"}
-            align={"end"}
-            justify={"center"}
-            w={"full"}
-            display={["flex", "flex", "flex", "none", "none"]}
-          >
+          <Stack direction={"row"} align={"end"} justify={"center"} w={"full"} display={["flex", "flex", "flex", "none", "none"]}>
             <Flex
-              bgImage={
-                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Mobile_Lampu_Short.webp"
-              }
+              bgImage={"https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Mobile_Lampu_Short.webp"}
               bgPosition={"bottom"}
               bgSize={"contain"}
               bgRepeat={"no-repeat"}
@@ -453,9 +393,7 @@ const STATE = () => {
             </Flex>
 
             <Flex
-              bgImage={
-                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Mobile_Lampu.webp"
-              }
+              bgImage={"https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Mobile_Lampu.webp"}
               bgPosition={"bottom"}
               bgSize={"contain"}
               bgRepeat={"no-repeat"}
@@ -468,9 +406,7 @@ const STATE = () => {
               <STATEButton data={dataState[1]} />
             </Flex>
             <Flex
-              bgImage={
-                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Mobile_Lampu.webp"
-              }
+              bgImage={"https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/state/MaximaAssets_STATE_Mobile_Lampu.webp"}
               bgPosition={"bottom"}
               bgSize={"contain"}
               bgRepeat={"no-repeat"}
@@ -485,44 +421,20 @@ const STATE = () => {
           </Stack>
         </Flex>
       </Layout>
-      <Modal
-        isOpen={selectedItem !== null}
-        onClose={() => setSelectedItem(null)}
-        size="lg"
-        isCentered
-        scrollBehavior="inside"
-      >
+      <Modal isOpen={selectedItem !== null} onClose={() => setSelectedItem(null)} size="lg" isCentered scrollBehavior="inside">
         <ModalOverlay />
         <ModalContent borderRadius="md" m={"1em"} p={4}>
           {/* <ModalCloseButton /> */}
           <ModalBody>
             <Box>
               <Center flexDirection={"column"}>
-                <Img
-                  src={selectedItem?.stateLogo}
-                  boxSize={["135px", "165px"]}
-                  objectFit="contain"
-                  borderRadius="2xl"
-                />
+                <Img src={selectedItem?.stateLogo} boxSize={["135px", "165px"]} objectFit="contain" borderRadius="2xl" />
               </Center>
               <Center flexDirection={"column"}>
-                <Text
-                  mt={4}
-                  color="#062D5F"
-                  fontSize="md"
-                  fontWeight="semibold"
-                  textAlign="center"
-                  letterSpacing={0.2}
-                >
+                <Text mt={4} color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
                   {selectedItem?.name}
                 </Text>
-                <Text
-                  color="#062D5F"
-                  fontSize="md"
-                  fontWeight="semibold"
-                  textAlign="center"
-                  letterSpacing={0.2}
-                >
+                <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
                   {new Date(selectedItem?.date!)
                     .toLocaleDateString("id-ID", {
                       weekday: "long",
@@ -534,13 +446,7 @@ const STATE = () => {
                     })
                     .replace("pukul", "")}
                 </Text>
-                <Text
-                  color="#062D5F"
-                  fontSize="md"
-                  fontWeight="semibold"
-                  textAlign="center"
-                  letterSpacing={0.2}
-                >
+                <Text color="#062D5F" fontSize="md" fontWeight="semibold" textAlign="center" letterSpacing={0.2}>
                   {selectedItem?.location}
                 </Text>
                 <Text my={"1em"}>{selectedItem?.stateDesc}</Text>
@@ -563,11 +469,7 @@ const STATE = () => {
             </Box>
           </ModalBody>
           <ModalFooter justifyContent={"center"}>
-            <Button
-              onClick={() => setSelectedItem(null)}
-              color={"white"}
-              bgColor={"#F7B70C"}
-            >
+            <Button onClick={() => setSelectedItem(null)} color={"white"} bgColor={"#F7B70C"}>
               Close
             </Button>
           </ModalFooter>
