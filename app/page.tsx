@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function App() {
   return (
     <>
-      <Layout title={"MAXIMA 2023 - Selamat Datang"}>
+      <Layout title={"MAXIMA 2023 - Selamat Datang"} showSponsorFooter>
         <Flex
           w={"full"}
           h={"auto"}
@@ -44,9 +44,7 @@ export default function App() {
                 >
                   <Image
                     boxSize={"5em"}
-                    src={
-                      "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaLogo_Mobile.webp"
-                    }
+                    src={"https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaLogo_Mobile.webp"}
                     objectFit={"contain"}
                     alt={"MAXIMA Logo"}
                     // bgColor={"white"}
@@ -54,10 +52,7 @@ export default function App() {
                 </Box>
               </Center>
             </Box>
-            <Box
-              mt={["0em", "5em", "0em"]}
-              lineHeight={["3.5em", "3.5em", "5em"]}
-            >
+            <Box mt={["0em", "5em", "0em"]} lineHeight={["3.5em", "3.5em", "5em"]}>
               <Text
                 as={motion.div}
                 fontSize={["4xl", "4xl", "7xl"]}
@@ -65,11 +60,7 @@ export default function App() {
                 color={"white"}
                 align={"center"}
                 textTransform={["none", "none", "uppercase"]}
-                textShadow={[
-                  "3px 4px 4px rgb(0,0,0,0.25)",
-                  "3px 4px 4px rgb(0,0,0,0.25)",
-                  "0px 4px 4px rgb(0,0,0,0.25)",
-                ]}
+                textShadow={["3px 4px 4px rgb(0,0,0,0.25)", "3px 4px 4px rgb(0,0,0,0.25)", "0px 4px 4px rgb(0,0,0,0.25)"]}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{
                   opacity: 1,
@@ -85,11 +76,7 @@ export default function App() {
                 fontWeight={"bold"}
                 color={"white"}
                 align={"center"}
-                textShadow={[
-                  "3px 4px 4px rgb(0,0,0,0.25)",
-                  "3px 4px 4px rgb(0,0,0,0.25)",
-                  "0px 4px 4px rgb(0,0,0,0.25)",
-                ]}
+                textShadow={["3px 4px 4px rgb(0,0,0,0.25)", "3px 4px 4px rgb(0,0,0,0.25)", "0px 4px 4px rgb(0,0,0,0.25)"]}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{
                   opacity: 1,
