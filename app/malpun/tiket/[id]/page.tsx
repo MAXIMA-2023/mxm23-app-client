@@ -168,7 +168,7 @@ const TicketDetail = ({ params, searchParams }: { params: { id: string }; search
 
   return (
     <>
-      <Layout title={"MAXIMA 2023 - STATE"} showSponsorFooter>
+      <Layout title={"MAXIMA 2023 - Malam Puncak (Ticket)"} showSponsorFooter>
         <Flex
           // mt={"16vh"}]
           w={"full"}
