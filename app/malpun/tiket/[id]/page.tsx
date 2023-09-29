@@ -8,7 +8,27 @@ import Layout from "@/components/Layout";
 import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
-import { Box, Flex, Center, Heading, Text, Button, Stack, Img, HStack, Icon, Image, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Center,
+  Heading,
+  Text,
+  Button,
+  Stack,
+  Img,
+  HStack,
+  Icon,
+  Image,
+  IconButton,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BsPlus, BsTrash, BsTrashFill } from "react-icons/bs";
@@ -25,7 +45,13 @@ type TicketData = {
   isInternal: boolean;
 };
 
-const TicketDetail = ({ params, searchParams }: { params: { id: string }; searchParams: { init: string } }) => {
+const TicketDetail = ({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: { init: string };
+}) => {
   const session = useSession();
   const api = useApi();
 
@@ -63,27 +89,50 @@ const TicketDetail = ({ params, searchParams }: { params: { id: string }; search
         color={"#1B4173"}
         align={"center"}
         justify={"center"}
-        bgImage={[
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_Mobile.webp",
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_Mobile.webp",
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_Mobile.webp",
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
-        ]}
+        bgImage={
+          ticketData?.isInternal
+            ? [
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_Mobile.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_Mobile.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
+              ]
+            : [
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External_Mobile.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External_Mobile.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External.webp",
+              ]
+        }
         bgPos={"center"}
         bgSize={"contain"}
         bgRepeat={"no-repeat"}
         overflow={"hidden"}
         textAlign={"center"}
       >
-        <Text fontSize={["3xl", "3xl", "2xl", "3xl", "4xl"]} fontWeight={"bold"} mb={"-0.25em"}>
+        <Text
+          fontSize={["3xl", "3xl", "2xl", "3xl", "4xl"]}
+          fontWeight={"bold"}
+          mb={"-0.25em"}
+        >
           Selamat!
         </Text>
         <Text fontSize={["md", "lg", "xl", "2xl", "3xl"]} fontWeight={"bold"}>
           Kamu telah mendapatkan tiket!
         </Text>
-        <Image src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Ticket_Finished.webp" alt="ticket-claimed" w={["75%", "75%", "50%", "50%", "50%"]} my={"2em"} />
-        <Text fontWeight={"semibold"} fontSize={["sm", "sm", "sm", "md", "md"]} mx={"0.5em"}>
+        <Image
+          src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Ticket_Finished.webp"
+          alt="ticket-claimed"
+          w={["75%", "75%", "50%", "50%", "50%"]}
+          my={"2em"}
+        />
+        <Text
+          fontWeight={"semibold"}
+          fontSize={["sm", "sm", "sm", "md", "md"]}
+          mx={"0.5em"}
+        >
           Jangan lupa cek email untuk mengkonfirmasi tiketmu!
         </Text>
         <Button
@@ -117,29 +166,66 @@ const TicketDetail = ({ params, searchParams }: { params: { id: string }; search
         color={"#1B4173"}
         align={"center"}
         justify={"center"}
-        bgImage={[
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_Mobile.webp",
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_Mobile.webp",
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
-          "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
-        ]}
+        bgImage={
+          ticketData?.isInternal
+            ? [
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_Mobile.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_Mobile.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
+              ]
+            : [
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External_Mobile.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External_Mobile.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External.webp",
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External.webp",
+              ]
+        }
         bgPos={"center"}
         bgSize={"contain"}
         bgRepeat={"no-repeat"}
         overflow={"hidden"}
       >
         <Stack my={"1em"} mx={["2em"]} align={"center"}>
-          <Image as={QRCode} alt="qr-ticket-malpun" value={ticketData?.token} fgColor="#1B4173" bgColor={"white"} p={"1em"} rounded={"xl"} boxSize={["12em", "12em", "10em", "12em", "12em"]} />
+          <Image
+            as={QRCode}
+            alt="qr-ticket-malpun"
+            value={ticketData?.token}
+            fgColor="#1B4173"
+            bgColor={"white"}
+            p={"1em"}
+            rounded={"xl"}
+            boxSize={["12em", "12em", "10em", "12em", "12em"]}
+          />
         </Stack>
         <Stack direction={"column"} w={"full"}>
-          <Text align={"left"} color={"#1B4173"} fontSize={["md", "md", "md", "lg", "lg"]} fontWeight={"bold"} mb={"-0.5em"}>
+          <Text
+            align={"left"}
+            color={"#1B4173"}
+            fontSize={["md", "md", "md", "lg", "lg"]}
+            fontWeight={"bold"}
+            mb={"-0.5em"}
+          >
             Hai,
           </Text>
-          <Text align={"left"} color={"#1B4173"} fontSize={["lg", "lg", "lg", "xl", "2xl"]} fontWeight={"extrabold"}>
+          <Text
+            align={"left"}
+            color={"#1B4173"}
+            fontSize={["lg", "lg", "lg", "xl", "2xl"]}
+            fontWeight={"extrabold"}
+          >
             {ticketData?.name}
           </Text>
-          <Text align={"left"} color={"#1B4173"} fontSize={["sm", "sm", "xs", "xs", "md"]} mb={"-0.5em"} fontWeight={"semibold"} textAlign={"justify"}>
+          <Text
+            align={"left"}
+            color={"#1B4173"}
+            fontSize={["sm", "sm", "xs", "xs", "md"]}
+            mb={"-0.5em"}
+            fontWeight={"semibold"}
+            textAlign={"justify"}
+          >
             Selamat datang di{" "}
             <Text as={"span"} fontWeight={"bold"}>
               Malam Puncak MAXIMA 2023
