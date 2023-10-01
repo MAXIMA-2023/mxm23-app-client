@@ -8,27 +8,7 @@ import Layout from "@/components/Layout";
 import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
-import {
-  Box,
-  Flex,
-  Center,
-  Heading,
-  Text,
-  Button,
-  Stack,
-  Img,
-  HStack,
-  Icon,
-  Image,
-  IconButton,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+import { Box, Flex, Center, Heading, Text, Button, Stack, Img, HStack, Icon, Image, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BsPlus, BsTrash, BsTrashFill } from "react-icons/bs";
@@ -45,13 +25,7 @@ type TicketData = {
   isInternal: boolean;
 };
 
-const TicketDetail = ({
-  params,
-  searchParams,
-}: {
-  params: { id: string };
-  searchParams: { init: string };
-}) => {
+const TicketDetail = ({ params, searchParams }: { params: { id: string }; searchParams: { init: string } }) => {
   const session = useSession();
   const api = useApi();
 
@@ -59,6 +33,12 @@ const TicketDetail = ({
 
   //   mock api
   const [ticketData, setTicketData] = useState<TicketData | undefined>();
+
+  const { isOpen: isOpenDo, onOpen: onOpenDo, onClose: onCloseDo } = useDisclosure();
+
+  const { isOpen: isOpenDonts1, onOpen: onOpenDonts1, onClose: onCloseDonts1 } = useDisclosure();
+
+  const { isOpen: isOpenDonts2, onOpen: onOpenDonts2, onClose: onCloseDonts2 } = useDisclosure();
 
   useEffect(() => {
     api
@@ -70,6 +50,7 @@ const TicketDetail = ({
       .finally(() => setIsLoading(false));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    onOpenDo();
   }, [params.id]);
 
   if (session.status === "loading" || isLoading) {
@@ -112,27 +93,14 @@ const TicketDetail = ({
         overflow={"hidden"}
         textAlign={"center"}
       >
-        <Text
-          fontSize={["3xl", "3xl", "2xl", "3xl", "4xl"]}
-          fontWeight={"bold"}
-          mb={"-0.25em"}
-        >
+        <Text fontSize={["3xl", "3xl", "2xl", "3xl", "4xl"]} fontWeight={"bold"} mb={"-0.25em"}>
           Selamat!
         </Text>
         <Text fontSize={["md", "lg", "xl", "2xl", "3xl"]} fontWeight={"bold"}>
           Kamu telah mendapatkan tiket!
         </Text>
-        <Image
-          src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Ticket_Finished.webp"
-          alt="ticket-claimed"
-          w={["75%", "75%", "50%", "50%", "50%"]}
-          my={"2em"}
-        />
-        <Text
-          fontWeight={"semibold"}
-          fontSize={["sm", "sm", "sm", "md", "md"]}
-          mx={"0.5em"}
-        >
+        <Image src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Ticket_Finished.webp" alt="ticket-claimed" w={["75%", "75%", "50%", "50%", "50%"]} my={"2em"} />
+        <Text fontWeight={"semibold"} fontSize={["sm", "sm", "sm", "md", "md"]} mx={"0.5em"}>
           Jangan lupa cek email untuk mengkonfirmasi tiketmu!
         </Text>
         <Button
@@ -156,13 +124,13 @@ const TicketDetail = ({
   const TicketDetails = () => {
     return (
       <Stack
-        direction={["column", "column", "row", "row", "row"]}
-        py={["none", "8em", "12em", "8em", "8em"]}
-        px={["4em", "6em", "10em", "12em", "12em"]}
+        direction={"column"}
+        py={["none", "18em", "14em", "12em", "12em"]}
+        px={["4em", "8em", "14em", "14em", "20em"]}
         // m={["none", "12em", "12em", "8em", "8em"]}
         mt={["5em", "none"]}
-        w={["full", "30em", "46em", "60em", "64em"]}
-        h={"full"}
+        w={ticketData?.isInternal ? ["full", "30em", "50em", "60em", "64em"] : ["full", "30em", "50em", "50em", "64em"]}
+        h={ticketData?.isInternal ? ["35em", "35em", "full"] : ["35em", "35em", "full"]}
         color={"#1B4173"}
         align={"center"}
         justify={"center"}
@@ -175,13 +143,7 @@ const TicketDetail = ({
                 "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
                 "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay.webp",
               ]
-            : [
-                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External_Mobile.webp",
-                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External_Mobile.webp",
-                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External.webp",
-                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External.webp",
-                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External.webp",
-              ]
+            : ["https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Overlay_External_Mobile.webp"]
         }
         bgPos={"center"}
         bgSize={"contain"}
@@ -189,43 +151,16 @@ const TicketDetail = ({
         overflow={"hidden"}
       >
         <Stack my={"1em"} mx={["2em"]} align={"center"}>
-          <Image
-            as={QRCode}
-            alt="qr-ticket-malpun"
-            value={ticketData?.token}
-            fgColor="#1B4173"
-            bgColor={"white"}
-            p={"1em"}
-            rounded={"xl"}
-            boxSize={["12em", "12em", "10em", "12em", "12em"]}
-          />
+          <Image as={QRCode} alt="qr-ticket-malpun" value={ticketData?.token} fgColor="#1B4173" bgColor={"white"} p={"1em"} rounded={"xl"} boxSize={["12em", "12em", "10em", "12em", "12em"]} />
         </Stack>
         <Stack direction={"column"} w={"full"}>
-          <Text
-            align={"left"}
-            color={"#1B4173"}
-            fontSize={["md", "md", "md", "lg", "lg"]}
-            fontWeight={"bold"}
-            mb={"-0.5em"}
-          >
+          <Text align={"left"} color={ticketData?.isInternal ? "#1B4173" : "white"} fontSize={["md", "md", "md", "lg", "lg"]} fontWeight={"bold"} mb={"-0.5em"}>
             Hai,
           </Text>
-          <Text
-            align={"left"}
-            color={"#1B4173"}
-            fontSize={["lg", "lg", "lg", "xl", "2xl"]}
-            fontWeight={"extrabold"}
-          >
+          <Text align={"left"} color={ticketData?.isInternal ? "#1B4173" : "white"} fontSize={["lg", "lg", "lg", "xl", "2xl"]} fontWeight={"extrabold"}>
             {ticketData?.name}
           </Text>
-          <Text
-            align={"left"}
-            color={"#1B4173"}
-            fontSize={["sm", "sm", "xs", "xs", "md"]}
-            mb={"-0.5em"}
-            fontWeight={"semibold"}
-            textAlign={"justify"}
-          >
+          <Text align={"left"} color={ticketData?.isInternal ? "#1B4173" : "white"} fontSize={["sm", "sm", "xs", "xs", "md"]} mb={"-0.5em"} fontWeight={"semibold"} textAlign={"justify"}>
             Selamat datang di{" "}
             <Text as={"span"} fontWeight={"bold"}>
               Malam Puncak MAXIMA 2023
@@ -256,9 +191,11 @@ const TicketDetail = ({
     <>
       <Layout title={"MAXIMA 2023 - Malam Puncak (Ticket)"} showSponsorFooter>
         <Flex
-          // mt={"16vh"}]
           w={"full"}
-          h={"100vh"}
+          h={"auto"}
+          minH={"100vh"}
+          justifyContent={"center"}
+          alignItems={"center"}
           bgImage={[
             "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/MaximaBG_Malpun_Mobile.webp",
             "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/MaximaBG_Malpun_Mobile.webp",
@@ -269,14 +206,121 @@ const TicketDetail = ({
           bgPosition={"bottom"}
           bgSize={"cover"}
           bgRepeat={"no-repeat"}
-          direction={"column"}
-          align={"center"}
-          justify={"center"}
         >
           {searchParams.init && <TicketClaimedMenu />}
           {!searchParams.init && ticketData && <TicketDetails />}
         </Flex>
       </Layout>
+      <Modal closeOnOverlayClick={false} size={"xl"} onClose={onCloseDo} isOpen={isOpenDo} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <Box minH={["60vh", "85vh"]} bgImage={"https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/dosanddonts/Do_s.webp"} bgPosition={"bottom"} bgSize={"cover"} bgRepeat={"no-repeat"}>
+            <Flex m={"1em"} position={"absolute"} bottom={0} right={0}>
+              <Button
+                onClick={() => {
+                  window.open("https://drive.google.com/file/d/10uOA1wP2tnEdWq-vLswPkwNo8vHIBb_T/view?usp=drivesdk", "_blank");
+                }}
+                mr={"0.5em"}
+                rounded={"full"}
+                px={"2em"}
+                bgColor={"#F7B70C"}
+                boxShadow={"md"}
+                _hover={{ bgColor: "#D7A215" }}
+                fontWeight={"semibold"}
+              >
+                Handbook
+              </Button>
+              <Button
+                onClick={() => {
+                  onCloseDo();
+                  onOpenDonts1();
+                }}
+                rounded={"full"}
+                px={"2em"}
+                bgColor={"#F7B70C"}
+                boxShadow={"md"}
+                _hover={{ bgColor: "#D7A215" }}
+                fontWeight={"semibold"}
+              >
+                Next
+              </Button>
+            </Flex>
+          </Box>
+        </ModalContent>
+      </Modal>
+      <Modal closeOnOverlayClick={false} size={"xl"} onClose={onCloseDonts1} isOpen={isOpenDonts1} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <Box minH={["60vh", "85vh"]} bgImage={"https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/dosanddonts/Dont_s%20part%201.webp"} bgPosition={"bottom"} bgSize={"cover"} bgRepeat={"no-repeat"}>
+            <Flex m={"1em"} position={"absolute"} bottom={0} right={0}>
+              <Button
+                onClick={() => {
+                  window.open("https://drive.google.com/file/d/10uOA1wP2tnEdWq-vLswPkwNo8vHIBb_T/view?usp=drivesdk", "_blank");
+                }}
+                mr={"0.5em"}
+                rounded={"full"}
+                px={"2em"}
+                bgColor={"#F7B70C"}
+                boxShadow={"md"}
+                _hover={{ bgColor: "#D7A215" }}
+                fontWeight={"semibold"}
+              >
+                Handbook
+              </Button>
+              <Button
+                onClick={() => {
+                  onCloseDonts1();
+                  onOpenDonts2();
+                }}
+                rounded={"full"}
+                px={"2em"}
+                bgColor={"#F7B70C"}
+                boxShadow={"md"}
+                _hover={{ bgColor: "#D7A215" }}
+                fontWeight={"semibold"}
+              >
+                Next
+              </Button>
+            </Flex>
+          </Box>
+        </ModalContent>
+      </Modal>
+      <Modal closeOnOverlayClick={false} size={"xl"} onClose={onCloseDonts2} isOpen={isOpenDonts2} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <Box minH={["60vh", "85vh"]} bgImage={"https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/dosanddonts/Dont_s%20part%202.webp"} bgPosition={"bottom"} bgSize={"cover"} bgRepeat={"no-repeat"}>
+            <Flex m={"1em"} position={"absolute"} bottom={0} right={0}>
+              <Button
+                onClick={() => {
+                  window.open("https://drive.google.com/file/d/10uOA1wP2tnEdWq-vLswPkwNo8vHIBb_T/view?usp=drivesdk", "_blank");
+                }}
+                mr={"0.5em"}
+                rounded={"full"}
+                px={"2em"}
+                bgColor={"#F7B70C"}
+                boxShadow={"md"}
+                _hover={{ bgColor: "#D7A215" }}
+                fontWeight={"semibold"}
+              >
+                Handbook
+              </Button>
+              <Button
+                onClick={() => {
+                  onCloseDonts2();
+                }}
+                rounded={"full"}
+                px={"2em"}
+                bgColor={"#F7B70C"}
+                boxShadow={"md"}
+                _hover={{ bgColor: "#D7A215" }}
+                fontWeight={"semibold"}
+              >
+                Next
+              </Button>
+            </Flex>
+          </Box>
+        </ModalContent>
+      </Modal>
     </>
   );
 };

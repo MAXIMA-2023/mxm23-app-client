@@ -117,7 +117,7 @@ const Malpun = () => {
             align={"center"}
             justify={"center"}
           >
-            <Text fontWeight={"extrabold"} fontSize={["5xl", "6xl", "7xl", "8xl", "8xl"]} textShadow={"0px 0px 8px black"} my={"-0.35em"}>
+            <Text fontWeight={"extrabold"} textAlign={"center"} fontSize={["5xl", "6xl", "7xl", "8xl", "8xl"]} textShadow={"0px 0px 8px black"} my={"-0.35em"}>
               Malam Puncak
             </Text>
             <Text fontWeight={"extrabold"} fontSize={["4xl", "5xl", "5xl", "6xl", "6xl"]} textShadow={"0px 0px 8px black"}>
