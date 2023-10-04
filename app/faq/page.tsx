@@ -27,7 +27,7 @@ const FAQ: NextPage = () => {
           "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/MaximaBG_AboutUs_Desktop.webp",
         ]}
         bgPosition={["center"]}
-        bgSize={"cover"}
+        bgSize={"100% 100%"}
         bgRepeat={"no-repeat"}
       >
         <Box w={"full"} zIndex={"0"}>
@@ -147,10 +147,94 @@ const FAQ: NextPage = () => {
                           Coming Soon!
                         </Text>
                       </TabPanel>
-                      <TabPanel>
-                        <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
-                          Coming Soon!
-                        </Text>
+                      <TabPanel mt={"1em"} h={"auto"} overflow={"auto"}>
+                        <Stack spacing={[2, 2, 2, 2, 3]}>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                              Apa itu MalPun?
+                            </Text>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                              Malam Puncak MAXIMA adalah puncak dari rangkaian kegiatan MAXIMA. Kegiatan ini
+                              akan menjadi momen merayakan keberhasilan MAXIMERS selama perjalanan MAXIMA.
+                            </Text>
+                          </Stack>
+                          <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                              Kapan HoME Maxima 2023 akan dilaksanakan?
+                            </Text>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                              Tanggal 7 Oktober 2023.
+                            </Text>
+                          </Stack>
+                          <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                              Siapa saja yang boleh ikut Malam Puncak?
+                            </Text>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                              Seluruh mahasiswa UMN, baik mahasiswa baru (angkatan 2023), maupun selain mahasiswa
+                              baru, serta terbuka juga untuk eksternal atau non mahasiswa UMN.
+                            </Text>
+                          </Stack>
+                          <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                              Ada apa aja di Malam Puncak MAXIMA 2023?
+                            </Text>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                              Malam Puncak terdiri dari penampilan berbagai UKM, berbagai booth organisasi, bazzar, dan
+                              penampilan bintang tamu.
+                            </Text>
+                          </Stack>
+                          <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                              Berapa harga tiket Malam Puncak MAXIMA 2023?
+                            </Text>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                              35k harga PO, untuk OTS 45k, kalian sudah bisa menikmati Malam Puncak MAXIMA 2023.
+                            </Text>
+                          </Stack>
+                          <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                              Adakah penukaran tiket fisiknya?
+                            </Text>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                              Iya, MAXIMERS  dapat melakukan penukaran tiket pada Hari-H Malam Puncak MAXIMA 2023.
+                            </Text>
+                          </Stack>
+                          <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                              Adakah hal yang perlu dibawa MAXIMERS saat penukaran tiket di hari H?
+                            </Text>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                              Membawa KTM (khususnya mahasiswa baru), QR Tiket.
+                            </Text>
+                          </Stack>
+                          <Stack spacing={[2, 2, 2, 2, 3]} mt={["1.5em", "1.5em", "1em", "1em", "1.5em"]}>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                              Untuk Open Gate dan Close Gate jam berapa?
+                            </Text>
+                            <Text color={"#1B4173"} fontSize={["lg", "lg", "2.1vh", "sm", "lg"]}>
+                              Untuk Open Gate pukul
+                              <span
+                                style={{
+                                  fontWeight: "bold",
+                                  color: "#D01E20",
+                                }}
+                              >
+                                {" "}
+                                16:00 WIB
+                                {" "}
+                              </span>
+                                dan Close Gate pukul 
+                              <span
+                                style={{
+                                  fontWeight: "bold",
+                                  color: "#D01E20",
+                                }}
+                              >
+                                {" "}
+                                19:00 WIB.
+                              </span>
+                            </Text>
+                          </Stack>
                       </TabPanel>
                     </TabPanels>
                   </Tabs>
@@ -251,7 +335,93 @@ const FAQ: NextPage = () => {
                         <p>COMING SOON!</p>
                       </TabPanel>
                       <TabPanel h={"23em"} overflow={"auto"}>
-                        <p>COMING SOON!</p>
+                      <Stack spacing={[1, 1, 2, 2, 3]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Apa itu MalPun?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                            Malam Puncak MAXIMA adalah puncak dari rangkaian kegiatan MAXIMA. Kegiatan ini
+                            akan menjadi momen merayakan keberhasilan MAXIMERS selama perjalanan MAXIMA.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Kapan HoME Maxima 2023 akan dilaksanakan?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                            Tanggal 7 Oktober 2023.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Siapa saja yang boleh ikut Malam Puncak?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                            Seluruh mahasiswa UMN, baik mahasiswa baru (angkatan 2023), maupun selain mahasiswa
+                            baru, serta terbuka juga untuk eksternal atau non mahasiswa UMN.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Ada apa aja di Malam Puncak MAXIMA 2023?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                            Malam Puncak terdiri dari penampilan berbagai UKM, berbagai booth organisasi, bazzar, dan
+                            penampilan bintang tamu.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Berapa harga tiket Malam Puncak MAXIMA 2023?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                            35k harga PO, untuk OTS 45k, kalian sudah bisa menikmati Malam Puncak MAXIMA 2023.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Adakah penukaran tiket fisiknya?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                            Iya, MAXIMERS  dapat melakukan penukaran tiket pada Hari-H Malam Puncak MAXIMA 2023.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Adakah hal yang perlu dibawa MAXIMERS saat penukaran tiket di hari H?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]}>
+                            Membawa KTM (khususnya mahasiswa baru), QR Tiket.
+                          </Text>
+                        </Stack>
+                        <Stack spacing={[1, 1, 2, 2, 3]} mt={["0.5em", "0.5em", "1em", "1em", "1.5em"]}>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.1vh", "sm", "lg"]} fontWeight={"extrabold"}>
+                            Untuk Open Gate dan Close Gate jam berapa?
+                          </Text>
+                          <Text color={"#1B4173"} textAlign={"start"} fontSize={["13px", "lg", "2.2vh", "sm", "lg"]}>
+                            Untuk Open Gate pukul
+                            <span
+                              style={{
+                                fontWeight: "bold",
+                                color: "#D01E20",
+                              }}
+                            >
+                              {" "}
+                              16:00 WIB
+                              {" "}
+                            </span>
+                            dan Close Gate
+                            <span
+                              style={{
+                                fontWeight: "bold",
+                                color: "#D01E20",
+                              }}
+                            >
+                              {" "}
+                              19:00 WIB.
+                            </span>
+                          </Text>
+                        </Stack>
                       </TabPanel>
                     </TabPanels>
                   </Tabs>
