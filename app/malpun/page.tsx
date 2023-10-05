@@ -7,7 +7,7 @@ import Layout from "@/components/Layout";
 import BackButton from "@/components/BackButton";
 
 //importing chakra ui components
-import { Box, Flex, Center, Heading, Text, Button, Stack, Img, HStack, Icon, Image, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
+import { Box, Flex, Center, Heading, Text, Button, Stack, Img, HStack, Icon, Image, IconButton, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BsPlus, BsTrash, BsTrashFill } from "react-icons/bs";
@@ -53,6 +53,8 @@ const Malpun = () => {
 
   const [malpunData, setMalpunData] = useState<Profile | undefined>();
 
+  const { isOpen: isOpenPhotobooth, onOpen: onOpenPhotobooth, onClose: onClosePhotobooth } = useDisclosure();
+
   useEffect(() => {
     api.get<Toggle[]>("/toggle").then(({ data }) => {
       if (!data.find((v) => v.name === "Malpunpage")?.toggle) {
@@ -76,6 +78,8 @@ const Malpun = () => {
         })
         .catch(HandleAxiosError)
         .finally(() => setIsLoading(false));
+
+      onOpenPhotobooth();
     }
 
     if (session.status === "unauthenticated") {
@@ -142,6 +146,28 @@ const Malpun = () => {
           </Stack>
         </Flex>
       </Layout>
+      <Modal closeOnOverlayClick={false} size={"xl"} onClose={onClosePhotobooth} isOpen={isOpenPhotobooth} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <Box minH={["65vh", "85vh"]} bgImage={"https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/photobooth/POSTER-PHOTOBOOTH.webp"} bgPosition={"bottom"} bgSize={"contain"} bgRepeat={"no-repeat"}>
+            <Flex m={"1em"} position={"absolute"} bottom={0} right={0}>
+              <Button
+                onClick={() => {
+                  onClosePhotobooth();
+                }}
+                rounded={"full"}
+                px={"1.5em"}
+                bgColor={"#F7B70C"}
+                boxShadow={"md"}
+                _hover={{ bgColor: "#D7A215" }}
+                fontWeight={"semibold"}
+              >
+                Next
+              </Button>
+            </Flex>
+          </Box>
+        </ModalContent>
+      </Modal>
     </>
   );
 };
