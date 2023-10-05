@@ -141,6 +141,7 @@ const ClaimTicket = () => {
   const router = useRouter();
   const api = useApi();
   const [isLoading, setIsLoading] = useState(false);
+  const [isAlfagiftForced, setIsAlfagiftForced] = useState<boolean>(true);
 
   useEffect(() => {
     console.log("facio sayang banget alfagift :D");
@@ -211,6 +212,7 @@ const ClaimTicket = () => {
           return;
         }
 
+        setIsAlfagiftForced(data.find((v) => v.name === "Alfagift")?.toggle!);
         setIsLoading(false);
       });
     }
@@ -224,11 +226,23 @@ const ClaimTicket = () => {
     return <LoadingSpinner />;
   }
 
-  const MenuEntry = ({ children, src, alt }: { children: React.ReactNode; src: string; alt: string }) => {
+  const MenuEntry = ({
+    children,
+    src,
+    alt,
+  }: {
+    children: React.ReactNode;
+    src: string;
+    alt: string;
+  }) => {
     return (
       <Stack direction={"row"} align={"center"} py={"0.25em"}>
         <Image src={src} alt={alt} boxSize={"1.5em"} />
-        <Text fontWeight={"bold"} fontSize={["sm", "md", "md", "md", "md"]} mx={"0.5em"}>
+        <Text
+          fontWeight={"bold"}
+          fontSize={["sm", "md", "md", "md", "md"]}
+          mx={"0.5em"}
+        >
           {children}
         </Text>
       </Stack>
@@ -275,7 +289,10 @@ const ClaimTicket = () => {
             justify={"center"}
             // p={"4em"}
           >
-            <Image src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Ticket.webp" alt="tiket" />
+            <Image
+              src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/Maxima_Malpun_Ticket.webp"
+              alt="tiket"
+            />
           </Stack>
           <Stack
             direction={"column"}
@@ -283,28 +300,58 @@ const ClaimTicket = () => {
             // w={["full", "35%", "35%", "35%", "35%"]}
             h={"full"}
             mx={["1em", "1em", "2em", "2em", "2em"]}
-            align={["center", "center", "space-around", "space-around", "space-around"]}
+            align={[
+              "center",
+              "center",
+              "space-around",
+              "space-around",
+              "space-around",
+            ]}
             // py={["2em", "none"]}
           >
-            <Text fontSize={["2xl", "2xl", "2xl", "3xl", "4xl"]} fontWeight={"bold"}>
+            <Text
+              fontSize={["2xl", "2xl", "2xl", "3xl", "4xl"]}
+              fontWeight={"bold"}
+            >
               Tiket Malam Puncak MAXIMA 2023
             </Text>
-            <Stack w={"full"} direction={"column"} my={["0em", "1em", "1em", "1em", "1em"]}>
-              <MenuEntry src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/calendar.svg" alt="tanggal">
+            <Stack
+              w={"full"}
+              direction={"column"}
+              my={["0em", "1em", "1em", "1em", "1em"]}
+            >
+              <MenuEntry
+                src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/calendar.svg"
+                alt="tanggal"
+              >
                 7 Oktober 2023
               </MenuEntry>
-              <MenuEntry src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/clock.svg" alt="jam">
+              <MenuEntry
+                src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/clock.svg"
+                alt="jam"
+              >
                 16:00 WIB
               </MenuEntry>
-              <MenuEntry src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/location.svg" alt="lokasi">
+              <MenuEntry
+                src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/location.svg"
+                alt="lokasi"
+              >
                 Lapangan Parkir UMN
               </MenuEntry>
               {session.status == "unauthenticated" && (
-                <MenuEntry src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/ticket.svg" alt="harga">
-                  Rp 35.000
+                <MenuEntry
+                  src="https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/ticket.svg"
+                  alt="harga"
+                >
+                  Rp {isAlfagiftForced ? "35.000" : "45.000"}
                 </MenuEntry>
               )}
-              {session.status == "unauthenticated" && <Center fontSize={"sm"}>Pembelian tiket akan disertai dengan goodie bag saat memasuki venue</Center>}
+              {session.status == "unauthenticated" && (
+                <Center fontSize={"sm"}>
+                  Pembelian tiket akan disertai dengan goodie bag saat memasuki
+                  venue
+                </Center>
+              )}
             </Stack>
             <Stack w={"full"} align={"end"}>
               <Button
@@ -337,7 +384,12 @@ const ClaimTicket = () => {
                           confirmButtonText: "Kirim",
                           input: "text",
                           inputValidator: (value) => {
-                            if (!value.startsWith("99900") || value.length !== 16 || !Number.isInteger(value)) return "Nomor member tidak valid";
+                            if (
+                              !value.startsWith("99900") ||
+                              value.length !== 16 ||
+                              !Number.isInteger(value)
+                            )
+                              return "Nomor member tidak valid";
                           },
                         });
 
@@ -354,7 +406,8 @@ const ClaimTicket = () => {
                           color: "#062D5F",
                           confirmButtonColor: "#F7B70C",
                           confirmButtonText: "Oke",
-                          imageUrl: "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/alfagift/qr-code-with-logo.webp",
+                          imageUrl:
+                            "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/alfagift/qr-code-with-logo.webp",
                           imageAlt: "QR Alfagift",
                           imageHeight: 300,
                           imageWidth: 250,
@@ -374,7 +427,9 @@ const ClaimTicket = () => {
                         });
                       }
 
-                      const { data } = await api.post<ResponseModel<string>>("/mahasiswa/malpun/claimticket");
+                      const { data } = await api.post<ResponseModel<string>>(
+                        "/mahasiswa/malpun/claimticket"
+                      );
                       router.push(`/malpun/tiket/${data.data}?init=true`);
                     }
 
@@ -442,38 +497,7 @@ const ClaimTicket = () => {
               cancelButtonText: "Belum",
             });
 
-            if (alfagift.isDismissed) {
-              const downloadAlfagift = await Swal.fire({
-                title: "Silahkan download aplikasi Alfagift dan buat akun terlebih dahulu untuk lanjut ke tahap pembayaran!",
-                color: "#062D5F",
-                confirmButtonColor: "#F7B70C",
-                confirmButtonText: "Oke",
-                imageUrl: "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/alfagift/qr-code-with-logo.webp",
-                imageAlt: "QR Alfagift",
-                imageHeight: 250,
-                imageWidth: 250,
-                html: `
-                          <h4>Raih keuntungannya dengan berbagai aktivitas dan hadiah menarik pada saat Malam Puncak!</h4>
-                          </br>
-                          <a 
-                            href="https://alfagift.onelink.me/1087556432/giftxima?af_qr=true" 
-                            style="text-decoration:underline;" 
-                            target="_blank" 
-                            noreferrer 
-                            noopener
-                          >
-                            Klik disini untuk download Alfagift
-                          </a>
-                        `,
-              });
-
-              if (downloadAlfagift.isConfirmed) {
-                window.open("https://alfagift.onelink.me/1087556432/giftxima?af_qr=true", "_blank", "noreferrer noopener");
-              }
-
-              return;
-            }
-
+            // kalo punya alfagift
             if (alfagift.isConfirmed) {
               const inputResult = await Swal.fire({
                 title: "Masukan nomor member Alfagift",
@@ -482,7 +506,8 @@ const ClaimTicket = () => {
                 confirmButtonText: "Kirim",
                 input: "text",
                 inputValidator: (value) => {
-                  if (!value.startsWith("99900") && value.length !== 16) return "Nomor member tidak valid";
+                  if (!value.startsWith("99900") && value.length !== 16)
+                    return "Nomor member tidak valid";
                 },
               });
 
@@ -506,11 +531,15 @@ const ClaimTicket = () => {
                     onSuccess: async (result) => {
                       try {
                         await api.post("/malpun/payment", result);
-                        const { data } = await api.post<ResponseModel<External>>("/external/get_token", {
+                        const { data } = await api.post<
+                          ResponseModel<External>
+                        >("/external/get_token", {
                           order_id: result.order_id,
                         });
 
-                        router.push(`/malpun/tiket/${data.data?.token}?init=true`);
+                        router.push(
+                          `/malpun/tiket/${data.data?.token}?init=true`
+                        );
                       } catch (err) {
                         HandleAxiosError(err);
                       }
@@ -536,13 +565,134 @@ const ClaimTicket = () => {
                 }
               }
             }
+
+            // kalo toggle alfagift nyala
+            if (isAlfagiftForced) {
+              const downloadAlfagift = await Swal.fire({
+                title:
+                  "Silahkan download aplikasi Alfagift dan buat akun terlebih dahulu untuk lanjut ke tahap pembayaran!",
+                color: "#062D5F",
+                confirmButtonColor: "#F7B70C",
+                confirmButtonText: "Oke",
+                imageUrl:
+                  "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/alfagift/qr-code-with-logo.webp",
+                imageAlt: "QR Alfagift",
+                imageHeight: 250,
+                imageWidth: 250,
+                html: `
+                  <h4>Raih keuntungannya dengan berbagai aktivitas dan hadiah menarik pada saat Malam Puncak!</h4>
+                  </br>
+                  <a 
+                    href="https://alfagift.onelink.me/1087556432/giftxima?af_qr=true" 
+                    style="text-decoration:underline;" 
+                    target="_blank" 
+                    noreferrer 
+                    noopener
+                  >
+                    Klik disini untuk download Alfagift
+                  </a>
+                `,
+              });
+
+              if (downloadAlfagift.isConfirmed) {
+                window.open(
+                  "https://alfagift.onelink.me/1087556432/giftxima?af_qr=true",
+                  "_blank",
+                  "noreferrer noopener"
+                );
+              }
+
+              return;
+            }
+
+            // kalo toggle alfagift mati, langsung bayar
+            await Swal.fire({
+              title: "Download Aplikasi Alfagift",
+              color: "#062D5F",
+              confirmButtonColor: "#F7B70C",
+              confirmButtonText: "Oke",
+              imageUrl:
+                "https://storage.googleapis.com/mxm23-app-client/webps/webps/public/assets/malpun/alfagift/qr-code-with-logo.webp",
+              imageAlt: "QR Alfagift",
+              imageHeight: 300,
+              imageWidth: 250,
+              html: `
+                <h4>Dan raih keuntungannya pada saat Malam Puncak dengan berbagai aktivitas dan hadiah menarik </h4>
+                </br>
+                <a 
+                  href="https://alfagift.onelink.me/1087556432/giftxima?af_qr=true" 
+                  style="text-decoration:underline;" 
+                  target="_blank" 
+                  noreferrer 
+                  noopener
+                >
+                  Klik disini untuk download Alfagift
+                </a>
+              `,
+            });
+
+            try {
+              const { data } = await api.post<
+                ResponseModel<
+                  ExternalBuyerForm & {
+                    transaction_id: string;
+                    token: string;
+                  }
+                >
+              >("/external/register", {
+                name: form.name,
+                email: form.email,
+                whatsapp: form.whatsapp,
+              });
+
+              window.snap.pay(data.data?.token!, {
+                onSuccess: async (result) => {
+                  try {
+                    await api.post("/malpun/payment", result);
+                    const { data } = await api.post<ResponseModel<External>>(
+                      "/external/get_token",
+                      {
+                        order_id: result.order_id,
+                      }
+                    );
+
+                    router.push(`/malpun/tiket/${data.data?.token}?init=true`);
+                  } catch (err) {
+                    HandleAxiosError(err);
+                  }
+                },
+                onPending: (result) =>
+                  Swal.fire({
+                    title: "Pembayaranmu masih pending!",
+                    color: "#062D5F",
+                    confirmButtonColor: "#F7B70C",
+                    confirmButtonText: "Oke",
+                  }),
+                onError: (err) =>
+                  Swal.fire({
+                    title: "Pembayaranmu gagal!",
+                    color: "#062D5F",
+                    confirmButtonColor: "#F7B70C",
+                    confirmButtonText: "Oke",
+                  }),
+              });
+            } catch (err) {
+              HandleAxiosError(err);
+            }
           })}
           direction={"column"}
           w={"full"}
         >
-          <Stack my={["1.5em", "3em", "1.5em", "1.5em", "1.5em"]} px={["none", "none", "2em", "8em", "8em"]}>
+          <Stack
+            my={["1.5em", "3em", "1.5em", "1.5em", "1.5em"]}
+            px={["none", "none", "2em", "8em", "8em"]}
+          >
             <FormControl isInvalid={!!errors.name}>
-              <FormLabel color={"#1B4173"} fontSize={["xl", "md", "xl", "xl", "xl"]} opacity={"0.9"}>
+              <FormLabel
+                color={"#1B4173"}
+                fontSize={["xl", "md", "xl", "xl", "xl"]}
+                opacity={"0.9"}
+              >
                 Nama Lengkap
               </FormLabel>
               <Input
@@ -567,10 +717,16 @@ const ClaimTicket = () => {
                 textColor={"black"}
                 borderRadius={"full"}
               />
-              <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
+              <FormErrorMessage>
+                {errors.name && errors.name.message}
+              </FormErrorMessage>
             </FormControl>
             <FormControl isInvalid={!!errors.email}>
-              <FormLabel color={"#1B4173"} fontSize={["xl", "md", "xl", "xl", "xl"]} opacity={"0.9"}>
+              <FormLabel
+                color={"#1B4173"}
+                fontSize={["xl", "md", "xl", "xl", "xl"]}
+                opacity={"0.9"}
+              >
                 Email
               </FormLabel>
               <Input
@@ -591,10 +747,16 @@ const ClaimTicket = () => {
                 textColor={"black"}
                 borderRadius={"full"}
               />
-              <FormErrorMessage>{errors.email && errors.email.message}</FormErrorMessage>
+              <FormErrorMessage>
+                {errors.email && errors.email.message}
+              </FormErrorMessage>
             </FormControl>
             <FormControl isInvalid={!!errors.whatsapp}>
-              <FormLabel color={"#1B4173"} fontSize={["xl", "md", "xl", "xl", "xl"]} opacity={"0.9"}>
+              <FormLabel
+                color={"#1B4173"}
+                fontSize={["xl", "md", "xl", "xl", "xl"]}
+                opacity={"0.9"}
+              >
                 No. Whatsapp
               </FormLabel>
               <Input
@@ -615,7 +777,9 @@ const ClaimTicket = () => {
                 textColor={"black"}
                 borderRadius={"full"}
               />
-              <FormErrorMessage>{errors.whatsapp && errors.whatsapp.message}</FormErrorMessage>
+              <FormErrorMessage>
+                {errors.whatsapp && errors.whatsapp.message}
+              </FormErrorMessage>
             </FormControl>
           </Stack>
           <Stack direction={"row"} w={"full"} justify={"space-between"}>
@@ -653,7 +817,12 @@ const ClaimTicket = () => {
 
   return (
     <>
-      <script src={process.env.NEXT_PUBLIC_MIDTRANS_INTERFACE_URL} type="text/javascript" data-client-key={process.env.NEXT_PUBLIC_MIDTRANS_KEY} async />
+      <script
+        src={process.env.NEXT_PUBLIC_MIDTRANS_INTERFACE_URL}
+        type="text/javascript"
+        data-client-key={process.env.NEXT_PUBLIC_MIDTRANS_KEY}
+        async
+      />
 
       <Layout title={"MAXIMA 2023 - Malam Puncak (Ticket)"} showSponsorFooter>
         <Flex
